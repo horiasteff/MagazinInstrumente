@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">MagazinInstrumente</string>
+    <string name="NUME_CLIENT">Nume</string>
+    <string name="PRENUME_CLIENT">Prenume</string>
+    <string name="EMAIL">Email</string>
+    <string name="VARSTA">Varsta</string>
+    <string name="PAROLA">Parola</string>
+    <string name="BUTON_INREGISTRARE">Inregistreaza-te</string>
+    <string name="BUTON_AUTENTIFICARE">Autentifica-te</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_product">ProductActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="CATEGORIE">Categorie</string>
+</resources>

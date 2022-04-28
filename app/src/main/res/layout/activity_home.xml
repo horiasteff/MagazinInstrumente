@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.HomeActivity">
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavBar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/button_background">
+
+        <ImageView
+            android:id="@+id/imgPersonalInfo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="330dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/personal_info_avatar">
+
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/imgShoppingCart"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="240dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/ic_pattern_background_unlimited_download_">
+
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/imgHome"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="5dp"
+           android:background="@drawable/ic_home_button_icon_png_10_jpg">
+
+        </ImageView>
+
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <FrameLayout
+        android:id="@+id/productsFrame"
+        android:layout_width="match_parent"
+        android:layout_height="670dp"
+        android:layout_above="@+id/bottomNavBar">
+
+    </FrameLayout>
+
+</RelativeLayout>

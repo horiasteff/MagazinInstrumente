@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.RegisterActivity"
+    android:background="@color/white"
+    tools:ignore="MissingConstraints">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:id="@+id/rlHeader">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="170dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="117dp"
+            android:layout_marginEnd="117dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/musicalia_logo" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="220dp"
+        android:layout_height="480dp"
+        android:background="@drawable/shape_left_panel"
+        app:layout_constraintTop_toBottomOf="@+id/rlHeader">
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/llRegisterPanel"
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/shape_register"
+        app:layout_constraintTop_toBottomOf="@+id/rlHeader"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:paddingTop="50dp"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/etNume"
+            android:hint="@string/NUME_CLIENT"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:drawableLeft="@drawable/ic_baseline_person_24"/>
+        <EditText
+            android:id="@+id/etPrenume"
+            android:hint="@string/PRENUME_CLIENT"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:drawableLeft="@drawable/ic_baseline_person_24"/>
+<!--        <EditText-->
+<!--            android:id="@+id/etVarsta"-->
+<!--            android:hint="@string/VARSTA"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:drawableLeft="@drawable/ic_baseline_person_24"/>-->
+        <EditText
+            android:id="@+id/etEmail"
+            android:hint="@string/EMAIL"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:drawableLeft="@drawable/ic_baseline_email_24"/>
+        <EditText
+            android:id="@+id/etParola"
+            android:hint="@string/PAROLA"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:inputType="textPassword"
+            android:drawableLeft="@drawable/ic_baseline_lock_24"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnSalvareClient"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="@+id/llRegisterPanel"
+        app:layout_constraintTop_toBottomOf="@+id/llRegisterPanel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/button_background"
+        android:drawableStart="@drawable/button_background"
+        android:text="@string/BUTON_INREGISTRARE"
+
+        tools:layout_editor_absoluteX="87dp"
+        tools:layout_editor_absoluteY="704dp" />
+
+    <TextView
+        android:id="@+id/tvRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Inregistreaza-te"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/llRegisterPanel"
+        app:layout_constraintTop_toBottomOf="@+id/rlHeader"
+        tools:layout_editor_absoluteX="40dp" />
+
+    <TextView
+        android:id="@+id/tvLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="Autentifica-te"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:layout_marginRight="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/llRegisterPanel"
+        app:layout_constraintTop_toBottomOf="@+id/rlHeader" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center_horizontal">
+        <TextView
+            android:id="@+id/tvLogin2"
+            android:text="Ai un cont? Autentifică-te!"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

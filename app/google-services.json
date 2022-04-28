@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "997755531111",
+    "project_id": "instrumentemuzicale-da399",
+    "storage_bucket": "instrumentemuzicale-da399.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:997755531111:android:db58bc6710466d656789c2",
+        "android_client_info": {
+          "package_name": "com.example.magazininstrumente"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "997755531111-fu9h9th8o634pbndfop734vvscq4v4np.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlcDvfzRyKg3lCw32v8Isjru3tulPj90o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "997755531111-fu9h9th8o634pbndfop734vvscq4v4np.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
