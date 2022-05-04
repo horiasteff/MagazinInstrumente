@@ -12,9 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.magazininstrumente.Callback;
 import com.example.magazininstrumente.FirebaseService;
@@ -33,18 +36,20 @@ import java.util.List;
 
 public class ProductsFragment extends Fragment {
 private ListView lvProduse;
-private  List<Product > produse = new ArrayList<>();;
+private  List<Product > produse = new ArrayList<>();
 private  DatabaseReference databaseReferenceProduct =  FirebaseDatabase.getInstance().getReference(PRODUCT_REFERENCE);
 private SearchView searchView;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_products, container, false);
+        View view2= inflater.inflate(R.layout.product_list_item, container, false);
         TextView tv = view.findViewById(R.id.productsFrame);
 
-
+        //Button btnAdd = view2.findViewById(R.id.btnAdd);
         searchView = view.findViewById(R.id.searchViewList);
 
         FirebaseService firebaseService = FirebaseService.getInstance();
@@ -67,7 +72,9 @@ private SearchView searchView;
             }
         });
 
+
        firebaseService.notificareEventListenerProduse(modificareDateCallback());
+
 
        lvProduse.setOnItemClickListener(new AdapterView.OnItemClickListener() {
            @Override
@@ -82,6 +89,21 @@ private SearchView searchView;
                startActivity(intent);
            }
        });
+
+
+//       btnAdd.setOnClickListener(new View.OnClickListener() {
+//           @Override
+//           public void onClick(View view) {
+//               Toast.makeText(getContext(),"apasat", Toast.LENGTH_LONG).show();
+//               ShoppingCartFragment fragment = new ShoppingCartFragment();
+//               Bundle bundle = new Bundle();
+//               bundle.putString("denumire", "ceva");
+//               fragment.setArguments(bundle);
+//               Intent intent = new Intent(getActivity(), ShoppingCartFragment.class);
+//               startActivity(intent);
+//           }
+//       });
+
 
         return view;
     }

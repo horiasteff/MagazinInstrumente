@@ -11,14 +11,17 @@ import android.widget.ImageView;
 import com.example.magazininstrumente.fragments.InfoFragment;
 import com.example.magazininstrumente.fragments.ProductsFragment;
 import com.example.magazininstrumente.R;
+import com.example.magazininstrumente.fragments.ShoppingCartFragment;
 
 public class HomeActivity extends AppCompatActivity {
 
     private ImageView imgPersonalInfo;
     private ImageView imgHome;
+    private ImageView imgShoppingCart;
 
     private ProductsFragment productsFragment;
     private InfoFragment infoFragment;
+    private ShoppingCartFragment shoppingCartFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +29,11 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         imgPersonalInfo = findViewById(R.id.imgPersonalInfo);
         imgHome = findViewById(R.id.imgHome);
+        imgShoppingCart = findViewById(R.id.imgShoppingCart);
+
         productsFragment = new ProductsFragment();
         infoFragment = new InfoFragment();
+        shoppingCartFragment= new ShoppingCartFragment();
         setFragment(productsFragment);
 
         imgPersonalInfo.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +46,12 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 setFragment(productsFragment);
+            }
+        });
+        imgShoppingCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setFragment(shoppingCartFragment);
             }
         });
 

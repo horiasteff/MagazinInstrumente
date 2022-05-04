@@ -21,13 +21,15 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2402317783332189" />
         <entry key="app/src/main/res/layout/activity_product.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_shopping_cart.xml" value="0.19157608695652173" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.1503623188405797" />
         <entry key="app/src/main/res/layout/fragment_info.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_products.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_shopping_cart.xml" value="0.25" />
         <entry key="app/src/main/res/layout/lv_row_products.xml" value="0.1" />
         <entry key="app/src/main/res/layout/lv_row_register.xml" value="0.1" />
         <entry key="app/src/main/res/layout/main_lv_produse.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/product_list_item.xml" value="0.296398891966759" />
+        <entry key="app/src/main/res/layout/product_list_item.xml" value="0.1" />
       </map>
     </option>
   </component>
