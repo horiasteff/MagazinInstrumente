@@ -66,6 +66,10 @@ public class Product implements Serializable {
         return urlImagine;
     }
 
+    public void setUrlImagine(String urlImagine) {
+        this.urlImagine = urlImagine;
+    }
+
     @Override
     public String toString() {
         return id + denumire + pret + categorie + descriere;

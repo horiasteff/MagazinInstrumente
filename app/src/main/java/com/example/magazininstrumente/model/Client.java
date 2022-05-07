@@ -1,6 +1,9 @@
 package com.example.magazininstrumente.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Client implements Serializable {
 
@@ -10,6 +13,9 @@ public class Client implements Serializable {
     private String email;
     private String parola;
     private float buget;
+    //private HashMap<String,Product> cos;
+
+
 
     public Client(){
     }
@@ -62,9 +68,17 @@ public class Client implements Serializable {
         this.parola = parola;
     }
 
+//    public HashMap<String, Product> getCos() {
+//        return cos;
+//    }
+//
+//    public void setCos(HashMap<String, Product> cos) {
+//        this.cos = cos;
+//    }
+
     @Override
     public String toString() {
         return "Client -" + nume +
-                prenume + email + parola;
+                prenume + email + parola ;
     }
 }

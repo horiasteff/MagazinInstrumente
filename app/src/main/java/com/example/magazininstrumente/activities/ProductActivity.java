@@ -53,8 +53,9 @@ public class ProductActivity extends AppCompatActivity {
     StorageReference storageReference;
     DatabaseReference databaseReferenceProduse;
     DatabaseReference databaseReferenceClienti;
+    DatabaseReference databaseReferenceCos;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    String ceimitrebuie;
+    String idClient;
 
 
     @Override
@@ -66,6 +67,7 @@ public class ProductActivity extends AppCompatActivity {
         storageReference = FirebaseStorage.getInstance().getReference("produse");
         databaseReferenceProduse = FirebaseDatabase.getInstance().getReference("produse");
         databaseReferenceClienti = FirebaseDatabase.getInstance().getReference("clienti");
+        databaseReferenceCos = FirebaseDatabase.getInstance().getReference("cumparaturi");
 
         imageView = findViewById(R.id.choosePhoto);
         denumire = findViewById(R.id.denumireProd);
@@ -110,7 +112,7 @@ public class ProductActivity extends AppCompatActivity {
                     Client clientceva = data.getValue(Client.class);
                     if (clientceva != null) {
                         if (clientceva.getEmail().equals(user.getEmail())) {
-                            ceimitrebuie = clientceva.getId();
+                            idClient = clientceva.getId();
                         }
                     }
                 }
@@ -127,7 +129,8 @@ public class ProductActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String prodId = databaseReferenceClienti.push().getKey();
-                databaseReferenceClienti.child(ceimitrebuie).child("cos").child(prodId).setValue(product);
+                //databaseReferenceClienti.child(idClient).child("cos").child(prodId).setValue(product);
+                databaseReferenceCos.child(idClient).child(prodId).setValue(product);
             }
         });
 
