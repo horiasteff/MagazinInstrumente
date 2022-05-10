@@ -128,11 +128,25 @@ public class ProductActivity extends AppCompatActivity {
         btnCos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String prodId = databaseReferenceClienti.push().getKey();
-                //databaseReferenceClienti.child(idClient).child("cos").child(prodId).setValue(product);
-                databaseReferenceCos.child(idClient).child(prodId).setValue(product);
+                databaseReferenceProduse.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot data : snapshot.getChildren()){
+                            Product produsTemporar = data.getValue(Product.class);
+                            if(produsTemporar.getDenumire().equals(product.getDenumire())){
+                                product.setId(data.getKey());
+                                String prodId = product.getId();
+                                databaseReferenceCos.child(idClient).child(prodId).setValue(product);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
         });
-
     }
-    }
+}

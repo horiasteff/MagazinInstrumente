@@ -38,7 +38,7 @@
             android:layout_height="50dp"
             android:layout_marginLeft="150dp"
             android:layout_marginTop="5dp"
-           android:background="@drawable/ic_home_button_icon_png_10_jpg">
+            android:background="@drawable/ic_home_button_icon_png_10_jpg">
 
         </ImageView>
 
@@ -48,7 +48,7 @@
     <FrameLayout
         android:id="@+id/productsFrame"
         android:layout_width="match_parent"
-        android:layout_height="670dp"
+        android:layout_height="match_parent"
         android:layout_above="@+id/bottomNavBar">
 
     </FrameLayout>

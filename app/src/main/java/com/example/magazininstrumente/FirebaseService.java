@@ -2,6 +2,7 @@ package com.example.magazininstrumente;
 
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -30,7 +31,6 @@ public class FirebaseService {
     private static FirebaseService firebaseService;
     private FirebaseAuth mAuth;
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
 
 
     public FirebaseService(){
@@ -177,6 +177,80 @@ public class FirebaseService {
             }
         });
     }
+
+
+    public void stergereEventListenerProduseCart(Callback<List<Product>> callback,Product produsSabon){
+        List<Product> produseTotale = new ArrayList<>();
+        List<Client> clientiTotali = new ArrayList<>();
+        final String[] uid = {""};
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot data: snapshot.getChildren()){
+                    Client client = data.getValue(Client.class);
+                    if(client!=null){
+                        clientiTotali.add(client);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("FirebaseService", "Clientul nu este disponibil");
+            }
+        });
+        databaseReferenceProducts.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot data : snapshot.getChildren()){
+                    Product product = data.getValue(Product.class);
+                    if(product!=null){
+                        produseTotale.add(product);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        databaseReferenceShop.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                List<Product> products = new ArrayList<>();
+                for(Client c : clientiTotali){
+                    if(c.getEmail().equals(user.getEmail())){
+                        uid[0] = c.getId();
+                    }
+                }
+                for(DataSnapshot data : snapshot.getChildren()){
+                    if(data.getKey().equals(uid[0]))
+                        for(DataSnapshot data2 : data.getChildren()){
+                            Product product = data2.getValue(Product.class);
+                            if(product!=null){
+                                for(Product p : produseTotale) {
+                                    if (!p.equals(produsSabon)) {
+                                        if (p.getDenumire().equals(product.getDenumire())) {
+                                            product.setUrlImagine(p.getUrlImagine());
+                                        }
+                                        products.add(product);
+                                    }
+                                }
+                            }
+                        }
+                    callback.rulareRezultatPeUI(products);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
 
     public void notificareEventListenerProduseFiltered(Callback<List<Product>> callback, String s){
         databaseReferenceProducts.addValueEventListener(new ValueEventListener() {
