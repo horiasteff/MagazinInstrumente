@@ -16,12 +16,10 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.magazininstrumente.Callback;
 import com.example.magazininstrumente.FirebaseService;
 import com.example.magazininstrumente.R;
-import com.example.magazininstrumente.adapters.ProductAdapter;
 import com.example.magazininstrumente.model.Client;
-import com.example.magazininstrumente.model.Comanda;
+import com.example.magazininstrumente.model.Order;
 import com.example.magazininstrumente.model.Product;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -35,7 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ComandaFragment extends Fragment {
+public class OrderFragment extends Fragment {
     private ListView shoppingCart;
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -55,7 +53,7 @@ public class ComandaFragment extends Fragment {
 
     private String idClient;
     private List<Product> produseComanda;
-    private Comanda comanda;
+    private Order order;
     private TextView tvTotalPrice;
 
 
@@ -115,9 +113,9 @@ public class ComandaFragment extends Fragment {
                         btnPlaseazaComanda.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                comanda = new Comanda(etNumeComanda.getText().toString(),etPrenumeComanda.getText().toString(),etEmailComanda.getText().toString(),etAdresaComanda.getText().toString(),etTelefonComanda.getText().toString(),tvCostTotal.getText().toString(),produseComanda);
+                                order = new Order(etNumeComanda.getText().toString(),etPrenumeComanda.getText().toString(),etEmailComanda.getText().toString(),etAdresaComanda.getText().toString(),etTelefonComanda.getText().toString(),tvCostTotal.getText().toString(),produseComanda);
                                 String idComanda = databaseReferenceComanda.push().getKey();
-                                databaseReferenceComanda.child(idClient).child(idComanda).setValue(comanda);
+                                databaseReferenceComanda.child(idClient).child(idComanda).setValue(order);
                                 databaseReferenceCos.child(idClient).removeValue();
                                 //shoppingCartFragment.notificareListViewProductAdapter();
 //                                produseComanda.clear();

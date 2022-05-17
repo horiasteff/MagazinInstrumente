@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +18,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.example.magazininstrumente.Callback;
 import com.example.magazininstrumente.FirebaseService;
 import com.example.magazininstrumente.R;
-import com.example.magazininstrumente.activities.HomeActivity;
 import com.example.magazininstrumente.adapters.ProductAdapter;
 import com.example.magazininstrumente.model.Client;
 import com.example.magazininstrumente.model.Product;
@@ -34,8 +31,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +49,7 @@ public class ShoppingCartFragment extends Fragment {
     private Product produsSelectat;
     private String referinta;
     private Button btnComanda;
-    private ComandaFragment comandaFragment;
+    private OrderFragment orderFragment;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -63,7 +58,7 @@ public class ShoppingCartFragment extends Fragment {
         shoppingCart = view.findViewById(R.id.shoppingCartListView);
         tvTotalPrice = view.findViewById(R.id.tv_totalPrice);
         btnComanda = view.findViewById(R.id.btnComanda);
-        comandaFragment = new ComandaFragment();
+        orderFragment = new OrderFragment();
 
         adaugarelistViewProdusAdapter();
 
@@ -135,7 +130,7 @@ public class ShoppingCartFragment extends Fragment {
         @Override
         public void onClick(View view) {
             FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.productsFrame,comandaFragment);
+            fragmentTransaction.replace(R.id.productsFrame, orderFragment);
             fragmentTransaction.commit();
         }
     });

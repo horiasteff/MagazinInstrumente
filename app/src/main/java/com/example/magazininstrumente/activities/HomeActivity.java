@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.example.magazininstrumente.fragments.ComandaFragment;
 import com.example.magazininstrumente.fragments.InfoFragment;
 import com.example.magazininstrumente.fragments.ProductsFragment;
 import com.example.magazininstrumente.R;

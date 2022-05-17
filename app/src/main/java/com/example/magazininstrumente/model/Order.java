@@ -3,7 +3,7 @@ package com.example.magazininstrumente.model;
 import java.io.Serializable;
 import java.util.List;
 
-public class Comanda implements Serializable {
+public class Order implements Serializable {
     private String idComanda;
     private String numeComanda;
     private String prenumeComanda;
@@ -13,9 +13,9 @@ public class Comanda implements Serializable {
     private String costTotalComanda;
     private List<Product> produse;
 
-    public Comanda(){}
+    public Order(){}
 
-    public Comanda(String numeComanda, String prenumeComanda, String emailComanda, String adresaComanda, String telefonComanda, String costTotalComanda, List<Product> produse) {
+    public Order(String numeComanda, String prenumeComanda, String emailComanda, String adresaComanda, String telefonComanda, String costTotalComanda, List<Product> produse) {
         this.numeComanda = numeComanda;
         this.prenumeComanda = prenumeComanda;
         this.emailComanda = emailComanda;
