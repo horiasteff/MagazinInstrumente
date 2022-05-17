@@ -6,8 +6,10 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
+import com.example.magazininstrumente.fragments.ComandaFragment;
 import com.example.magazininstrumente.fragments.InfoFragment;
 import com.example.magazininstrumente.fragments.ProductsFragment;
 import com.example.magazininstrumente.R;
@@ -18,6 +20,7 @@ public class HomeActivity extends AppCompatActivity {
     private ImageView imgPersonalInfo;
     private ImageView imgHome;
     private ImageView imgShoppingCart;
+    private Button btnComanda;
 
     private ProductsFragment productsFragment;
     private InfoFragment infoFragment;
@@ -30,6 +33,7 @@ public class HomeActivity extends AppCompatActivity {
         imgPersonalInfo = findViewById(R.id.imgPersonalInfo);
         imgHome = findViewById(R.id.imgHome);
         imgShoppingCart = findViewById(R.id.imgShoppingCart);
+        btnComanda = findViewById(R.id.btnComanda);
 
         productsFragment = new ProductsFragment();
         infoFragment = new InfoFragment();
@@ -54,6 +58,7 @@ public class HomeActivity extends AppCompatActivity {
                 setFragment(shoppingCartFragment);
             }
         });
+
 
     }
 

@@ -8,12 +8,14 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -21,6 +23,7 @@ import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.example.magazininstrumente.Callback;
 import com.example.magazininstrumente.FirebaseService;
 import com.example.magazininstrumente.R;
+import com.example.magazininstrumente.activities.HomeActivity;
 import com.example.magazininstrumente.adapters.ProductAdapter;
 import com.example.magazininstrumente.model.Client;
 import com.example.magazininstrumente.model.Product;
@@ -50,6 +53,8 @@ public class ShoppingCartFragment extends Fragment {
     private String idClient;
     private Product produsSelectat;
     private String referinta;
+    private Button btnComanda;
+    private ComandaFragment comandaFragment;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -57,18 +62,22 @@ public class ShoppingCartFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_shopping_cart, container, false);
         shoppingCart = view.findViewById(R.id.shoppingCartListView);
         tvTotalPrice = view.findViewById(R.id.tv_totalPrice);
+        btnComanda = view.findViewById(R.id.btnComanda);
+        comandaFragment = new ComandaFragment();
+
         adaugarelistViewProdusAdapter();
 
+        notificareListViewProductAdapter();
         firebaseService.notificareEventListenerProduseCart(modificareDateCallback());
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot data : snapshot.getChildren()) {
-                    Client clientceva = data.getValue(Client.class);
-                    if (clientceva != null) {
-                        if (clientceva.getEmail().equals(user.getEmail())) {
-                            idClient = clientceva.getId();
+                    Client clientReferinta = data.getValue(Client.class);
+                    if (clientReferinta != null) {
+                        if (clientReferinta.getEmail().equals(user.getEmail())) {
+                            idClient = clientReferinta.getId();
                             shoppingCart.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                                 @Override
                                 public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
@@ -87,10 +96,15 @@ public class ShoppingCartFragment extends Fragment {
                                                                     if(unProdus.getDenumire().equals(produsSelectat.getDenumire())){
                                                                         referinta = data.getKey();
                                                                         databaseReferenceCos.child(idClient).child(referinta).removeValue();
-                                                                        Log.e("produsulmeu", String.valueOf(produse.get(position).getId()));
-                                                                        Log.e("produsulmeu", idClient);
+//                                                                        Log.e("produsulmeu", String.valueOf(produse.get(position).getId()));
+//                                                                        Log.e("produsulmeu", idClient);
                                                                         produse.remove(produsSelectat);
                                                                         notificareListViewProductAdapter();
+                                                                        int sum = 0;
+                                                                        for(Product p : produse){
+                                                                            sum+=Integer.parseInt(p.getPret());
+                                                                        }
+                                                                        tvTotalPrice.setText(String.valueOf(sum));
                                                                     }
                                                                 }
                                                             }
@@ -117,6 +131,14 @@ public class ShoppingCartFragment extends Fragment {
             }
         });
 
+    btnComanda.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.productsFrame,comandaFragment);
+            fragmentTransaction.commit();
+        }
+    });
         return view;
     }
 
@@ -141,11 +163,8 @@ public class ShoppingCartFragment extends Fragment {
                     for(Product p : produse){
                         sum+=Integer.parseInt(p.getPret());
                     }
-                    Log.e("valoare", String.valueOf(sum));
                     tvTotalPrice.setText(String.valueOf(sum));
                     notificareListViewProductAdapter();
-
-
                 }
             }
         };
