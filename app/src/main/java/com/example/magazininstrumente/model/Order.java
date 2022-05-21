@@ -11,16 +11,18 @@ public class Order implements Serializable {
     private String adresaComanda;
     private String telefonComanda;
     private String costTotalComanda;
+    private String tipPlata;
     private List<Product> produse;
 
     public Order(){}
 
-    public Order(String numeComanda, String prenumeComanda, String emailComanda, String adresaComanda, String telefonComanda, String costTotalComanda, List<Product> produse) {
+    public Order(String numeComanda, String prenumeComanda, String emailComanda, String adresaComanda, String telefonComanda, String costTotalComanda, String tipPlata, List<Product> produse) {
         this.numeComanda = numeComanda;
         this.prenumeComanda = prenumeComanda;
         this.emailComanda = emailComanda;
         this.adresaComanda = adresaComanda;
         this.telefonComanda = telefonComanda;
+        this.tipPlata = tipPlata;
         this.costTotalComanda = costTotalComanda;
         this.produse = produse;
     }
@@ -73,6 +75,14 @@ public class Order implements Serializable {
         this.telefonComanda = telefonComanda;
     }
 
+    public String getTipPlata() {
+        return tipPlata;
+    }
+
+    public void setTipPlata(String tipPlata) {
+        this.tipPlata = tipPlata;
+    }
+
     public String getCostTotalComanda() {
         return costTotalComanda;
     }
@@ -91,7 +101,7 @@ public class Order implements Serializable {
 
     @Override
     public String toString() {
-        return "Comanda{" +
+        return "Order{" +
                 "idComanda='" + idComanda + '\'' +
                 ", numeComanda='" + numeComanda + '\'' +
                 ", prenumeComanda='" + prenumeComanda + '\'' +
@@ -99,6 +109,7 @@ public class Order implements Serializable {
                 ", adresaComanda='" + adresaComanda + '\'' +
                 ", telefonComanda='" + telefonComanda + '\'' +
                 ", costTotalComanda='" + costTotalComanda + '\'' +
+                ", tipPlata='" + tipPlata + '\'' +
                 ", produse=" + produse +
                 '}';
     }

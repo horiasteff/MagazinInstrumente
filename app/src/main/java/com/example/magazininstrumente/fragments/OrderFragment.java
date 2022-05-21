@@ -12,8 +12,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.magazininstrumente.FirebaseService;
@@ -50,11 +52,13 @@ public class OrderFragment extends Fragment {
     private EditText etTelefonComanda;
     private TextView tvCostTotal;
     private Button btnPlaseazaComanda;
+    private Switch switchPlata;
 
     private String idClient;
     private List<Product> produseComanda;
     private Order order;
     private TextView tvTotalPrice;
+    private String tipPlata;
 
 
     @Override
@@ -72,6 +76,7 @@ public class OrderFragment extends Fragment {
         etAdresaComanda = view.findViewById(R.id.adresaFactura);
         etTelefonComanda = view.findViewById(R.id.telefonFactura);
         tvCostTotal = view.findViewById(R.id.costTotalFactura);
+        switchPlata = view.findViewById(R.id.switchPlata);
         produseComanda = new ArrayList<>();
 
         //firebaseService.notificareEventListenerProduseCart(modificareDateCallback());
@@ -110,10 +115,21 @@ public class OrderFragment extends Fragment {
                             }
                         });
 
+                        switchPlata.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                            @Override
+                            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                                if (isChecked){
+                                    tipPlata = "Card";
+                                }else {
+                                    tipPlata = "Cash";
+                                }
+                            }
+                        });
+
                         btnPlaseazaComanda.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                order = new Order(etNumeComanda.getText().toString(),etPrenumeComanda.getText().toString(),etEmailComanda.getText().toString(),etAdresaComanda.getText().toString(),etTelefonComanda.getText().toString(),tvCostTotal.getText().toString(),produseComanda);
+                                order = new Order(etNumeComanda.getText().toString(),etPrenumeComanda.getText().toString(),etEmailComanda.getText().toString(),etAdresaComanda.getText().toString(),etTelefonComanda.getText().toString(),tvCostTotal.getText().toString(), tipPlata, produseComanda);
                                 String idComanda = databaseReferenceComanda.push().getKey();
                                 databaseReferenceComanda.child(idClient).child(idComanda).setValue(order);
                                 databaseReferenceCos.child(idClient).removeValue();
