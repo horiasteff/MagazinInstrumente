@@ -12,12 +12,14 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.magazininstrumente.R;
 import com.example.magazininstrumente.fragments.ShoppingCartFragment;
@@ -137,6 +139,7 @@ public class ProductActivity extends AppCompatActivity {
                                 product.setId(data.getKey());
                                 String prodId = product.getId();
                                 databaseReferenceCos.child(idClient).child(prodId).setValue(product);
+                                Toast.makeText(getApplicationContext(), "Adaugat in cos", Toast.LENGTH_LONG).show();
                             }
                         }
                     }
@@ -148,5 +151,7 @@ public class ProductActivity extends AppCompatActivity {
                 });
             }
         });
+        btnCos.setMovementMethod(new ScrollingMovementMethod());
+
     }
 }

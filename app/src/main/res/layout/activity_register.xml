@@ -93,8 +93,7 @@
         app:layout_constraintTop_toBottomOf="@+id/llRegisterPanel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/button_background"
-        android:drawableStart="@drawable/button_background"
+        android:background="@drawable/esc_button"
         android:text="@string/BUTON_INREGISTRARE"
 
         tools:layout_editor_absoluteX="87dp"

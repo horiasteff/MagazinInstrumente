@@ -39,6 +39,11 @@ private ListView lvProduse;
 private  List<Product > produse = new ArrayList<>();
 private  DatabaseReference databaseReferenceProduct =  FirebaseDatabase.getInstance().getReference(PRODUCT_REFERENCE);
 private SearchView searchView;
+private Button btnFilterCorzi;
+private Button btnFilterClape;
+private Button btnFilterSuflat;
+private Button btnFilterPercutie;
+private Button btnFilterEsc;
 
 
     @Override
@@ -51,6 +56,11 @@ private SearchView searchView;
 
         //Button btnAdd = view2.findViewById(R.id.btnAdd);
         searchView = view.findViewById(R.id.searchViewList);
+        btnFilterCorzi = view.findViewById(R.id.btnFilterCorzi);
+        btnFilterClape = view.findViewById(R.id.btnFilterClape);
+        btnFilterSuflat = view.findViewById(R.id.btnFilterSuflat);
+        btnFilterPercutie = view.findViewById(R.id.btnFilterPercutie);
+        btnFilterEsc = view.findViewById(R.id.btnFilterEsc);
 
         FirebaseService firebaseService = FirebaseService.getInstance();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(CLIENT_REFERENCE);
@@ -72,6 +82,41 @@ private SearchView searchView;
             }
         });
 
+        btnFilterPercutie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                firebaseService.notificareEventListenerProduseFilteredButton(modificareDateCallback(), "Percutie");
+            }
+        });
+
+        btnFilterCorzi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                firebaseService.notificareEventListenerProduseFilteredButton(modificareDateCallback(), "Corzi");
+            }
+        });
+
+        btnFilterSuflat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                firebaseService.notificareEventListenerProduseFilteredButton(modificareDateCallback(), "Suflat");
+            }
+        });
+
+        btnFilterClape.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                firebaseService.notificareEventListenerProduseFilteredButton(modificareDateCallback(), "Clape");
+            }
+        });
+
+        btnFilterEsc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                firebaseService.notificareEventListenerProduse(modificareDateCallback());
+            }
+        });
+
 
        firebaseService.notificareEventListenerProduse(modificareDateCallback());
 
@@ -89,21 +134,6 @@ private SearchView searchView;
                startActivity(intent);
            }
        });
-
-
-//       btnAdd.setOnClickListener(new View.OnClickListener() {
-//           @Override
-//           public void onClick(View view) {
-//               Toast.makeText(getContext(),"apasat", Toast.LENGTH_LONG).show();
-//               ShoppingCartFragment fragment = new ShoppingCartFragment();
-//               Bundle bundle = new Bundle();
-//               bundle.putString("denumire", "ceva");
-//               fragment.setArguments(bundle);
-//               Intent intent = new Intent(getActivity(), ShoppingCartFragment.class);
-//               startActivity(intent);
-//           }
-//       });
-
 
         return view;
     }
@@ -130,8 +160,4 @@ private SearchView searchView;
             }
         };
     }
-
-
-
-
 }

@@ -117,16 +117,16 @@ public class RegisterActivity extends AppCompatActivity {
                         if(client.getNume().isEmpty()){
                             etNume.setError("Numele este invalid");
                         }
-                        if(client.getPrenume().isEmpty()){
+                        else if(client.getPrenume().isEmpty()){
                             etPrenume.setError("Prenumele este invalid");
                         }
-                        if(client.getEmail().isEmpty()){
+                        else if(client.getEmail().isEmpty()){
                             etEmail.setError("Emailul este invalid");
                         }
-                        if(client.getParola().isEmpty()){
+                        else if(client.getParola().isEmpty()){
                             etParola.setError("Parola este invalida");
                         }
-                        if(client.getParola().length() < 6){
+                        else if(client.getParola().length() < 6){
                             etParola.setError("Parola este prea scurta");
                         }else{
                             mAuth = FirebaseAuth.getInstance();

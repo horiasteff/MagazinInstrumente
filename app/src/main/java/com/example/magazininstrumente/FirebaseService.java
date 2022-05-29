@@ -272,4 +272,25 @@ public class FirebaseService {
             }
         });
     }
+
+    public void notificareEventListenerProduseFilteredButton(Callback<List<Product>> callback, String category){
+        databaseReferenceProducts.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                List<Product> produse = new ArrayList<>();
+                for(DataSnapshot data : snapshot.getChildren()){
+                    Product product = data.getValue(Product.class);
+                    if(product!=null && product.getCategorie().equals(category)){
+                        produse.add(product);
+                    }
+                }
+                callback.rulareRezultatPeUI(produse);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 }

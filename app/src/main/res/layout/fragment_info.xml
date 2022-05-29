@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.InfoFragment">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/firstRelativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="511dp"
+        android:layout_height="661dp"
         android:layout_marginTop="16dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="MissingConstraints">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -24,6 +27,7 @@
                     android:id="@+id/productImage"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
+                    android:src="@drawable/ic_baseline_person_24"
                     android:layout_marginStart="20dp" />
 
             </RelativeLayout>
@@ -71,20 +75,38 @@
                         android:id="@+id/clientEmail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/EMAIL"
-                        android:layout_marginLeft="20dp">
+                        android:layout_marginLeft="20dp"
+                        android:text="@string/EMAIL">
 
                     </TextView>
 
                 </LinearLayout>
-                
+
 
             </LinearLayout>
 
         </LinearLayout>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp"
+
+            tools:ignore="MissingConstraints">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/esc_button"
+            android:text="Reseteaza parola"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="11dp" />
 
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

@@ -5,27 +5,32 @@
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1735" />
         <entry key="app/src/main/res/drawable/button_background.xml" value="0.169" />
+        <entry key="app/src/main/res/drawable/choose.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/edittext_backgroung.xml" value="0.1775" />
+        <entry key="app/src/main/res/drawable/esc_button.xml" value="0.173" />
+        <entry key="app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.1775" />
         <entry key="app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_shopping_cart_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_home_button_icon_png_10_jpg.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1775" />
+        <entry key="app/src/main/res/drawable/ic_pattern_background_unlimited_download_.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/personal_info_avatar.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/round_button.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/shape_left_panel.xml" value="0.225" />
         <entry key="app/src/main/res/drawable/shape_register.xml" value="0.125" />
         <entry key="app/src/main/res/drawable/shape_right_panel.xml" value="0.207" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.2188365650969529" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2402317783332189" />
-        <entry key="app/src/main/res/layout/activity_product.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_product.xml" value="0.18181818181818182" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_shopping_cart.xml" value="0.19157608695652173" />
         <entry key="app/src/main/res/layout/fragment_comanda.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.1503623188405797" />
         <entry key="app/src/main/res/layout/fragment_info.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/fragment_products.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_products.xml" value="0.10803324099722991" />
         <entry key="app/src/main/res/layout/fragment_shopping_cart.xml" value="0.25" />
         <entry key="app/src/main/res/layout/lv_row_products.xml" value="0.1" />
         <entry key="app/src/main/res/layout/lv_row_register.xml" value="0.1" />

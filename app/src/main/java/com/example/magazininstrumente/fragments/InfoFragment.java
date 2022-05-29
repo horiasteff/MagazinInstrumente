@@ -1,5 +1,7 @@
 package com.example.magazininstrumente.fragments;
 
+import static android.content.ContentValues.TAG;
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +17,10 @@ import com.example.magazininstrumente.Callback;
 import com.example.magazininstrumente.R;
 import com.example.magazininstrumente.model.Client;
 import com.example.magazininstrumente.model.Product;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -43,11 +49,18 @@ public class InfoFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_info, container, false);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        AuthCredential credential = EmailAuthProvider
+                .getCredential(user.getEmail(),"parola");
+
+
         databaseReference = FirebaseDatabase.getInstance().getReference(CLIENT_REFERENCE);
         tvNume = view.findViewById(R.id.clientName);
         tvPrenume = view.findViewById(R.id.clientPrenume);
         tvEmail = view.findViewById(R.id.clientEmail);
         clienti = new ArrayList<>();
+
+
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
