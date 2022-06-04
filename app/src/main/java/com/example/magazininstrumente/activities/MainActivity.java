@@ -68,8 +68,15 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
 
                         //deschid pagina principala
-                        Intent intent  = new Intent(MainActivity.this, HomeActivity.class);
-                        MainActivity.this.startActivity(intent);
+                        if(email.equals("admin@gmail.com")){
+                            Intent intent  = new Intent(MainActivity.this, AdminActivity.class);
+                            MainActivity.this.startActivity(intent);
+                        }else{
+                            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                            MainActivity.this.startActivity(intent);
+                        }
+
+
 
 //                        Intent intent  = new Intent(MainActivity.this, ProductActivity.class);
 //                        MainActivity.this.startActivity(intent);

@@ -131,6 +131,7 @@ private Button btnFilterEsc;
                intent.putExtra("pretProd", produse.get(position).getPret());
                intent.putExtra("categorieProd", produse.get(position).getCategorie());
                intent.putExtra("descriereProd", produse.get(position).getDescriere());
+               intent.putExtra("cantecProd",produse.get(position).getUrlCantec());
                startActivity(intent);
            }
        });

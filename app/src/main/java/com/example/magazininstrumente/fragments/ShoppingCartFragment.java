@@ -24,6 +24,8 @@ import com.example.magazininstrumente.R;
 import com.example.magazininstrumente.adapters.ProductAdapter;
 import com.example.magazininstrumente.model.Client;
 import com.example.magazininstrumente.model.Product;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;

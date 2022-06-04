@@ -2,6 +2,8 @@ package com.example.magazininstrumente.fragments;
 
 import static android.content.ContentValues.TAG;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.magazininstrumente.Callback;
@@ -41,6 +44,7 @@ public class InfoFragment extends Fragment {
     private TextView tvNume;
     private TextView tvPrenume;
     private TextView tvEmail;
+    private Button btnResetPassword;
 
 
     @Override
@@ -55,14 +59,16 @@ public class InfoFragment extends Fragment {
 
 
         databaseReference = FirebaseDatabase.getInstance().getReference(CLIENT_REFERENCE);
-        tvNume = view.findViewById(R.id.clientName);
-        tvPrenume = view.findViewById(R.id.clientPrenume);
+        tvNume = view.findViewById(R.id.clientNume);
+        //tvPrenume = view.findViewById(R.id.clientPrenume);
         tvEmail = view.findViewById(R.id.clientEmail);
         clienti = new ArrayList<>();
+        //btnResetPassword = view.findViewById(R.id.btnResetPassword);
 
 
 
         databaseReference.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot data: snapshot.getChildren()){
@@ -70,8 +76,7 @@ public class InfoFragment extends Fragment {
                     if(client!=null){
                         clienti.add(client);
                         if(client.getEmail().equals(user.getEmail())){
-                            tvNume.setText(client.getNume());
-                            tvPrenume.setText(client.getPrenume());
+                            tvNume.setText(client.getNume() + " " + client.getPrenume());
                             tvEmail.setText(client.getEmail());
                         }
                     }
@@ -85,6 +90,16 @@ public class InfoFragment extends Fragment {
         });
 
         modificareDateCallback();
+
+//        btnResetPassword.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+////                Intent intent = new Intent(getActivity(), ResetPassword.class);
+////                startActivity(intent);
+//            }
+//        });
+
+
 
         return view;
     }

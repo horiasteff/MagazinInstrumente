@@ -10,16 +10,18 @@ public class Product implements Serializable {
     private String categorie;
     private String descriere;
     private String urlImagine;
+    private String urlCantec;
 
     public Product() {
     }
 
-    public Product(String denumire, String pret, String categorie, String descriere, String urlImagine) {
+    public Product(String denumire, String pret, String categorie, String descriere, String urlImagine, String urlCantec) {
         this.denumire = denumire;
         this.pret = pret;
         this.categorie = categorie;
         this.descriere = descriere;
         this.urlImagine = urlImagine;
+        this.urlCantec = urlCantec;
     }
 
     public String getId() {
@@ -70,8 +72,17 @@ public class Product implements Serializable {
         this.urlImagine = urlImagine;
     }
 
+    public String getUrlCantec() {
+        return urlCantec;
+    }
+
+    public void setUrlCantec(String urlCantec) {
+        this.urlCantec = urlCantec;
+    }
+
     @Override
     public String toString() {
-        return id + denumire + pret + categorie + descriere;
+        return  id +  denumire + pret +  categorie +  descriere +urlImagine +
+                 urlCantec ;
     }
 }
