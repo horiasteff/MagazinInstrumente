@@ -1,6 +1,7 @@
 package com.example.magazininstrumente.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 public class Order implements Serializable {
@@ -12,11 +13,11 @@ public class Order implements Serializable {
     private String telefonComanda;
     private String costTotalComanda;
     private String tipPlata;
+    private String dataComanda;
     private List<Product> produse;
 
-    public Order(){}
 
-    public Order(String numeComanda, String prenumeComanda, String emailComanda, String adresaComanda, String telefonComanda, String costTotalComanda, String tipPlata, List<Product> produse) {
+    public Order(String numeComanda, String prenumeComanda, String emailComanda, String adresaComanda, String telefonComanda, String costTotalComanda, String tipPlata, String dataComanda, List<Product> produse) {
         this.numeComanda = numeComanda;
         this.prenumeComanda = prenumeComanda;
         this.emailComanda = emailComanda;
@@ -24,6 +25,7 @@ public class Order implements Serializable {
         this.telefonComanda = telefonComanda;
         this.tipPlata = tipPlata;
         this.costTotalComanda = costTotalComanda;
+        this.dataComanda = dataComanda;
         this.produse = produse;
     }
 
@@ -91,6 +93,14 @@ public class Order implements Serializable {
         this.costTotalComanda = costTotalComanda;
     }
 
+    public String getDataComanda() {
+        return dataComanda;
+    }
+
+    public void setDataComanda(String dataComanda) {
+        this.dataComanda = dataComanda;
+    }
+
     public List<Product> getProduse() {
         return produse;
     }
@@ -111,6 +121,7 @@ public class Order implements Serializable {
                 ", costTotalComanda='" + costTotalComanda + '\'' +
                 ", tipPlata='" + tipPlata + '\'' +
                 ", produse=" + produse +
+                ", data=" + dataComanda +
                 '}';
     }
 }

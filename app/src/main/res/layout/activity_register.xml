@@ -46,7 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/rlHeader"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:paddingTop="50dp"
+        android:paddingTop="20dp"
         android:paddingLeft="40dp"
         android:paddingRight="40dp"
         android:orientation="vertical">
@@ -63,12 +63,18 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:drawableLeft="@drawable/ic_baseline_person_24"/>
-<!--        <EditText-->
-<!--            android:id="@+id/etVarsta"-->
-<!--            android:hint="@string/VARSTA"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:drawableLeft="@drawable/ic_baseline_person_24"/>-->
+        <EditText
+            android:id="@+id/etTelefon"
+            android:hint="@string/TELEFON"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:drawableLeft="@drawable/ic_baseline_phone_24"/>
+        <EditText
+            android:id="@+id/etAdresa"
+            android:hint="@string/ADRESA"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:drawableLeft="@drawable/ic_baseline_home_24"/>
         <EditText
             android:id="@+id/etEmail"
             android:hint="@string/EMAIL"

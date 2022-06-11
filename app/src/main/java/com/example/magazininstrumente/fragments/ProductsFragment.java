@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,6 +68,7 @@ private Button btnFilterEsc;
 
         lvProduse = view.findViewById(R.id.productListView);
         adaugarelistViewProdusAdapter();
+
 
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -142,6 +144,7 @@ private Button btnFilterEsc;
     private void adaugarelistViewProdusAdapter() {
         ProductAdapter adapter = new ProductAdapter(getContext(), R.layout.product_list_item, produse,getLayoutInflater());
         lvProduse.setAdapter(adapter);
+
     }
 
     private void notificareListViewProductAdapter(){
@@ -157,6 +160,7 @@ private Button btnFilterEsc;
                     produse.clear();
                     produse.addAll(rezultat);
                     notificareListViewProductAdapter();
+                    Log.e("adaugat", String.valueOf(produse.size()));
                 }
             }
         };

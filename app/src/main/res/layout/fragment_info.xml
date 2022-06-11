@@ -48,15 +48,15 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_baseline_person_24"/>
+        android:src="@drawable/icon_person"/>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="5dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:paddingBottom="20dp"
@@ -68,42 +68,32 @@
         app:layout_constraintVertical_bias="0.038">
 
         <TextView
-            android:id="@+id/occupation_textview"
+            android:id="@+id/clientAdresa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:text="Marine Biologist"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/workplace_textview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="Key Biscaine National Park"
             android:textSize="18sp"
+            android:textStyle="bold"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/occupation_textview" />
+            tools:ignore="MissingConstraints" />
+
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/workplace_textview">
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="-12dp">
 
             <ImageView
                 android:id="@+id/email_imageview"
@@ -112,11 +102,11 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_baseline_email_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.126"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/workplace_textview"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/workplace_textview" />
 
             <TextView
                 android:id="@+id/clientEmail"
@@ -125,15 +115,14 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="8dp"
-                android:text="abozquet@biscainepark.org"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.031"
                 app:layout_constraintStart_toEndOf="@+id/email_imageview"
                 app:layout_constraintTop_toBottomOf="@+id/workplace_textview" />
 
         </LinearLayout>
-
 
         <LinearLayout
             android:id="@+id/linearLayout2"
@@ -153,6 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
+                android:src="@drawable/ic_baseline_phone_24"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.126"
@@ -161,13 +151,12 @@
                  />
 
             <TextView
-                android:id="@+id/phone_textview"
+                android:id="@+id/clientTelefon"
                 android:layout_width="239dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="184dp"
-                android:text="1 (786) 352-2254"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.031"
@@ -188,32 +177,7 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
 
-            <ImageView
-                android:id="@+id/video_imageview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.126"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/phone_imageview"
-               />
 
-            <TextView
-                android:id="@+id/video_textview"
-                android:layout_width="242dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="184dp"
-                android:text="1 (786) 352-2254"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.031"
-                app:layout_constraintStart_toEndOf="@+id/video_imageview"
-                app:layout_constraintTop_toBottomOf="@+id/phone_textview" />
 
         </LinearLayout>
 

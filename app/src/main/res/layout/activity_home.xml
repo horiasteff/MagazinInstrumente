@@ -29,9 +29,9 @@
             android:id="@+id/imgShoppingCart"
             android:layout_width="50dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="240dp"
+            android:layout_marginLeft="235dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/ic_pattern_background_unlimited_download_">
+            android:background="@drawable/ic_baseline_shopping_cart_24">
 
         </ImageView>
 
@@ -39,9 +39,20 @@
             android:id="@+id/imgHome"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="150dp"
+            android:layout_marginLeft="130dp"
             android:layout_marginTop="5dp"
-            android:background="@drawable/ic_home_button_icon_png_10_jpg">
+            android:background="@drawable/ic_home_button_icon_png_10_jpg"
+           >
+
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/imgHistory"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/ic_baseline_history_24">
 
         </ImageView>
 
@@ -52,7 +63,9 @@
         android:id="@+id/productsFrame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottomNavBar">
+        android:layout_above="@+id/bottomNavBar"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.example.magazininstrumente.fragments.HistoryFragment;
 import com.example.magazininstrumente.fragments.InfoFragment;
 import com.example.magazininstrumente.fragments.ProductsFragment;
 import com.example.magazininstrumente.R;
@@ -19,11 +20,13 @@ public class HomeActivity extends AppCompatActivity {
     private ImageView imgPersonalInfo;
     private ImageView imgHome;
     private ImageView imgShoppingCart;
+    private ImageView imgHistory;
     private Button btnComanda;
 
     private ProductsFragment productsFragment;
     private InfoFragment infoFragment;
     private ShoppingCartFragment shoppingCartFragment;
+    private HistoryFragment historyFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +35,13 @@ public class HomeActivity extends AppCompatActivity {
         imgPersonalInfo = findViewById(R.id.imgPersonalInfo);
         imgHome = findViewById(R.id.imgHome);
         imgShoppingCart = findViewById(R.id.imgShoppingCart);
+        imgHistory = findViewById(R.id.imgHistory);
         btnComanda = findViewById(R.id.btnComanda);
 
         productsFragment = new ProductsFragment();
         infoFragment = new InfoFragment();
         shoppingCartFragment= new ShoppingCartFragment();
+        historyFragment = new HistoryFragment();
         setFragment(productsFragment);
 
         imgPersonalInfo.setOnClickListener(new View.OnClickListener() {
@@ -58,7 +63,12 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-
+        imgHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setFragment(historyFragment);
+            }
+        });
     }
 
     public void setFragment(Fragment fragment){

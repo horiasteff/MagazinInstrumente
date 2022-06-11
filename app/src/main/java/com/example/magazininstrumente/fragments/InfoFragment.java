@@ -32,6 +32,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,8 +44,9 @@ public class InfoFragment extends Fragment {
     private List<Client> clienti;
     private List<Client> clienti2;
     private TextView tvNume;
-    private TextView tvPrenume;
     private TextView tvEmail;
+    private TextView tvTelefon;
+    private TextView tvAdresa;
     private Button btnResetPassword;
 
 
@@ -60,8 +63,9 @@ public class InfoFragment extends Fragment {
 
         databaseReference = FirebaseDatabase.getInstance().getReference(CLIENT_REFERENCE);
         tvNume = view.findViewById(R.id.clientNume);
-        //tvPrenume = view.findViewById(R.id.clientPrenume);
         tvEmail = view.findViewById(R.id.clientEmail);
+        tvTelefon = view.findViewById(R.id.clientTelefon);
+        tvAdresa = view.findViewById(R.id.clientAdresa);
         clienti = new ArrayList<>();
         //btnResetPassword = view.findViewById(R.id.btnResetPassword);
 
@@ -78,6 +82,8 @@ public class InfoFragment extends Fragment {
                         if(client.getEmail().equals(user.getEmail())){
                             tvNume.setText(client.getNume() + " " + client.getPrenume());
                             tvEmail.setText(client.getEmail());
+                            tvTelefon.setText(client.getTelefon());
+                            tvAdresa.setText(client.getAdresa());
                         }
                     }
                 }

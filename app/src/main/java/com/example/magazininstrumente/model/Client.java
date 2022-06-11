@@ -13,7 +13,10 @@ public class Client implements Serializable {
     private String email;
     private String parola;
     private float buget;
-    //private HashMap<String,Product> cos;
+
+    private String telefon;
+    private String adresa;
+
 
 
 
@@ -68,17 +71,25 @@ public class Client implements Serializable {
         this.parola = parola;
     }
 
-//    public HashMap<String, Product> getCos() {
-//        return cos;
-//    }
-//
-//    public void setCos(HashMap<String, Product> cos) {
-//        this.cos = cos;
-//    }
+    public String getTelefon() {
+        return telefon;
+    }
+
+    public void setTelefon(String telefon) {
+        this.telefon = telefon;
+    }
+
+    public String getAdresa() {
+        return adresa;
+    }
+
+    public void setAdresa(String adresa) {
+        this.adresa = adresa;
+    }
 
     @Override
     public String toString() {
         return "Client -" + nume +
-                prenume + email + parola ;
+                prenume + email + parola + telefon + email;
     }
 }

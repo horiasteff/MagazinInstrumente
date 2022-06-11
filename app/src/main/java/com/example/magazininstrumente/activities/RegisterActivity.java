@@ -35,6 +35,8 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText etPrenume;
     private EditText etEmail;
     private EditText etParola;
+    private EditText etTelefon;
+    private EditText etAdresa;
 
     private TextView tvLogin;
     private TextView tvLogin2;
@@ -59,6 +61,8 @@ public class RegisterActivity extends AppCompatActivity {
         etPrenume = findViewById(R.id.etPrenume);
         etEmail = findViewById(R.id.etEmail);
         etParola = findViewById(R.id.etParola);
+        etTelefon = findViewById(R.id.etTelefon);
+        etAdresa = findViewById(R.id.etAdresa);
         tvLogin = findViewById(R.id.tvLogin);
         tvLogin2 = findViewById(R.id.tvLogin2);
 
@@ -104,6 +108,8 @@ public class RegisterActivity extends AppCompatActivity {
         etPrenume.setText(null);
         etEmail.setText(null);
         etParola.setText(null);
+        etTelefon.setText(null);
+        etAdresa.setText(null);
         indexClientSelectat = -1;
     }
 
@@ -128,6 +134,10 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                         else if(client.getParola().length() < 6){
                             etParola.setError("Parola este prea scurta");
+                        }else if(client.getTelefon().isEmpty()){
+                            etTelefon.setError("Telefonul este invalid");
+                        }else if(client.getAdresa().isEmpty()){
+                            etAdresa.setError("Adresa este invalida");
                         }else{
                             mAuth = FirebaseAuth.getInstance();
                             mAuth.createUserWithEmailAndPassword(client.getEmail(), client.getParola()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -138,6 +148,8 @@ public class RegisterActivity extends AppCompatActivity {
                                         client.setId(id);
                                         databaseReference.child(client.getId()).setValue(client);
                                         curatareFields();
+                                        Toast.makeText(RegisterActivity.this, "Register succeeded", Toast.LENGTH_LONG).show();
+
                                     }else{
                                         Toast.makeText(RegisterActivity.this, "Register failed", Toast.LENGTH_LONG).show();
                                     }}
@@ -152,7 +164,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private boolean esteValid(){
         if(etNume.getText() == null || etPrenume.getText() == null || etEmail.getText() == null ||
-                 etParola.getText() == null){
+                 etParola.getText() == null || etTelefon.getText() == null || etAdresa.getText() == null){
             return false;
         }
         return true;
@@ -165,6 +177,8 @@ public class RegisterActivity extends AppCompatActivity {
         client.setPrenume(etPrenume.getText().toString());
         client.setEmail(etEmail.getText().toString());
         client.setParola(etParola.getText().toString());
+        client.setTelefon(etTelefon.getText().toString());
+        client.setAdresa(etAdresa.getText().toString());
         return client;
     }
 
