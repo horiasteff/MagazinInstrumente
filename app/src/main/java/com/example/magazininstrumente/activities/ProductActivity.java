@@ -80,7 +80,7 @@ public class ProductActivity extends AppCompatActivity {
         storageReference = FirebaseStorage.getInstance().getReference("produse");
         storageReferenceAudio = FirebaseStorage.getInstance().getReference("audio");
         databaseReferenceProduse = FirebaseDatabase.getInstance().getReference("produse");
-        databaseReferenceClienti = FirebaseDatabase.getInstance().getReference("clienti");
+        databaseReferenceClienti = FirebaseDatabase.getInstance().getReference(getString(R.string.CLIENTI_REFERENCE));
         databaseReferenceCos = FirebaseDatabase.getInstance().getReference("cumparaturi");
 
         imageView = findViewById(R.id.choosePhoto);
@@ -189,7 +189,6 @@ public class ProductActivity extends AppCompatActivity {
                     Drawable img = btnPlay.getContext().getResources().getDrawable( R.drawable.ic_baseline_pause_24 );
                     btnPlay.setCompoundDrawablesWithIntrinsicBounds( img, null, null, null);
                 }else {
-                    //mediaPlayer.prepare();
                     mediaPlayer.pause();
                     btnPlay.setText("Play");
                     Drawable img = btnPlay.getContext().getResources().getDrawable( R.drawable.ic_baseline_play_arrow );

@@ -32,6 +32,7 @@
         <entry key="app/src/main/res/layout/activity_admin.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_client_charts.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_clients_chart.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_general_charts.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.2188365650969529" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2402317783332189" />

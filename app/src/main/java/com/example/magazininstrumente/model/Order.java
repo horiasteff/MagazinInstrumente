@@ -17,6 +17,8 @@ public class Order implements Serializable {
     private List<Product> produse;
 
 
+    public Order(){}
+
     public Order(String numeComanda, String prenumeComanda, String emailComanda, String adresaComanda, String telefonComanda, String costTotalComanda, String tipPlata, String dataComanda, List<Product> produse) {
         this.numeComanda = numeComanda;
         this.prenumeComanda = prenumeComanda;

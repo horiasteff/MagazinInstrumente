@@ -18,6 +18,9 @@
         android:theme="@style/Theme.MagazinInstrumente"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+
+
+
         <activity
             android:name=".activities.GeneralChartsActivity"
             android:exported="false" />

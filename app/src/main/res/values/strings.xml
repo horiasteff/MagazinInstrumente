@@ -26,4 +26,6 @@
     <string name="previzionare">previzionare</string>
     <string name="none">-</string>
     <string name="grafic_general">Grafic general</string>
+    <string name="CLIENTI_REFERENCE">clienti</string>
+    <string name="COMENZI_REFERENCE">comenzi</string>
 </resources>

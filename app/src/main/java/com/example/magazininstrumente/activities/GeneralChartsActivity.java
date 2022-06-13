@@ -1,63 +1,130 @@
 package com.example.magazininstrumente.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.magazininstrumente.R;
+import com.example.magazininstrumente.model.Order;
+import com.example.magazininstrumente.model.Product;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.PercentFormatter;
+import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class GeneralChartsActivity extends AppCompatActivity {
+
+    private static List<Order> comenzi;
+    Map<String, Integer> categorii = new HashMap<>();
+    DatabaseReference databaseReferenceClienti;
+    DatabaseReference databaseReferenceComenzi;
+    PieChart pieChart;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_general_charts);
 
+        databaseReferenceClienti = FirebaseDatabase.getInstance().getReference(getString(R.string.CLIENTI_REFERENCE));
+        databaseReferenceComenzi = FirebaseDatabase.getInstance().getReference(getString(R.string.COMENZI_REFERENCE));
+        comenzi = new ArrayList<>();
+        categorii.put("Clape", 0);
+        categorii.put("Suflat", 0);
+        categorii.put("Corzi", 0);
+        categorii.put("Percutie", 0);
+        pieChart = findViewById(R.id.generalPie);
+       
 
-     //  HIChartView chartView = findViewById(R.id.hc);
-//
-//        HIOptions options = new HIOptions();
-//
-//        HIChart chart = new HIChart();
-//        chart.setType("pie");
-//        chart.setOptions3d(new HIOptions3d());
-//        chart.getOptions3d().setEnabled(true);
-//        chart.getOptions3d().setAlpha(45);
-//        options.setChart(chart);
-//
-//        HITitle title = new HITitle();
-//        title.setText("Contents of Highsoft's weekly fruit delivery");
-//        options.setTitle(title);
-//
-//        HISubtitle subtitle = new HISubtitle();
-//        subtitle.setText("3D donut in Highcharts");
-//        options.setSubtitle(subtitle);
-//
-//        HIPlotOptions plotOptions = new HIPlotOptions();
-//        plotOptions.setPie(new HIPie());
-//        plotOptions.getPie().setInnerSize(100);
-//        plotOptions.getPie().setDepth(45);
-//        options.setPlotOptions(plotOptions);
-//
-//        HIPie series1 = new HIPie();
-//        series1.setName("Delivered amount");
-//        Object[] object1 = new Object[] { "Bananas", 8};
-//        Object[] object2 = new Object[] { "Mixed nuts", 1};
-//        Object[] object3 = new Object[] { "Kiwi", 3 };
-//        Object[] object4 = new Object[] { "Oranges", 6 };
-//        Object[] object5 = new Object[] { "Apples", 8 };
-//        Object[] object6 = new Object[] { "Pears", 4 };
-//        Object[] object7 = new Object[] { "Clementines", 4 };
-//        Object[] object8 = new Object[] { "Reddish (bag)", 1 };
-//        Object[] object9 = new Object[] { "Grapes (bunch)", 1 };
-//        Object[] object10 = new Object[] { "Kiwi", 3 };
-//        Object[] object11 = new Object[] { "Kiwi", 3 };
-//        series1.setData(new ArrayList<>(Arrays.asList(object1, object2, object3, object4, object5, object6, object7, object8, object9, object10, object11)));
-//        options.setSeries(new ArrayList<>(Arrays.asList(series1)));
-//
-//        chartView.setOptions(options);
+        databaseReferenceComenzi.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot data : snapshot.getChildren()){
+                    for(DataSnapshot data2 : data.getChildren()){
+                        Order order = data2.getValue(Order.class);
+                        if(order!=null){
+                            comenzi.add(order);
+                        }
+                    }
+                }
+                List<Product> produseTemp = new ArrayList<>();
+                for (Order o: comenzi) {
+                    produseTemp.addAll(o.getProduse());
+                }
+                for (Product p: produseTemp) {
+                    int count = categorii.containsKey(p.getCategorie()) ? categorii.get(p.getCategorie()) : 0;
+                    categorii.put(p.getCategorie(), count + 1);
+                }
+
+                pieChart.setDrawHoleEnabled(true);
+                pieChart.setUsePercentValues(true);
+                pieChart.setEntryLabelTextSize(12);
+                pieChart.setEntryLabelColor(Color.BLACK);
+                pieChart.setCenterText("CATEGORII");
+                pieChart.setCenterTextSize(24);
+                pieChart.getDescription().setEnabled(true);
+
+                ArrayList<PieEntry> entries = new ArrayList<>();
+                for (Map.Entry<String,Integer> entry : categorii.entrySet()){
+                    entries.add(new PieEntry(entry.getValue(),entry.getKey()));
+                }
+
+                ArrayList<Integer> colors = new ArrayList<>();
+                for(int color : ColorTemplate.MATERIAL_COLORS){
+                    colors.add(color);
+                }
+                for(int color: ColorTemplate.VORDIPLOM_COLORS){
+                    colors.add(color);
+                }
+
+                PieDataSet dataset = new PieDataSet(entries, "CATEGORII");
+                dataset.setColors(colors);
+
+                PieData pieData = new PieData(dataset);
+                pieData.setDrawValues(true);
+                pieData.setValueFormatter(new PercentFormatter(pieChart));
+                pieData.setValueTextSize(12f);
+                pieData.setValueTextColor(Color.BLACK);
+
+                pieChart.setData(pieData);
+                pieChart.invalidate();
+
+//                for (Map.Entry<String,Integer> entry : categorii.entrySet())
+//                   Log.e("mapul",String.valueOf("Key = " + entry.getKey() +
+//                            ", Value = " + entry.getValue()));
+
+
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+
     }
+
+
 }
