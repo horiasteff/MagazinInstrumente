@@ -9,6 +9,9 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.magazininstrumente.R;
 import com.example.magazininstrumente.model.Order;
@@ -42,12 +45,14 @@ import java.util.Map;
 public class GeneralChartsActivity extends AppCompatActivity {
 
     private static List<Order> comenzi;
-    Map<String, Integer> categorii = new HashMap<>();
-    Map<String, Integer> comenziLunare = new HashMap<>();
+    private Map<String, Integer> categorii = new HashMap<>();
+    private Map<String, Integer> comenziLunare = new HashMap<>();
     DatabaseReference databaseReferenceClienti;
     DatabaseReference databaseReferenceComenzi;
-    PieChart pieChart;
-    BarChart barChart;
+    private PieChart pieChart;
+    private BarChart barChart;
+    private TextView tvNicioComanda;
+    private ImageView imgSad;
 
 
     @Override
@@ -78,6 +83,8 @@ public class GeneralChartsActivity extends AppCompatActivity {
 
         pieChart = findViewById(R.id.generalPie);
         barChart = findViewById(R.id.generalBarChart);
+        tvNicioComanda = findViewById(R.id.nicioComandaGeneralText);
+        imgSad = findViewById(R.id.imgSadGeneral);
        
 
         databaseReferenceComenzi.addValueEventListener(new ValueEventListener() {
@@ -89,6 +96,17 @@ public class GeneralChartsActivity extends AppCompatActivity {
                         Order order = data2.getValue(Order.class);
                         if(order!=null){
                             comenzi.add(order);
+                            if(comenzi.size() == 0){
+                                tvNicioComanda.setVisibility(View.VISIBLE);
+                                imgSad.setVisibility(View.VISIBLE);
+                                pieChart.setVisibility(View.GONE);
+                                barChart.setVisibility(View.GONE);
+                            }else{
+                                tvNicioComanda.setVisibility(View.GONE);
+                                imgSad.setVisibility(View.GONE);
+                                pieChart.setVisibility(View.VISIBLE);
+                                barChart.setVisibility(View.VISIBLE);
+                            }
                         }
                     }
                 }

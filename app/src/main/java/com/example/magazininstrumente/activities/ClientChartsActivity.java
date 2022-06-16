@@ -8,6 +8,9 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.magazininstrumente.R;
 import com.example.magazininstrumente.model.Client;
@@ -43,10 +46,12 @@ public class ClientChartsActivity extends AppCompatActivity {
     private String emailClient;
     private String idClient;
     private static List<Order> comenzi;
-    Map<String, Integer> comenziLunare = new HashMap<>();
-    Map<String, Integer> categorii = new HashMap<>();
-    PieChart pieChart;
-    BarChart barChart;
+    private Map<String, Integer> comenziLunare = new HashMap<>();
+    private Map<String, Integer> categorii = new HashMap<>();
+    private PieChart pieChart;
+    private BarChart barChart;
+    private TextView tvNicioComanda;
+    private ImageView imgSad;
 
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     DatabaseReference databaseReferenceClienti;
@@ -77,6 +82,8 @@ public class ClientChartsActivity extends AppCompatActivity {
 
         pieChart = findViewById(R.id.specificPie);
         barChart = findViewById(R.id.specificBarChart);
+        tvNicioComanda = findViewById(R.id.nicioComandaSpecificText);
+        imgSad = findViewById(R.id.imgSadSpecific);
 
 
         databaseReferenceClienti.addValueEventListener(new ValueEventListener() {
@@ -109,6 +116,17 @@ public class ClientChartsActivity extends AppCompatActivity {
                             Order order = data2.getValue(Order.class);
                             if(order!=null){
                                 comenzi.add(order);
+                                if(comenzi.size() == 0){
+                                    tvNicioComanda.setVisibility(View.VISIBLE);
+                                    imgSad.setVisibility(View.VISIBLE);
+                                    pieChart.setVisibility(View.INVISIBLE);
+                                    barChart.setVisibility(View.INVISIBLE);
+                                }else{
+                                    tvNicioComanda.setVisibility(View.GONE);
+                                    imgSad.setVisibility(View.GONE);
+                                    pieChart.setVisibility(View.VISIBLE);
+                                    barChart.setVisibility(View.VISIBLE);
+                                }
                             }
                         }
                     }
@@ -127,54 +145,58 @@ public class ClientChartsActivity extends AppCompatActivity {
                     categorii.put(p.getCategorie(), count + 1);
                 }
 
-                pieChart.setDrawHoleEnabled(true);
-                pieChart.setUsePercentValues(true);
-                pieChart.setEntryLabelTextSize(12);
-                pieChart.setEntryLabelColor(Color.BLACK);
-                pieChart.setCenterText("CATEGORII");
-                pieChart.setCenterTextSize(24);
-                pieChart.getDescription().setEnabled(true);
+                if(comenzi.size()!=0){
+                    pieChart.setDrawHoleEnabled(true);
+                    pieChart.setUsePercentValues(true);
+                    pieChart.setEntryLabelTextSize(12);
+                    pieChart.setEntryLabelColor(Color.BLACK);
+                    pieChart.setCenterText("CATEGORII");
+                    pieChart.setCenterTextSize(24);
+                    pieChart.getDescription().setEnabled(true);
 
-                ArrayList<PieEntry> entries = new ArrayList<>();
-                for (Map.Entry<String,Integer> entry : categorii.entrySet()){
-                    entries.add(new PieEntry(entry.getValue(),entry.getKey()));
+                    ArrayList<PieEntry> entries = new ArrayList<>();
+                    for (Map.Entry<String,Integer> entry : categorii.entrySet()){
+                        entries.add(new PieEntry(entry.getValue(),entry.getKey()));
+                    }
+
+                    ArrayList<Integer> colors = new ArrayList<>();
+                    for(int color : ColorTemplate.MATERIAL_COLORS){
+                        colors.add(color);
+                    }
+                    for(int color: ColorTemplate.VORDIPLOM_COLORS){
+                        colors.add(color);
+                    }
+
+                    PieDataSet dataset = new PieDataSet(entries, "CATEGORII");
+                    dataset.setColors(colors);
+
+                    PieData pieData = new PieData(dataset);
+                    pieData.setDrawValues(true);
+                    pieData.setValueFormatter(new PercentFormatter(pieChart));
+                    pieData.setValueTextSize(12f);
+                    pieData.setValueTextColor(Color.BLACK);
+
+                    ArrayList<BarEntry> entriesComenzi = new ArrayList<>();
+                    for (Map.Entry<String,Integer> entry : comenziLunare.entrySet()){
+                        entriesComenzi.add(new BarEntry(Float.parseFloat(entry.getKey()), entry.getValue()));
+                    }
+
+                    BarDataSet barDataSet = new BarDataSet(entriesComenzi,"COMENZI");
+                    barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+                    barDataSet.setValueTextColor(Color.BLACK);
+                    barDataSet.setValueTextSize(16f);
+
+                    BarData barData = new BarData(barDataSet);
+                    barChart.setFitBars(true);
+                    barChart.setData(barData);
+                    barChart.animateY(2000);
+
+                    pieChart.setData(pieData);
+                    pieChart.animateY(2000);
+                    pieChart.invalidate();
                 }
 
-                ArrayList<Integer> colors = new ArrayList<>();
-                for(int color : ColorTemplate.MATERIAL_COLORS){
-                    colors.add(color);
-                }
-                for(int color: ColorTemplate.VORDIPLOM_COLORS){
-                    colors.add(color);
-                }
 
-                PieDataSet dataset = new PieDataSet(entries, "CATEGORII");
-                dataset.setColors(colors);
-
-                PieData pieData = new PieData(dataset);
-                pieData.setDrawValues(true);
-                pieData.setValueFormatter(new PercentFormatter(pieChart));
-                pieData.setValueTextSize(12f);
-                pieData.setValueTextColor(Color.BLACK);
-
-                ArrayList<BarEntry> entriesComenzi = new ArrayList<>();
-                for (Map.Entry<String,Integer> entry : comenziLunare.entrySet()){
-                    entriesComenzi.add(new BarEntry(Float.parseFloat(entry.getKey()), entry.getValue()));
-                }
-
-                BarDataSet barDataSet = new BarDataSet(entriesComenzi,"COMENZI");
-                barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
-                barDataSet.setValueTextColor(Color.BLACK);
-                barDataSet.setValueTextSize(16f);
-
-                BarData barData = new BarData(barDataSet);
-                barChart.setFitBars(true);
-                barChart.setData(barData);
-                barChart.animateY(2000);
-
-                pieChart.setData(pieData);
-                pieChart.animateY(2000);
-                pieChart.invalidate();
             }
 
             @Override

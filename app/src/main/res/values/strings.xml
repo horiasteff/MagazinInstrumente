@@ -30,4 +30,5 @@
     <string name="COMENZI_REFERENCE">comenzi</string>
     <string name="nu_ai_efectuat_nicio_comanda">NU AI EFECTUAT NICIO COMANDA</string>
     <string name="reseteaza_parola">Reseteaza parola</string>
+    <string name="nu_exista_date_pentru_utilizatorul_acesta">Nu exista date pentru utilizatorul acesta</string>
 </resources>
