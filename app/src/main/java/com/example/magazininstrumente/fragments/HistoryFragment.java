@@ -12,7 +12,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.magazininstrumente.Callback;
@@ -33,6 +35,8 @@ import java.util.List;
 public class HistoryFragment extends Fragment {
     private DatabaseReference databaseReference;
     private ListView lvProduseHistory;
+    private ImageView imgSad;
+    private TextView tvComanda;
     private List<Order> comenzi = new ArrayList<>();
     private DatabaseReference databaseReferenceHistory =  FirebaseDatabase.getInstance().getReference(HISTORY_REFERENCE);
 
@@ -51,6 +55,8 @@ public class HistoryFragment extends Fragment {
 
 
         lvProduseHistory = view.findViewById(R.id.historyListView);
+        tvComanda = view.findViewById(R.id.nicioComandaText);
+        imgSad = view.findViewById(R.id.imgSad);
         adaugarelistViewOrderAdapter();
         firebaseService.notificareEventListenerOrder(modificareDateCallback());
 
@@ -74,6 +80,13 @@ public class HistoryFragment extends Fragment {
                 if (rezultat != null) {
                     comenzi.clear();
                     comenzi.addAll(rezultat);
+                    if(comenzi.size() == 0){
+                        tvComanda.setVisibility(View.VISIBLE);
+                        imgSad.setVisibility(View.VISIBLE);
+                    }else{
+                        tvComanda.setVisibility(View.GONE);
+                        imgSad.setVisibility(View.GONE);
+                    }
                     notificareListViewOrderAdapter();
                 }
             }

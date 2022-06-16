@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,5 +14,24 @@
         android:layout_height="match_parent"
         >
     </ListView>
+
+    <TextView
+        android:id="@+id/nicioComandaText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/historyListView"
+        app:layout_constraintTop_toTopOf="@+id/historyListView"
+        android:text="@string/nu_ai_efectuat_nicio_comanda"/>
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/imgSad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/historyListView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nicioComandaText"
+        android:src="@drawable/sad_icon"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

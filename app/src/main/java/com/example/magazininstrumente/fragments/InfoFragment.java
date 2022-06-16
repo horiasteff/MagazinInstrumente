@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.magazininstrumente.Callback;
 import com.example.magazininstrumente.R;
@@ -40,6 +41,7 @@ import java.util.List;
 
 public class InfoFragment extends Fragment {
     private DatabaseReference databaseReference;
+    private FirebaseAuth auth;
     private static final String CLIENT_REFERENCE = "clienti";
     private List<Client> clienti;
     private List<Client> clienti2;
@@ -57,8 +59,7 @@ public class InfoFragment extends Fragment {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        AuthCredential credential = EmailAuthProvider
-                .getCredential(user.getEmail(),"parola");
+
 
 
         databaseReference = FirebaseDatabase.getInstance().getReference(CLIENT_REFERENCE);
@@ -67,7 +68,8 @@ public class InfoFragment extends Fragment {
         tvTelefon = view.findViewById(R.id.clientTelefon);
         tvAdresa = view.findViewById(R.id.clientAdresa);
         clienti = new ArrayList<>();
-        //btnResetPassword = view.findViewById(R.id.btnResetPassword);
+        btnResetPassword = view.findViewById(R.id.btnResetareParola);
+        auth = FirebaseAuth.getInstance();
 
 
 
@@ -97,13 +99,23 @@ public class InfoFragment extends Fragment {
 
         modificareDateCallback();
 
-//        btnResetPassword.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-////                Intent intent = new Intent(getActivity(), ResetPassword.class);
-////                startActivity(intent);
-//            }
-//        });
+        btnResetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                auth.sendPasswordResetEmail(user.getEmail()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                        if(task.isSuccessful()){
+                            Toast.makeText(getActivity(), "Verifica email pentru a reseta parola", Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(getActivity(), "Mai incearca", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
+            }
+        });
 
 
 

@@ -15,6 +15,7 @@
       />
 
     <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/generalBarChart"
         android:layout_width="match_parent"
         android:layout_height="360dp"
         app:layout_constraintBottom_toBottomOf="parent"

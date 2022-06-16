@@ -28,4 +28,6 @@
     <string name="grafic_general">Grafic general</string>
     <string name="CLIENTI_REFERENCE">clienti</string>
     <string name="COMENZI_REFERENCE">comenzi</string>
+    <string name="nu_ai_efectuat_nicio_comanda">NU AI EFECTUAT NICIO COMANDA</string>
+    <string name="reseteaza_parola">Reseteaza parola</string>
 </resources>
