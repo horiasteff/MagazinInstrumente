@@ -22,6 +22,7 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -51,14 +52,16 @@ import java.util.Iterator;
 public class ProductActivity extends AppCompatActivity {
     ImageView imageView;
 
-    TextView denumire;
-    TextView pret;
-    TextView categorie;
-    TextView descriere;
-    ProgressBar progressBar;
-    Button btnCos;
-    Button btnPlay;
-    Button btnPause;
+    private TextView denumire;
+    private TextView pret;
+    private TextView categorie;
+    private TextView descriere;
+    private ProgressBar progressBar;
+    private Button btnCos;
+    private Button btnPlay;
+    private Button btnMinus;
+    private Button btnPlus;
+    private EditText etCantitate;
 
     StorageReference storageReference;
     StorageReference storageReferenceAudio;
@@ -66,9 +69,9 @@ public class ProductActivity extends AppCompatActivity {
     DatabaseReference databaseReferenceClienti;
     DatabaseReference databaseReferenceCos;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    String idClient;
-    MediaPlayer mediaPlayer;
-    AudioManager audioManager;
+    private String idClient;
+    private MediaPlayer mediaPlayer;
+    private AudioManager audioManager;
 
 
     @Override
@@ -90,6 +93,9 @@ public class ProductActivity extends AppCompatActivity {
         descriere = findViewById(R.id.descriereProd);
         progressBar = findViewById(R.id.progressBar);
         btnCos = findViewById(R.id.btnCos);
+        btnMinus = findViewById(R.id.minusCantitate);
+        btnPlus = findViewById(R.id.plusCantitate);
+        etCantitate = findViewById(R.id.etCantitate);
 
         btnPlay = findViewById(R.id.btnPlay);
         mediaPlayer = new MediaPlayer();
@@ -100,8 +106,9 @@ public class ProductActivity extends AppCompatActivity {
         pret.setText(getIntent().getExtras().getString("pretProd"));
         categorie.setText(getIntent().getExtras().getString("categorieProd"));
         descriere.setText(getIntent().getExtras().getString("descriereProd"));
+        etCantitate.setText(getIntent().getExtras().getString("cantitateProd"));
 
-        Product product = new Product(denumire.getText().toString(), pret.getText().toString(), categorie.getText().toString(), descriere.getText().toString(), null,null);
+        Product product = new Product(denumire.getText().toString(), pret.getText().toString(), categorie.getText().toString(), descriere.getText().toString(), etCantitate.getText().toString(),null,null);
 
         StorageReference storageReference1 = FirebaseStorage.getInstance().getReferenceFromUrl(getIntent().getExtras().getString("imageProd"));
         try {
@@ -158,6 +165,9 @@ public class ProductActivity extends AppCompatActivity {
                             if(produsTemporar.getDenumire().equals(product.getDenumire())){
                                 product.setId(data.getKey());
                                 String prodId = product.getId();
+                                product.setCantitate(etCantitate.getText().toString());
+                                int sumTotal = Integer.parseInt(product.getPret())*Integer.parseInt(product.getCantitate());
+                                product.setPret(String.valueOf(sumTotal));
                                 databaseReferenceCos.child(idClient).child(prodId).setValue(product);
                                 Toast.makeText(getApplicationContext(), "Adaugat in cos", Toast.LENGTH_LONG).show();
                             }
@@ -172,6 +182,29 @@ public class ProductActivity extends AppCompatActivity {
             }
         });
         btnCos.setMovementMethod(new ScrollingMovementMethod());
+
+
+        btnPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int cantitatePlus = Integer.parseInt(etCantitate.getText().toString());
+                cantitatePlus++;
+                etCantitate.setText(String.valueOf(cantitatePlus));
+            }
+        });
+
+        btnMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int cantitateMinus = Integer.parseInt(etCantitate.getText().toString());
+                if(cantitateMinus>1){
+                    cantitateMinus--;
+                }
+                etCantitate.setText(String.valueOf(cantitateMinus));
+            }
+        });
+
+
         try {
             mediaPlayer.setDataSource(getIntent().getExtras().getString("cantecProd"));
             mediaPlayer.prepare();
@@ -185,12 +218,12 @@ public class ProductActivity extends AppCompatActivity {
 
                 if(!mediaPlayer.isPlaying()){
                     mediaPlayer.start();
-                    btnPlay.setText("Pause");
+                    btnPlay.setText("Pauza");
                     Drawable img = btnPlay.getContext().getResources().getDrawable( R.drawable.ic_baseline_pause_24 );
                     btnPlay.setCompoundDrawablesWithIntrinsicBounds( img, null, null, null);
                 }else {
                     mediaPlayer.pause();
-                    btnPlay.setText("Play");
+                    btnPlay.setText("Asculta");
                     Drawable img = btnPlay.getContext().getResources().getDrawable( R.drawable.ic_baseline_play_arrow );
                     btnPlay.setCompoundDrawablesWithIntrinsicBounds( img, null, null, null);
                 }

@@ -1,141 +1,349 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    tools:context=".activities.ProductActivity"-->
+<!--    android:background="@drawable/background_product">-->
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:id="@+id/relativeLayoutImage"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        tools:ignore="MissingConstraints">-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/choosePhoto"-->
+<!--            android:layout_width="150dp"-->
+<!--            android:layout_height="150dp"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:adjustViewBounds="true"-->
+<!--            android:scaleType="centerCrop"-->
+
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintVertical_bias="0.0" />-->
+
+<!--        <ProgressBar-->
+<!--            android:id="@+id/progressBar"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:visibility="visible"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/choosePhoto"-->
+<!--            app:layout_constraintEnd_toEndOf="@+id/choosePhoto"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/choosePhoto"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            tools:ignore="MissingConstraints" />-->
+
+
+<!--        <TextView-->
+<!--            android:id="@+id/denumireProd"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="56dp"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="30dp"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/choosePhoto"-->
+<!--            app:layout_constraintVertical_bias="0.85"-->
+<!--            tools:ignore="MissingConstraints"-->
+<!--            tools:layout_editor_absoluteX="0dp" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="LEI"-->
+<!--            android:textAlignment="viewEnd"-->
+<!--            android:textColor="@color/green"-->
+<!--            android:textSize="30dp"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/denumireProd"-->
+<!--            tools:ignore="MissingConstraints" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/pretProd"-->
+<!--            android:layout_width="350dp"-->
+<!--            android:layout_height="wrap_content"-->
+
+<!--            android:textAlignment="viewEnd"-->
+<!--            android:textColor="@color/green"-->
+<!--            android:textSize="30dp"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/denumireProd"-->
+<!--            app:layout_constraintVertical_bias="0.831"-->
+<!--            tools:ignore="MissingConstraints"-->
+<!--            tools:layout_editor_absoluteX="0dp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/categorieProd"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+
+<!--            android:textAlignment="center"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="25dp"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/pretProd"-->
+<!--            tools:ignore="MissingConstraints"-->
+<!--            tools:layout_editor_absoluteX="0dp" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/descriereProd"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:scrollbars="vertical"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/categorieProd"-->
+<!--            tools:ignore="MissingConstraints"-->
+<!--            tools:layout_editor_absoluteX="16dp" />-->
+
+
+<!--        <Button-->
+<!--            android:id="@+id/btnPlay"-->
+<!--            android:layout_width="71dp"-->
+<!--            android:layout_height="44dp"-->
+<!--            android:background="@drawable/esc_button"-->
+<!--            android:gravity="center"-->
+<!--            android:text="Play"-->
+<!--            android:textSize="12sp"-->
+<!--            android:drawableLeft="@drawable/ic_baseline_play_arrow"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/btnCos"-->
+<!--            app:layout_constraintHorizontal_bias="0.219"-->
+<!--            app:layout_constraintRight_toLeftOf="@+id/btnCos"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            tools:ignore="MissingConstraints" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/btnCos"-->
+<!--            android:layout_width="226dp"-->
+<!--            android:layout_height="43dp"-->
+<!--            android:layout_marginBottom="5dp"-->
+<!--            android:background="@drawable/esc_button"-->
+<!--            android:gravity="center"-->
+<!--            android:text="Adauga în cos"-->
+<!--            android:textStyle="bold"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            tools:ignore="MissingConstraints" />-->
+
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+<!--</FrameLayout>-->
+
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintAll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     tools:context=".activities.ProductActivity"
-    android:background="@color/white">
+    tools:ignore="MissingConstraints">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/relativeLayoutImage"
+        android:id="@+id/constraintImage"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:ignore="MissingConstraints">
+        android:layout_height="250dp"
+        android:background="@drawable/background_product"
+        tools:layout_editor_absoluteX="142dp"
+        tools:layout_editor_absoluteY="-1dp">
+
 
         <ImageView
             android:id="@+id/choosePhoto"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_centerInParent="true"
-            android:layout_centerVertical="true"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ProgressBar
             android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:visibility="visible"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             app:layout_constraintBottom_toBottomOf="@+id/choosePhoto"
             app:layout_constraintEnd_toEndOf="@+id/choosePhoto"
             app:layout_constraintStart_toStartOf="@+id/choosePhoto"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
+            app:layout_constraintTop_toTopOf="@+id/choosePhoto" />
 
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/contraintPret"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/constraintImage">
+
+        <Button
+            android:id="@+id/btnPlay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/esc_button"
+            android:drawableLeft="@drawable/ic_baseline_play_arrow"
+            android:text="Asculta"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/minusCantitate"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:text="@string/minus"
+            android:textSize="30sp"
+            android:background="@drawable/round_button"
+            app:layout_constraintEnd_toStartOf="@+id/etCantitate"
+            app:layout_constraintLeft_toRightOf="@+id/btnPlay" />
+
+
+        <EditText
+            android:id="@+id/etCantitate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/pretProd"
+            app:layout_constraintLeft_toRightOf="@id/btnPlay"
+            app:layout_constraintStart_toEndOf="@+id/btnPlay" />
+
+        <Button
+            android:id="@+id/plusCantitate"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:text="@string/plus"
+            android:textSize="30sp"
+            android:background="@drawable/round_button"
+            app:layout_constraintRight_toLeftOf="@+id/pretProd"
+            app:layout_constraintStart_toEndOf="@+id/etCantitate" />
 
         <TextView
-            android:id="@+id/denumireProd"
-            android:layout_width="match_parent"
+            android:id="@+id/textRON"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="56dp"
+            android:text="RON"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="30dp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/choosePhoto"
-            app:layout_constraintVertical_bias="0.85"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="0dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="LEI"
-            android:textAlignment="viewEnd"
-            android:textColor="@color/green"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/denumireProd"
-            tools:ignore="MissingConstraints" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/pretProd"
-            android:layout_width="350dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:textAlignment="viewEnd"
-            android:textColor="@color/green"
-            android:textSize="30dp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/denumireProd"
-            app:layout_constraintVertical_bias="0.831"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="0dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/textRON"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintDenumire"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/contraintPret">
 
         <TextView
-            android:id="@+id/categorieProd"
-            android:layout_width="match_parent"
+            android:id="@+id/denumireProd"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:textAlignment="center"
+            android:textAllCaps="true"
             android:textColor="@color/black"
-            android:textSize="25dp"
+            android:textSize="25sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/pretProd"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="0dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/denumireProd">
+
+
+            <TextView
+                android:id="@+id/textCategorie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/CATEGORIE"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="italic"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/categorieProd" />
+
+            <TextView
+                android:id="@+id/categorieProd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:textSize="20sp"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toRightOf="@+id/textCategorie" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintDescriere"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintTop_toBottomOf="@+id/constraintDenumire"
+        tools:layout_editor_absoluteX="0dp">
+
 
         <TextView
             android:id="@+id/descriereProd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="vertical"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/categorieProd"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="16dp" />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <Button
-            android:id="@+id/btnPlay"
-            android:layout_width="71dp"
-            android:layout_height="44dp"
-            android:background="@drawable/esc_button"
-            android:gravity="center"
-            android:text="Play"
-            android:textSize="12sp"
-            android:drawableLeft="@drawable/ic_baseline_play_arrow"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/btnCos"
-            app:layout_constraintHorizontal_bias="0.219"
-            app:layout_constraintRight_toLeftOf="@+id/btnCos"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="MissingConstraints" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/constraintDescriere">
 
         <Button
             android:id="@+id/btnCos"
-            android:layout_width="226dp"
-            android:layout_height="43dp"
-            android:layout_marginBottom="5dp"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/esc_button"
-            android:gravity="center"
-            android:text="Adauga în cos"
+            android:text="Adauga in cos"
+            android:textSize="12sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:ignore="MissingConstraints" />
+            app:layout_constraintStart_toStartOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <!--        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"-->
-<!--    app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"-->
+    <!--    app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"-->

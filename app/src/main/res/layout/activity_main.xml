@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.RegisterActivity"
-    android:background="@color/white"
+    android:background="@drawable/background_product"
     tools:ignore="MissingConstraints">
 
     <RelativeLayout
@@ -24,7 +24,7 @@
             android:layout_marginEnd="117dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/musicalia_logo" />
+            app:srcCompat="@drawable/project_logo" />
 
     </RelativeLayout>
 
@@ -78,9 +78,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@drawable/esc_button"
-        android:drawableStart="@drawable/button_background"
         android:text="@string/BUTON_AUTENTIFICARE"
-
         tools:layout_editor_absoluteX="87dp"
         tools:layout_editor_absoluteY="704dp" />
 

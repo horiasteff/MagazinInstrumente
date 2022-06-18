@@ -34,9 +34,6 @@
             android:name=".activities.AdminActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.ShoppingCartActivity"
-            android:exported="false" />
-        <activity
             android:name=".activities.HomeActivity"
             android:exported="false" />
         <activity

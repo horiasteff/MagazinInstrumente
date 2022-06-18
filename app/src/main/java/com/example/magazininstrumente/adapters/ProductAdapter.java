@@ -1,5 +1,6 @@
 package com.example.magazininstrumente.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -47,6 +48,7 @@ public class ProductAdapter  extends ArrayAdapter<Product> {
         this.products = products;
     }
 
+    @SuppressLint("ResourceType")
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -56,8 +58,8 @@ public class ProductAdapter  extends ArrayAdapter<Product> {
             adaugareDenumire(view, product.getDenumire());
             adaugarePret(view, product.getPret());
             adaugareCategorie(view, product.getCategorie());
-            //adaugareDescriere(view, product.getDescriere());
             adaugareImagine(view, product.getUrlImagine());
+            adaugareCantitate(view, product.getCantitate());
         }else{
             Log.e("produs", "NU AI PRODUSUL");
         }
@@ -94,10 +96,6 @@ public class ProductAdapter  extends ArrayAdapter<Product> {
 
     }
 
-//    private void adaugareDescriere(View view, String descriere) {
-//        TextView textView = view.findViewById(R.id.productDescription);
-//        populareContinut(textView,descriere);
-//    }
 
     private void adaugareCategorie(View view, String categorie) {
         TextView textView = view.findViewById(R.id.productCategory);
@@ -113,6 +111,13 @@ public class ProductAdapter  extends ArrayAdapter<Product> {
         TextView textView = view.findViewById(R.id.productName);
         populareContinut(textView,denumire);
     }
+
+    private void adaugareCantitate(View view, String cantitate) {
+        TextView textView = view.findViewById(R.id.productQuantity);
+        populareContinut(textView,cantitate);
+    }
+
+
 
     private void populareContinut(TextView textView, String valoare){
         if(valoare!=null && !valoare.isEmpty()){

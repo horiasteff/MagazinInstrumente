@@ -93,8 +93,6 @@ public class ShoppingCartFragment extends Fragment {
                                                                     if(unProdus.getDenumire().equals(produsSelectat.getDenumire())){
                                                                         referinta = data.getKey();
                                                                         databaseReferenceCos.child(idClient).child(referinta).removeValue();
-//                                                                        Log.e("produsulmeu", String.valueOf(produse.get(position).getId()));
-//                                                                        Log.e("produsulmeu", idClient);
                                                                         produse.remove(produsSelectat);
                                                                         notificareListViewProductAdapter();
                                                                         int sum = 0;
@@ -140,7 +138,7 @@ public class ShoppingCartFragment extends Fragment {
     }
 
     private void adaugarelistViewProdusAdapter() {
-        ProductAdapter adapter = new ProductAdapter(getContext(), R.layout.product_list_item, produse,getLayoutInflater());
+        ProductAdapter adapter = new ProductAdapter(getContext(), R.layout.order_list_item, produse,getLayoutInflater());
         shoppingCart.setAdapter(adapter);
     }
 

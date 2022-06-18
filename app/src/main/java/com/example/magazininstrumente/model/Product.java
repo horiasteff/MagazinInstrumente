@@ -11,17 +11,19 @@ public class Product implements Serializable {
     private String descriere;
     private String urlImagine;
     private String urlCantec;
+    private String cantitate;
 
     public Product() {
     }
 
-    public Product(String denumire, String pret, String categorie, String descriere, String urlImagine, String urlCantec) {
+    public Product(String denumire, String pret, String categorie, String descriere, String cantitate, String urlImagine, String urlCantec) {
         this.denumire = denumire;
         this.pret = pret;
         this.categorie = categorie;
         this.descriere = descriere;
         this.urlImagine = urlImagine;
         this.urlCantec = urlCantec;
+        this.cantitate = cantitate;
     }
 
     public String getId() {
@@ -80,9 +82,17 @@ public class Product implements Serializable {
         this.urlCantec = urlCantec;
     }
 
+    public String getCantitate() {
+        return cantitate;
+    }
+
+    public void setCantitate(String cantitate) {
+        this.cantitate = cantitate;
+    }
+
     @Override
     public String toString() {
-        return  id +  denumire + pret +  categorie +  descriere +urlImagine +
-                 urlCantec ;
+        return id + denumire + pret + categorie + descriere + cantitate + urlImagine +
+                urlCantec;
     }
 }
