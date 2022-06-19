@@ -15,11 +15,12 @@ public class Order implements Serializable {
     private String tipPlata;
     private String dataComanda;
     private List<Product> produse;
+    private Courier courier;
 
 
     public Order(){}
 
-    public Order(String numeComanda, String prenumeComanda, String emailComanda, String adresaComanda, String telefonComanda, String costTotalComanda, String tipPlata, String dataComanda, List<Product> produse) {
+    public Order(String numeComanda, String prenumeComanda, String emailComanda, String adresaComanda, String telefonComanda, String costTotalComanda, String tipPlata, String dataComanda, List<Product> produse, Courier courier) {
         this.numeComanda = numeComanda;
         this.prenumeComanda = prenumeComanda;
         this.emailComanda = emailComanda;
@@ -29,6 +30,7 @@ public class Order implements Serializable {
         this.costTotalComanda = costTotalComanda;
         this.dataComanda = dataComanda;
         this.produse = produse;
+        this.courier = courier;
     }
 
     public String getIdComanda() {
@@ -111,6 +113,14 @@ public class Order implements Serializable {
         this.produse = produse;
     }
 
+    public Courier getCourier() {
+        return courier;
+    }
+
+    public void setCourier(Courier courier) {
+        this.courier = courier;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
@@ -122,8 +132,9 @@ public class Order implements Serializable {
                 ", telefonComanda='" + telefonComanda + '\'' +
                 ", costTotalComanda='" + costTotalComanda + '\'' +
                 ", tipPlata='" + tipPlata + '\'' +
+                ", dataComanda='" + dataComanda + '\'' +
                 ", produse=" + produse +
-                ", data=" + dataComanda +
+                ", courier=" + courier +
                 '}';
     }
 }

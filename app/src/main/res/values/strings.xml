@@ -7,7 +7,7 @@
     <string name="PAROLA">Parola</string>
     <string name="BUTON_INREGISTRARE">Inregistreaza-te</string>
     <string name="BUTON_AUTENTIFICARE">Autentifica-te</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_product">ProductActivity</string>
     <!-- Strings used for fragments for navigation -->
@@ -35,4 +35,11 @@
     <string name="minus">-</string>
     <string name="plus">+</string>
     <string name="CANTITATE">Cantitate</string>
+    <string name="cosul_tau_de_cumparaturi">Coșul tău de cumpărături</string>
+    <string name="istoricul_tau">Istoricul tău</string>
+    <string name="finalizeaza_comanda">Finalizează comanda</string>
+    <string name="ron">RON</string>
+    <string name="plata_cu_card">Plata cu card?</string>
+    <string name="date_factura">Date facturare</string>
+
 </resources>

@@ -12,10 +12,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.magazininstrumente.R;
+import com.example.magazininstrumente.model.Courier;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -24,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvRegister2;
     private EditText etEmail;
     private EditText etPassword;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,9 +79,6 @@ public class MainActivity extends AppCompatActivity {
                             Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                             MainActivity.this.startActivity(intent);
                         }
-//                        Intent intent  = new Intent(MainActivity.this, ProductActivity.class);
-//                        MainActivity.this.startActivity(intent);
-
                     }else{
                         Toast.makeText(getApplicationContext(), "Login failed", Toast.LENGTH_LONG).show();
                         etPassword.setText(null);
@@ -93,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
                 MainActivity.this.startActivity(intent);
-
             }
         };
     }

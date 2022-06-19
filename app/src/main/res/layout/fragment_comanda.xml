@@ -8,101 +8,156 @@
     tools:ignore="MissingConstraints">
 
 
-  <EditText
-      android:id="@+id/numeFactura"
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/constraintAntet"
+      android:layout_width="match_parent"
+      android:layout_height="80dp"
+      android:background="@drawable/background_product">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/finalizeaza_comanda"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"/>
+
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+  <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:paddingTop="40dp"
-      android:hint="Nume"
-      tools:layout_editor_absoluteX="0dp"
-      tools:layout_editor_absoluteY="61dp" />
+      app:layout_constraintTop_toBottomOf="@+id/constraintAntet"
+      app:layout_constraintBottom_toBottomOf="parent">
 
-  <EditText
-      android:id="@+id/prenumeFactura"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="40dp"
-      app:layout_constraintTop_toBottomOf="@+id/numeFactura"
-      tools:layout_editor_absoluteX="16dp"
-      android:hint="Prenume"/>
+    <EditText
+        android:id="@+id/numeFactura"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/NUME_CLIENT"
+        android:paddingTop="10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"/>
 
-  <EditText
-      android:id="@+id/emailFactura"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="40dp"
-      app:layout_constraintTop_toBottomOf="@+id/prenumeFactura"
-      tools:layout_editor_absoluteX="0dp"
-      android:hint="Email"/>
+    <EditText
+        android:id="@+id/prenumeFactura"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@+id/numeFactura"
+        tools:layout_editor_absoluteX="16dp"
+        android:hint="@string/PRENUME_CLIENT"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"/>
 
-  <EditText
-      android:id="@+id/adresaFactura"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="40dp"
-      app:layout_constraintTop_toBottomOf="@+id/emailFactura"
-      tools:layout_editor_absoluteX="-16dp"
-      android:hint="Adresa"/>
+    <EditText
+        android:id="@+id/emailFactura"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@+id/prenumeFactura"
+        tools:layout_editor_absoluteX="0dp"
+        android:hint="@string/EMAIL"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"/>
 
-  <EditText
-      android:id="@+id/telefonFactura"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="40dp"
-      app:layout_constraintTop_toBottomOf="@+id/adresaFactura"
-      tools:layout_editor_absoluteX="0dp"
-      android:hint="Telefon"/>
+    <EditText
+        android:id="@+id/adresaFactura"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@+id/emailFactura"
+        tools:layout_editor_absoluteX="-16dp"
+        android:hint="@string/ADRESA"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"/>
+
+    <EditText
+        android:id="@+id/telefonFactura"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@+id/adresaFactura"
+        tools:layout_editor_absoluteX="0dp"
+        android:hint="@string/TELEFON"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"/>
 
 
-  <TextView
-      android:id="@+id/costTotalFactura"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="120dp"
-      app:layout_constraintTop_toBottomOf="@+id/telefonFactura"
-      tools:layout_editor_absoluteX="0dp" />
+    <TextView
+        android:id="@+id/costTotalFactura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="1500"
+        android:textColor="@color/green"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnPlaseazaComanda"
+        android:layout_marginLeft="130dp"
+        app:layout_constraintRight_toLeftOf="@+id/textRon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/telefonFactura" />
 
-  <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="40dp"
-      android:text="Plata cu card?"
-      app:layout_constraintBottom_toTopOf="@+id/costTotalFactura"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/telefonFactura" />
+    <TextView
+        android:id="@+id/textRon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="@string/ron"
+        android:textAlignment="center"
+        android:textColor="@color/green"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_marginRight="130dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnPlaseazaComanda"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/costTotalFactura"
+        app:layout_constraintTop_toBottomOf="@+id/telefonFactura" />
 
-<!--  <Button-->
-<!--      android:id="@+id/datePickerButton"-->
-<!--      style="?android:spinnerStyle"-->
-<!--      android:layout_width="250dp"-->
-<!--      android:layout_height="wrap_content"-->
-<!--      android:layout_marginTop="10dp"-->
+    <TextView
+        android:id="@+id/textPlataCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/plata_cu_card"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/costTotalFactura"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/telefonFactura"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        />
 
-<!--      android:text="JAN 01 2020"-->
-<!--      android:textColor="@color/black"-->
-<!--      android:textSize="20sp"-->
-<!--      app:layout_constraintLeft_toLeftOf="parent"-->
-<!--      app:layout_constraintRight_toRightOf="parent"-->
-<!--      app:layout_constraintStart_toStartOf="parent"-->
-<!--      app:layout_constraintTop_toBottomOf="@+id/telefonFactura" />-->
+    <Switch
+        android:id="@+id/switchPlata"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/costTotalFactura"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/telefonFactura"
+        tools:ignore="UseSwitchCompatOrMaterialXml"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"/>
 
-  <Switch
-      android:id="@+id/switchPlata"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="40dp"
-      app:layout_constraintBottom_toTopOf="@+id/costTotalFactura"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/telefonFactura"
-      tools:ignore="UseSwitchCompatOrMaterialXml" />
-
-  <Button
+    <Button
         android:id="@+id/btnPlaseazaComanda"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Plaseaza comanda"
         android:background="@drawable/esc_button"
+        android:text="Plaseaza comanda"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/costTotalFactura" />
+        app:layout_constraintTop_toTopOf="@+id/costTotalFactura"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"/>
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,6 +24,7 @@ import android.widget.TextView;
 import com.example.magazininstrumente.FirebaseService;
 import com.example.magazininstrumente.R;
 import com.example.magazininstrumente.model.Client;
+import com.example.magazininstrumente.model.Courier;
 import com.example.magazininstrumente.model.Order;
 import com.example.magazininstrumente.model.Product;
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,6 +41,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 
 public class OrderFragment extends Fragment {
@@ -47,12 +49,14 @@ public class OrderFragment extends Fragment {
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     FirebaseService firebaseService = FirebaseService.getInstance();
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(CLIENT_REFERENCE);
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("clienti");
     DatabaseReference databaseReferenceCos = FirebaseDatabase.getInstance().getReference("cumparaturi");
     DatabaseReference databaseReferenceComanda = FirebaseDatabase.getInstance().getReference("comenzi");
+    DatabaseReference databaseReferenceCurier = FirebaseDatabase.getInstance().getReference("curieri");
     ShoppingCartFragment shoppingCartFragment = new ShoppingCartFragment();
 
     private DatePickerDialog datePickerDialog;
+    private Random random = new Random();
     private EditText etNumeComanda;
     private EditText etPrenumeComanda;
     private EditText etEmailComanda;
@@ -67,9 +71,11 @@ public class OrderFragment extends Fragment {
 
     private String idClient;
     private List<Product> produseComanda;
+    private List<Courier> curieri;
     private Order order;
     private TextView tvTotalPrice;
     private String tipPlata;
+    private Courier courier;
 
 
     @Override
@@ -93,8 +99,28 @@ public class OrderFragment extends Fragment {
         //currentDate = new Date(String.valueOf(Locale.getDefault()));
         //initDatePicker();
         produseComanda = new ArrayList<>();
+        //courier = new Courier();
+        curieri = new ArrayList<>();
 
         //firebaseService.notificareEventListenerProduseCart(modificareDateCallback());
+
+
+        databaseReferenceCurier.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot data : snapshot.getChildren()){
+                    Courier courier = data.getValue(Courier.class);
+                    if(courier!=null){
+                        curieri.add(courier);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -103,8 +129,6 @@ public class OrderFragment extends Fragment {
                     Client clientReferinta = data.getValue(Client.class);
                     if(clientReferinta.getEmail().equals(user.getEmail())){
                         idClient = clientReferinta.getId();
-                        Log.e("client", idClient);
-                        Log.e("lista", shoppingCart.toString());
                         databaseReferenceCos.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -153,7 +177,8 @@ public class OrderFragment extends Fragment {
                         btnPlaseazaComanda.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                order = new Order(etNumeComanda.getText().toString(),etPrenumeComanda.getText().toString(),etEmailComanda.getText().toString(),etAdresaComanda.getText().toString(),etTelefonComanda.getText().toString(),tvCostTotal.getText().toString(), tipPlata, currentDate,produseComanda);
+                                courier = curieri.get(random.nextInt(4));
+                                order = new Order(etNumeComanda.getText().toString(),etPrenumeComanda.getText().toString(),etEmailComanda.getText().toString(),etAdresaComanda.getText().toString(),etTelefonComanda.getText().toString(),tvCostTotal.getText().toString(), tipPlata, currentDate,produseComanda,courier);
                                 String idComanda = databaseReferenceComanda.push().getKey();
                                 databaseReferenceComanda.child(idClient).child(idComanda).setValue(order);
                                 databaseReferenceCos.child(idClient).removeValue();
