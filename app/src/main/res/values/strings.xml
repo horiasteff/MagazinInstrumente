@@ -28,6 +28,7 @@
     <string name="grafic_general">Grafic general</string>
     <string name="CLIENTI_REFERENCE">clienti</string>
     <string name="COMENZI_REFERENCE">comenzi</string>
+    <string name="PRODUSE_REFERENCE">produse</string>
     <string name="nu_ai_efectuat_nicio_comanda">NU AI EFECTUAT NICIO COMANDA</string>
     <string name="reseteaza_parola">Reseteaza parola</string>
     <string name="nu_exista_date_pentru_utilizatorul_acesta">Nu exista date pentru utilizatorul acesta</string>
@@ -41,5 +42,9 @@
     <string name="ron">RON</string>
     <string name="plata_cu_card">Plata cu card?</string>
     <string name="date_factura">Date facturare</string>
+    <string name="iti_mai_recomandam">Iti mai recomandam</string>
+    <string name="seteaza_buget">Reseteaza buget</string>
+    <string name="introdu_noul_buget">Introdu noul buget</string>
+    <string name="ok">OK</string>
 
 </resources>

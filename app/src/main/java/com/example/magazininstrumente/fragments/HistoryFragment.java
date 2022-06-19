@@ -14,10 +14,15 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.pdf.PdfDocument;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Environment;
 import android.os.Parcelable;
@@ -38,19 +43,36 @@ import com.example.magazininstrumente.activities.OrderActivity;
 import com.example.magazininstrumente.activities.ProductActivity;
 import com.example.magazininstrumente.adapters.OrderAdapter;
 import com.example.magazininstrumente.adapters.ProductAdapter;
+import com.example.magazininstrumente.adapters.RecyclerViewAdapter;
+import com.example.magazininstrumente.model.Client;
 import com.example.magazininstrumente.model.Order;
 import com.example.magazininstrumente.model.Product;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.PercentFormatter;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class HistoryFragment extends Fragment {
@@ -64,6 +86,19 @@ public class HistoryFragment extends Fragment {
     private int pageWidth = 1200;
     private Random rand= new Random();
     private float total1, subtotal;
+    private ArrayList<String> mNames = new ArrayList<>();
+    private ArrayList<String> mImageUrls = new ArrayList<>();
+    private ArrayList<Product> produseRecomand = new ArrayList<>();
+    private Map<String, Integer> categorii = new HashMap<>();
+    private String idClient;
+    private String emailClient;
+    private String categorieKey;
+
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    DatabaseReference databaseReferenceClienti;
+    DatabaseReference databaseReferenceComenzi;
+    DatabaseReference databaseReferenceProduse;
+
     int counter =0;
 
     @Override
@@ -77,10 +112,16 @@ public class HistoryFragment extends Fragment {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference(CLIENT_REFERENCE);
-        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.invoice_head);
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.image_invoice);
         scaledBitmap = Bitmap.createScaledBitmap(bitmap,1200,518,false);
+        databaseReferenceClienti = FirebaseDatabase.getInstance().getReference(getString(R.string.CLIENTI_REFERENCE));
+        databaseReferenceComenzi = FirebaseDatabase.getInstance().getReference(getString(R.string.COMENZI_REFERENCE));
+        databaseReferenceProduse= FirebaseDatabase.getInstance().getReference(getString(R.string.PRODUSE_REFERENCE));
 
-
+        categorii.put("Clape", 0);
+        categorii.put("Suflat", 0);
+        categorii.put("Corzi", 0);
+        categorii.put("Percutie", 0);
 
         lvProduseHistory = view.findViewById(R.id.historyListView);
         tvComanda = view.findViewById(R.id.nicioComandaText);
@@ -95,6 +136,94 @@ public class HistoryFragment extends Fragment {
             }
         });
 
+        databaseReferenceClienti.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot data : snapshot.getChildren()) {
+                    Client clientTemp = data.getValue(Client.class);
+                    if (clientTemp != null) {
+                        if (clientTemp.getEmail().equals(emailClient)){
+                            idClient = clientTemp.getId();
+
+                        }
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+        databaseReferenceComenzi.addValueEventListener(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot data : snapshot.getChildren()){
+                    if(data.getKey().equals(idClient)){
+                        for(DataSnapshot data2 :  data.getChildren()){
+                            Order order = data2.getValue(Order.class);
+                            if(order!=null){
+                                comenzi.add(order);
+                            }
+                        }
+                    }
+
+                }
+                List<Product> produseTemp = new ArrayList<>();
+                for (Order o: comenzi) {
+                    produseTemp.addAll(o.getProduse());
+                }
+                for (Product p: produseTemp) {
+                    int count = categorii.containsKey(p.getCategorie()) ? categorii.get(p.getCategorie()) : 0;
+                    categorii.put(p.getCategorie(), count + 1);
+                }
+                    categorieKey = categorii.entrySet().stream().max((entry1, entry2) -> entry1.getValue() > entry2.getValue() ? 1 : -1).get().getKey();
+
+                databaseReferenceProduse.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot data: snapshot.getChildren()){
+                            Product produs = data.getValue(Product.class);
+                            if(produs!=null && produs.getCategorie().equals(categorieKey)){
+                                produseRecomand.add(produs);
+                            }
+                        }
+                        int counter = 0;
+                        mImageUrls.clear();
+                        mNames.clear();
+                        for(Product product : produseRecomand){
+                            if (counter < 5) {
+                                mImageUrls.add(product.getUrlImagine());
+                                mNames.add(product.getDenumire());
+                                counter++;
+                            }
+                        }
+
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+                        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
+                        recyclerView.setLayoutManager(layoutManager);
+                        RecyclerViewAdapter adapter = new RecyclerViewAdapter(getContext(), mNames, mImageUrls);
+                        recyclerView.setAdapter(adapter);
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         return view;
     }
@@ -150,7 +279,7 @@ public class HistoryFragment extends Fragment {
         titlePaint.setTextAlign(Paint.Align.CENTER);
         titlePaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
         titlePaint.setTextSize(70);
-        canvas.drawText("MAGAZINUL MUSICALIA", pageWidth/2, 270, titlePaint);
+        //canvas.drawText("MAGAZINUL MUSICALIA", pageWidth/2, 270, titlePaint);
 
         myPaint.setColor(Color.rgb(0,113,188));
         myPaint.setTextSize(30f);
@@ -174,6 +303,7 @@ public class HistoryFragment extends Fragment {
         myPaint.setTextAlign(Paint.Align.RIGHT);
         canvas.drawText("Factura nr. " + rand.nextInt(100000), pageWidth-20, 590, myPaint );
         canvas.drawText("Data: " + orders.get(position).getDataComanda(), pageWidth-20, 640, myPaint);
+        canvas.drawText("Curier: " + orders.get(position).getCourier().getNumeCurier(), pageWidth-20, 690, myPaint);
 
 
         myPaint.setStyle(Paint.Style.STROKE);
@@ -185,7 +315,7 @@ public class HistoryFragment extends Fragment {
         canvas.drawText("Nr.", 40,830, myPaint);
         canvas.drawText("Produs",200, 830, myPaint );
         canvas.drawText("Pret", 700, 830, myPaint);
-        canvas.drawText("Cantitate", 900, 830, myPaint);
+        canvas.drawText("Cantitate", 887, 830, myPaint);
         canvas.drawText("Total", 1050, 830, myPaint);
 
         canvas.drawLine(180, 790, 180, 840, myPaint);
@@ -244,17 +374,11 @@ public class HistoryFragment extends Fragment {
 
         pdfDocument.finishPage(myPage1);
 
-
-
         try {
             pdfDocument.writeTo(new FileOutputStream(file));
             Toast.makeText(getContext(), "Factura creata", Toast.LENGTH_SHORT).show();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
-
     }
-
-
 }

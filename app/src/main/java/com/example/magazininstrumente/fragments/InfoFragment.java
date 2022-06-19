@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,7 +50,12 @@ public class InfoFragment extends Fragment {
     private TextView tvEmail;
     private TextView tvTelefon;
     private TextView tvAdresa;
+    private TextView tvBuget;
     private Button btnResetPassword;
+    private Button btnResetBuget;
+    private EditText etBuget;
+    private Button btnOkBuget;
+    private static Client clientTemp;
 
 
     @Override
@@ -67,8 +73,12 @@ public class InfoFragment extends Fragment {
         tvEmail = view.findViewById(R.id.clientEmail);
         tvTelefon = view.findViewById(R.id.clientTelefon);
         tvAdresa = view.findViewById(R.id.clientAdresa);
+        tvBuget = view.findViewById(R.id.clientBuget);
+        etBuget = view.findViewById(R.id.etBuget);
         clienti = new ArrayList<>();
         btnResetPassword = view.findViewById(R.id.btnResetareParola);
+        btnResetBuget = view.findViewById(R.id.btnReteazaBuget);
+        btnOkBuget = view.findViewById(R.id.btnOkBuget);
         auth = FirebaseAuth.getInstance();
 
 
@@ -82,10 +92,12 @@ public class InfoFragment extends Fragment {
                     if(client!=null){
                         clienti.add(client);
                         if(client.getEmail().equals(user.getEmail())){
+                            clientTemp = client;
                             tvNume.setText(client.getNume() + " " + client.getPrenume());
                             tvEmail.setText(client.getEmail());
                             tvTelefon.setText(client.getTelefon());
                             tvAdresa.setText(client.getAdresa());
+                            tvBuget.setText(String.valueOf(client.getBuget()));
                         }
                     }
                 }
@@ -117,6 +129,42 @@ public class InfoFragment extends Fragment {
             }
         });
 
+        btnResetBuget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnOkBuget.setVisibility(View.VISIBLE);
+                etBuget.setVisibility(View.VISIBLE);
+            }
+        });
+
+
+        btnOkBuget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try{
+                    if(etBuget.getText().length() == 0){
+                        Toast.makeText(getActivity(), "Nu ai introdus nimic", Toast.LENGTH_LONG).show();
+                    }
+                    else if(Integer.parseInt(etBuget.getText().toString()) < 0){
+                        Toast.makeText(getActivity(), "Nu poti introduce un numar negativ", Toast.LENGTH_LONG).show();
+                    }
+                    else if(Integer.parseInt(etBuget.getText().toString()) < clientTemp.getBuget()){
+                        Toast.makeText(getActivity(), "Ai introdus o suma mai mica decat cea existenta", Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        databaseReference.child(clientTemp.getId()).child("buget").setValue(Float.parseFloat(etBuget.getText().toString()));
+                        etBuget.setText("");
+                        etBuget.setVisibility(View.INVISIBLE);
+                        btnOkBuget.setVisibility(View.INVISIBLE);
+                        Toast.makeText(getActivity(), "Resetat cu succes", Toast.LENGTH_LONG).show();
+                    }
+                }catch(NumberFormatException ex){
+                    Toast.makeText(getActivity(), "Acesta nu este un format valid", Toast.LENGTH_LONG).show();
+                }
+
+
+            }
+        });
 
 
         return view;

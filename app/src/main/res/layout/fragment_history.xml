@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.HistoryFragment"
-    tools:ignore="MissingConstraints" >
+    tools:ignore="MissingConstraints">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,12 +17,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
             android:text="@string/istoricul_tau"
             android:textAlignment="center"
-            android:textStyle="bold"
+            android:textColor="@color/black"
             android:textSize="30sp"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/black"/>
+            android:textStyle="bold" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -31,30 +31,50 @@
     <ListView
         android:id="@+id/historyListView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="80dp"
+        android:layout_height="400dp"
         android:divider="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/constraintAntet2"
-        >
-    </ListView>
+        app:layout_constraintTop_toBottomOf="@+id/constraintAntet2"></ListView>
+
+
+    <TextView
+        android:id="@+id/tvRecomand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/iti_mai_recomandam"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/historyListView" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRecomand" />
 
     <TextView
         android:id="@+id/nicioComandaText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="@string/nu_ai_efectuat_nicio_comanda"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="@+id/historyListView"
-        app:layout_constraintTop_toTopOf="@+id/historyListView"
-        android:text="@string/nu_ai_efectuat_nicio_comanda"/>
+        app:layout_constraintTop_toTopOf="@+id/historyListView" />
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/imgSad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:src="@drawable/sad_icon"
         app:layout_constraintBottom_toBottomOf="@+id/historyListView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nicioComandaText"
-        android:src="@drawable/sad_icon"/>
+        app:layout_constraintTop_toBottomOf="@+id/nicioComandaText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

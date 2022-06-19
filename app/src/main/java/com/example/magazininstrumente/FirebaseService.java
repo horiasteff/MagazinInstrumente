@@ -54,40 +54,6 @@ public class FirebaseService {
         return firebaseService;
     }
 
-    public void insert(Client client){
-        if(client == null || (client.getId() !=null && !client.getId().trim().isEmpty() )){
-            return;
-        }
-    }
-
-    public void delete(Client client){
-        if(client == null || client.getId() == null || client.getId().trim().isEmpty()){
-            return;
-        }
-        databaseReference.child(client.getId()).removeValue();
-    }
-
-    public void notificareEventListener(Callback<List<Client>> callback){
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                List<Client> clienti = new ArrayList<>();
-                for(DataSnapshot data: snapshot.getChildren()){
-                    Client client = data.getValue(Client.class);
-                    if(client!=null){
-                        clienti.add(client);
-                    }
-                }
-                callback.rulareRezultatPeUI(clienti);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.e("FirebaseService", "Clientul nu este disponibil");
-            }
-        });
-    }
-
     public void notificareEventListenerProduse(Callback<List<Product>> callback){
         databaseReferenceProducts.addValueEventListener(new ValueEventListener() {
             @Override
@@ -339,7 +305,6 @@ public class FirebaseService {
                             comenzi.add(order);
                         }
                     }
-
                 }
 
                 callback.rulareRezultatPeUI(comenzi);

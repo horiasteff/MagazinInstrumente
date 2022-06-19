@@ -17,9 +17,6 @@ public class Client implements Serializable {
     private String telefon;
     private String adresa;
 
-
-
-
     public Client(){
     }
 

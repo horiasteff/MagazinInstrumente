@@ -45,11 +45,12 @@
         <entry key="app/src/main/res/layout/client_list_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_comanda.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.1503623188405797" />
-        <entry key="app/src/main/res/layout/fragment_history.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/fragment_info.xml" value="0.26282051282051283" />
+        <entry key="app/src/main/res/layout/fragment_history.xml" value="0.43139434814453126" />
+        <entry key="app/src/main/res/layout/fragment_info.xml" value="0.2782874617737003" />
         <entry key="app/src/main/res/layout/fragment_products.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_shopping_cart.xml" value="0.25" />
         <entry key="app/src/main/res/layout/history_list_item.xml" value="0.22592592592592592" />
+        <entry key="app/src/main/res/layout/layout_listitem.xml" value="0.14166666666666666" />
         <entry key="app/src/main/res/layout/lv_row_history.xml" value="0.1" />
         <entry key="app/src/main/res/layout/lv_row_products.xml" value="0.1" />
         <entry key="app/src/main/res/layout/lv_row_register.xml" value="0.1" />
