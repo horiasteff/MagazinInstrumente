@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.magazininstrumente.FirebaseService;
 import com.example.magazininstrumente.R;
@@ -77,6 +78,8 @@ public class OrderFragment extends Fragment {
     private String tipPlata;
     private Courier courier;
 
+    private static Client clientReferinta;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -126,7 +129,7 @@ public class OrderFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot data : snapshot.getChildren()){
-                    Client clientReferinta = data.getValue(Client.class);
+                     clientReferinta = data.getValue(Client.class);
                     if(clientReferinta.getEmail().equals(user.getEmail())){
                         idClient = clientReferinta.getId();
                         databaseReferenceCos.addValueEventListener(new ValueEventListener() {
@@ -180,8 +183,21 @@ public class OrderFragment extends Fragment {
                                 courier = curieri.get(random.nextInt(4));
                                 order = new Order(etNumeComanda.getText().toString(),etPrenumeComanda.getText().toString(),etEmailComanda.getText().toString(),etAdresaComanda.getText().toString(),etTelefonComanda.getText().toString(),tvCostTotal.getText().toString(), tipPlata, currentDate,produseComanda,courier);
                                 String idComanda = databaseReferenceComanda.push().getKey();
-                                databaseReferenceComanda.child(idClient).child(idComanda).setValue(order);
-                                databaseReferenceCos.child(idClient).removeValue();
+                                if(tipPlata.equals("Card")){
+                                    if(Float.parseFloat(order.getCostTotalComanda()) < Float.parseFloat(String.valueOf(clientReferinta.getBuget()))){
+                                        float rez =  Float.parseFloat(String.valueOf(clientReferinta.getBuget())) - Float.parseFloat(order.getCostTotalComanda());
+                                        databaseReference.child(idClient).child("buget").setValue(rez);
+                                        databaseReferenceComanda.child(idClient).child(idComanda).setValue(order);
+                                        databaseReferenceCos.child(idClient).removeValue();
+                                        Toast.makeText(getContext(), "Comanjda plasata cu succes!", Toast.LENGTH_LONG).show();
+                                    }else{
+                                        Toast.makeText(getContext(), "Fonduri insuficiente", Toast.LENGTH_LONG).show();
+                                    }
+                                }else if (tipPlata.equals("Cash")){
+                                    databaseReferenceComanda.child(idClient).child(idComanda).setValue(order);
+                                    databaseReferenceCos.child(idClient).removeValue();
+                                }
+
                                 //shoppingCartFragment.notificareListViewProductAdapter();
 //                                produseComanda.clear();
 //                                ProductAdapter adapter = new ProductAdapter(shoppingCart.getContext(), R.layout.product_list_item, produseComanda,getLayoutInflater());

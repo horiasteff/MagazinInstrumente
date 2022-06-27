@@ -22,13 +22,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
 
-    private ArrayList<String> names;
-    private ArrayList<String> imageUrls;
+    private ArrayList<String> names = new ArrayList<>();
+    private ArrayList<String> imageUrls = new ArrayList<>();
     private Context mContext;
 
     public RecyclerViewAdapter(Context context, ArrayList<String> names, ArrayList<String> imageUrls) {
-        names = names;
-        imageUrls = imageUrls;
+        this.names = names;
+        this.imageUrls = imageUrls;
         mContext = context;
     }
 

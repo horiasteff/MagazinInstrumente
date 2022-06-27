@@ -111,13 +111,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:text="@string/ron"
-        android:textAlignment="center"
         android:textColor="@color/green"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:layout_marginRight="130dp"
         app:layout_constraintBottom_toTopOf="@+id/btnPlaseazaComanda"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingLeft="10dp"
         app:layout_constraintLeft_toRightOf="@+id/costTotalFactura"
         app:layout_constraintTop_toBottomOf="@+id/telefonFactura" />
 

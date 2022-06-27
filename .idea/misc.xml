@@ -40,12 +40,12 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2402317783332189" />
         <entry key="app/src/main/res/layout/activity_order.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_product.xml" value="0.140625" />
-        <entry key="app/src/main/res/layout/activity_register.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_shopping_cart.xml" value="0.19157608695652173" />
         <entry key="app/src/main/res/layout/client_list_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_comanda.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.1503623188405797" />
-        <entry key="app/src/main/res/layout/fragment_history.xml" value="0.43139434814453126" />
+        <entry key="app/src/main/res/layout/fragment_history.xml" value="0.21935483870967742" />
         <entry key="app/src/main/res/layout/fragment_info.xml" value="0.2782874617737003" />
         <entry key="app/src/main/res/layout/fragment_products.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_shopping_cart.xml" value="0.25" />
