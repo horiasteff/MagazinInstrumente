@@ -17,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.magazininstrumente.Callback;
 import com.example.magazininstrumente.FirebaseService;
@@ -129,9 +130,14 @@ public class ShoppingCartFragment extends Fragment {
     btnComanda.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.productsFrame, orderFragment);
-            fragmentTransaction.commit();
+            if(produse.size() !=0){
+                FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.productsFrame, orderFragment);
+                fragmentTransaction.commit();
+            }else{
+                Toast.makeText(getContext(), "Cosul este gol", Toast.LENGTH_SHORT).show();
+            }
+
         }
     });
         return view;

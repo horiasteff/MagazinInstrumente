@@ -150,15 +150,15 @@
         android:id="@+id/constraintImage"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:background="@drawable/background_product"
+        android:background="@drawable/background_product_detailed"
         tools:layout_editor_absoluteX="142dp"
         tools:layout_editor_absoluteY="-1dp">
 
 
         <ImageView
             android:id="@+id/choosePhoto"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="230dp"
+            android:layout_height="230dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -335,6 +335,8 @@
             android:text="Adauga in cos"
             android:textSize="12sp"
             android:textStyle="bold"
+            android:paddingLeft="20dp"
+            android:drawableStart="@drawable/ic_baseline_shopping_cart_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 

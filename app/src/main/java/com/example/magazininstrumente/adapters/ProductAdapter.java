@@ -117,8 +117,6 @@ public class ProductAdapter  extends ArrayAdapter<Product> {
         populareContinut(textView,cantitate);
     }
 
-
-
     private void populareContinut(TextView textView, String valoare){
         if(valoare!=null && !valoare.isEmpty()){
             textView.setText(valoare+ " ");

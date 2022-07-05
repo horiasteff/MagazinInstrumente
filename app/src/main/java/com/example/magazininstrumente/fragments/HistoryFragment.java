@@ -2,10 +2,8 @@ package com.example.magazininstrumente.fragments;
 
 import static com.example.magazininstrumente.FirebaseService.CLIENT_REFERENCE;
 import static com.example.magazininstrumente.FirebaseService.HISTORY_REFERENCE;
-import static com.example.magazininstrumente.FirebaseService.PRODUCT_REFERENCE;
 
 import android.Manifest;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -25,7 +23,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Environment;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,22 +36,11 @@ import android.widget.Toast;
 import com.example.magazininstrumente.Callback;
 import com.example.magazininstrumente.FirebaseService;
 import com.example.magazininstrumente.R;
-import com.example.magazininstrumente.activities.OrderActivity;
-import com.example.magazininstrumente.activities.ProductActivity;
 import com.example.magazininstrumente.adapters.OrderAdapter;
-import com.example.magazininstrumente.adapters.ProductAdapter;
 import com.example.magazininstrumente.adapters.RecyclerViewAdapter;
 import com.example.magazininstrumente.model.Client;
 import com.example.magazininstrumente.model.Order;
 import com.example.magazininstrumente.model.Product;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.formatter.PercentFormatter;
-import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -66,11 +52,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -195,6 +177,7 @@ public class HistoryFragment extends Fragment {
                                 produseRecomand.add(produs);
                             }
                         }
+
                         mImageUrls = new ArrayList<>();
                         mNames = new ArrayList<>();
                         Collections.shuffle(produseRecomand);

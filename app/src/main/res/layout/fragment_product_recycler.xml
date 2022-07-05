@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.ProductsFragment"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/button_background"
+        tools:ignore="MissingConstraints">
+
+        <SearchView
+            android:id="@+id/searchViewList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:iconifiedByDefault="false"
+            android:queryHint="Enter name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutFilter"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        android:layout_height="50dp"
+        tools:ignore="MissingConstraints"
+        >
+
+        <Button
+            android:id="@+id/btnFilterCorzi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/esc_button"
+            android:text="CORZI"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            />
+
+        <Button
+            android:id="@+id/btnFilterSuflat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/esc_button"
+            android:text="SUFLAT"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toRightOf="@+id/btnFilterCorzi"
+            app:layout_constraintRight_toLeftOf="@+id/btnFilterClape"
+
+            />
+
+        <Button
+            android:id="@+id/btnFilterClape"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/esc_button"
+            android:text="CLAPE"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toRightOf="@+id/btnFilterSuflat"
+            app:layout_constraintRight_toLeftOf="@+id/btnFilterPercutie"
+            />
+
+        <Button
+            android:id="@+id/btnFilterPercutie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/esc_button"
+            android:text="PERCUTIE"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toRightOf="@+id/btnFilterClape"
+            app:layout_constraintRight_toLeftOf="@+id/btnFilterEsc"
+            />
+
+        <Button
+            android:id="@+id/btnFilterEsc"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/esc_button"
+            android:text="X"
+            android:tint="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintRight_toRightOf="parent"
+
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <ListView
+        android:id="@+id/productListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="120dp"
+        android:layout_marginBottom="56dp"
+        android:divider="@color/white"
+        >
+    </ListView>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:background="#F4F4F4"-->
+<!--    android:orientation="vertical"-->
+<!--    tools:context=".MainActivity">-->
+
+<!--    &lt;!&ndash;Top Bar&ndash;&gt;-->
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:padding="@dimen/medium">-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_alignParentLeft="true"-->
+<!--            android:background="@drawable/grey_circular_border"-->
+<!--            android:padding="12dp"-->
+<!--            android:src="@drawable/square_icon" />-->
+
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="LAMP"-->
+<!--                android:textColor="@color/textColor"-->
+<!--                android:textSize="20sp" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="@dimen/xsmall"-->
+<!--                android:text="Deft accessoriesr"-->
+<!--                android:textSize="15sp" />-->
+<!--        </LinearLayout>-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_alignParentRight="true"-->
+<!--            android:background="@drawable/grey_circular_border"-->
+<!--            android:padding="@dimen/small"-->
+<!--            android:src="@drawable/heart" />-->
+
+
+<!--    </RelativeLayout>-->
+
+<!--    &lt;!&ndash;Body&ndash;&gt;-->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="280dp"-->
+<!--            android:scaleType="centerCrop"-->
+<!--             />-->
+
+<!--        <RelativeLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:padding="@dimen/medium">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical"-->
+<!--                android:padding="@dimen/small">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="TABLE LAMP"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textSize="18sp" />-->
+
+
+
+<!--            </LinearLayout>-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:text="$90"-->
+<!--                android:textColor="@color/textColor"-->
+<!--                android:textSize="18sp" />-->
+
+<!--        </RelativeLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:background="@drawable/violet_circular_border"-->
+<!--            android:orientation="vertical"-->
+<!--            android:padding="@dimen/medium">-->
+
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="@dimen/small">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentStart="true"-->
+<!--                    android:text="Suggested for you"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="16sp" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentEnd="true"-->
+<!--                    android:text="View all"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="16sp" />-->
+<!--            </RelativeLayout>-->
+
+<!--            <HorizontalScrollView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content">-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="160dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/white_circular_border"-->
+<!--                        android:orientation="vertical"-->
+<!--                        android:gravity="center"-->
+<!--                        android:padding="12dp">-->
+
+<!--                        <ImageView-->
+<!--                            android:layout_width="120dp"-->
+<!--                            android:layout_height="120dp"-->
+<!--                            android:src="@drawable/lamp2" />-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:paddingLeft="@dimen/small"-->
+<!--                            android:paddingRight="@dimen/small">-->
+<!--                            <TextView-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Edison Table Lamp"-->
+<!--                                android:textColor="@color/textColor"-->
+<!--                                android:textSize="14sp" />-->
+
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center_vertical">-->
+
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="$350"-->
+<!--                                    android:textColor="@color/textColor"-->
+<!--                                    android:textSize="13sp" />-->
+
+<!--                                <RelativeLayout-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginStart="@dimen/xsmall">-->
+<!--                                    <TextView-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="$750"-->
+<!--                                        android:layout_marginStart="@dimen/xsmall"-->
+<!--                                        android:textColor="@color/orange"-->
+<!--                                        android:textSize="13sp" />-->
+
+<!--                                    <LinearLayout-->
+<!--                                        android:layout_width="30dp"-->
+<!--                                        android:background="@color/orange"-->
+<!--                                        android:layout_centerVertical="true"-->
+<!--                                        android:layout_height="1dp"/>-->
+<!--                                </RelativeLayout>-->
+
+<!--                                <Space-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"/>-->
+<!--                                <ImageView-->
+<!--                                    android:layout_width="25dp"-->
+<!--                                    android:layout_height="25dp"-->
+<!--                                    android:padding="6.5dp"-->
+<!--                                    android:src="@drawable/heart_orange_fill"-->
+<!--                                    android:background="@drawable/light_orange_circle"/>-->
+
+
+<!--                            </LinearLayout>-->
+<!--                        </LinearLayout>-->
+
+<!--                    </LinearLayout>-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="160dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/white_circular_border"-->
+<!--                        android:orientation="vertical"-->
+<!--                        android:gravity="center"-->
+<!--                        android:layout_marginStart="20dp"-->
+<!--                        android:padding="12dp">-->
+
+<!--                        <ImageView-->
+<!--                            android:layout_width="120dp"-->
+<!--                            android:layout_height="120dp"-->
+<!--                            android:src="@drawable/lamp3" />-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:paddingLeft="@dimen/small"-->
+<!--                            android:paddingRight="@dimen/small">-->
+<!--                            <TextView-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Edison Table Lamp"-->
+<!--                                android:textColor="@color/textColor"-->
+<!--                                android:textSize="14sp" />-->
+
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center_vertical">-->
+
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="$350"-->
+<!--                                    android:textColor="@color/textColor"-->
+<!--                                    android:textSize="13sp" />-->
+
+<!--                                <RelativeLayout-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginStart="@dimen/xsmall">-->
+<!--                                    <TextView-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="$750"-->
+<!--                                        android:layout_marginStart="@dimen/xsmall"-->
+<!--                                        android:textColor="@color/orange"-->
+<!--                                        android:textSize="13sp" />-->
+
+<!--                                    <LinearLayout-->
+<!--                                        android:layout_width="30dp"-->
+<!--                                        android:background="@color/orange"-->
+<!--                                        android:layout_centerVertical="true"-->
+<!--                                        android:layout_height="1dp"/>-->
+<!--                                </RelativeLayout>-->
+
+<!--                                <Space-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"/>-->
+<!--                                <ImageView-->
+<!--                                    android:layout_width="25dp"-->
+<!--                                    android:layout_height="25dp"-->
+<!--                                    android:padding="6.5dp"-->
+<!--                                    android:src="@drawable/heart_orange_fill"-->
+<!--                                    android:background="@drawable/light_orange_circle"/>-->
+
+
+<!--                            </LinearLayout>-->
+<!--                        </LinearLayout>-->
+
+<!--                    </LinearLayout>-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="160dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/white_circular_border"-->
+<!--                        android:orientation="vertical"-->
+<!--                        android:gravity="center"-->
+<!--                        android:layout_marginStart="20dp"-->
+<!--                        android:padding="12dp">-->
+
+<!--                        <ImageView-->
+<!--                            android:layout_width="120dp"-->
+<!--                            android:layout_height="120dp"-->
+<!--                            android:src="@drawable/lamp3" />-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:paddingLeft="@dimen/small"-->
+<!--                            android:paddingRight="@dimen/small">-->
+<!--                            <TextView-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Edison Table Lamp"-->
+<!--                                android:textColor="@color/textColor"-->
+<!--                                android:textSize="14sp" />-->
+
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center_vertical">-->
+
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="$350"-->
+<!--                                    android:textColor="@color/textColor"-->
+<!--                                    android:textSize="13sp" />-->
+
+<!--                                <RelativeLayout-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginStart="@dimen/xsmall">-->
+<!--                                    <TextView-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="$750"-->
+<!--                                        android:layout_marginStart="@dimen/xsmall"-->
+<!--                                        android:textColor="@color/orange"-->
+<!--                                        android:textSize="13sp" />-->
+
+<!--                                    <LinearLayout-->
+<!--                                        android:layout_width="30dp"-->
+<!--                                        android:background="@color/orange"-->
+<!--                                        android:layout_centerVertical="true"-->
+<!--                                        android:layout_height="1dp"/>-->
+<!--                                </RelativeLayout>-->
+
+<!--                                <Space-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_weight="1"/>-->
+<!--                                <ImageView-->
+<!--                                    android:layout_width="25dp"-->
+<!--                                    android:layout_height="25dp"-->
+<!--                                    android:padding="6.5dp"-->
+<!--                                    android:src="@drawable/heart_orange_fill"-->
+<!--                                    android:background="@drawable/light_orange_circle"/>-->
+
+
+<!--                            </LinearLayout>-->
+<!--                        </LinearLayout>-->
+
+<!--                    </LinearLayout>-->
+<!--                </LinearLayout>-->
+<!--            </HorizontalScrollView>-->
+
+<!--        </LinearLayout>-->
+
+<!--    </LinearLayout>-->
+
+<!--</LinearLayout>-->
+
+<!--    &lt;!&ndash;<?xml version="1.0" encoding="utf-8"?>&ndash;&gt;-->
+<!--    &lt;!&ndash;<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"&ndash;&gt;-->
+<!--    &lt;!&ndash;    xmlns:app="http://schemas.android.com/apk/res-auto"&ndash;&gt;-->
+<!--    &lt;!&ndash;    xmlns:tools="http://schemas.android.com/tools"&ndash;&gt;-->
+<!--    &lt;!&ndash;    android:layout_width="match_parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;    android:layout_height="match_parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;    tools:context=".fragments.ProductFragmentRecycler"&ndash;&gt;-->
+<!--    &lt;!&ndash;    tools:ignore="MissingConstraints">&ndash;&gt;-->
+
+
+<!--    &lt;!&ndash;    <androidx.constraintlayout.widget.ConstraintLayout&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:id="@+id/constraintLayout"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_height="60dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:background="@drawable/button_background"&ndash;&gt;-->
+<!--    &lt;!&ndash;        tools:ignore="MissingConstraints">&ndash;&gt;-->
+
+<!--    &lt;!&ndash;        <SearchView&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:id="@+id/searchViewList"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:iconifiedByDefault="false"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:queryHint="Enter name"&ndash;&gt;-->
+<!--    &lt;!&ndash;            app:layout_constraintBottom_toBottomOf="parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;            app:layout_constraintTop_toTopOf="parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;            tools:layout_editor_absoluteX="0dp" />&ndash;&gt;-->
+
+
+<!--    &lt;!&ndash;    </androidx.constraintlayout.widget.ConstraintLayout>&ndash;&gt;-->
+
+<!--    &lt;!&ndash;    <androidx.constraintlayout.widget.ConstraintLayout&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:id="@+id/constraintLayoutFilter"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_width="100dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_height="match_parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_marginTop="70dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"&ndash;&gt;-->
+<!--    &lt;!&ndash;        tools:ignore="MissingConstraints">&ndash;&gt;-->
+
+<!--    &lt;!&ndash;        <Button&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:id="@+id/btnFilterCorzi"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_width="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:background="@drawable/esc_button"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:rotation="-90"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:text="CORZI"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:textSize="12sp"&ndash;&gt;-->
+<!--    &lt;!&ndash;            app:layout_constraintBottom_toBottomOf="parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;            app:layout_constraintTop_toBottomOf="@+id/btnFilterSuflat" />&ndash;&gt;-->
+
+<!--    &lt;!&ndash;        <Button&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:id="@+id/btnFilterClape"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_width="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:background="@drawable/esc_button"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:rotation="-90"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:rotationX="0"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:rotationY="0"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:text="CLAPE"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:textSize="12sp"&ndash;&gt;-->
+<!--    &lt;!&ndash;            app:layout_constraintBottom_toTopOf="@id/btnFilterSuflat"&ndash;&gt;-->
+<!--    &lt;!&ndash;            app:layout_constraintTop_toBottomOf="@id/btnFilterPercutie" />&ndash;&gt;-->
+
+<!--    &lt;!&ndash;        <Button&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:id="@+id/btnFilterPercutie"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_width="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:background="@drawable/esc_button"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:rotation="-90"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:text="PERCUTIE"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:textSize="12sp"&ndash;&gt;-->
+<!--    &lt;!&ndash;            app:layout_constraintBottom_toTopOf="@+id/btnFilterClape"&ndash;&gt;-->
+<!--    &lt;!&ndash;            app:layout_constraintTop_toBottomOf="@id/btnFilterEsc" />&ndash;&gt;-->
+
+<!--    &lt;!&ndash;        <Button&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:id="@+id/btnFilterEsc"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_width="40dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_marginRight="28dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:background="@drawable/esc_button"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:text="X"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:textSize="12sp"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:tint="@color/white"&ndash;&gt;-->
+
+<!--    &lt;!&ndash;            tools:layout_editor_absoluteY="241dp" />&ndash;&gt;-->
+
+<!--    &lt;!&ndash;        <Button&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:id="@+id/btnFilterSuflat"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_width="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:background="@drawable/esc_button"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:rotation="-90"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:text="SUFLAT"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:textSize="12sp"&ndash;&gt;-->
+<!--    &lt;!&ndash;            app:layout_constraintBottom_toTopOf="@id/btnFilterCorzi"&ndash;&gt;-->
+<!--    &lt;!&ndash;            app:layout_constraintTop_toBottomOf="@id/btnFilterClape"&ndash;&gt;-->
+<!--    &lt;!&ndash;            tools:layout_editor_absoluteX="8dp" />&ndash;&gt;-->
+
+
+<!--    &lt;!&ndash;    </androidx.constraintlayout.widget.ConstraintLayout>&ndash;&gt;-->
+
+
+<!--    &lt;!&ndash;    <androidx.recyclerview.widget.RecyclerView&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:id="@+id/recyclerViewProducts"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_height="match_parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_marginTop="70dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_marginLeft="100dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:orientation="horizontal"&ndash;&gt;-->
+<!--    &lt;!&ndash;        app:layout_constraintBottom_toBottomOf="parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;        app:layout_constraintStart_toEndOf="@+id/constraintLayoutFilter"&ndash;&gt;-->
+<!--    &lt;!&ndash;        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"&ndash;&gt;-->
+<!--    &lt;!&ndash;        app:layout_constraintVertical_bias="1.0" />&ndash;&gt;-->
+
+
+
+<!--    &lt;!&ndash;    <androidx.constraintlayout.widget.ConstraintLayout&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:id="@+id/constraintLayout"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_height="60dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:background="@drawable/button_background"&ndash;&gt;-->
+<!--    &lt;!&ndash;        tools:ignore="MissingConstraints">&ndash;&gt;-->
+
+<!--    &lt;!&ndash;        <SearchView&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:id="@+id/searchViewList"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:iconifiedByDefault="false"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:queryHint="Enter name"&ndash;&gt;-->
+<!--    &lt;!&ndash;            app:layout_constraintBottom_toBottomOf="parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;            app:layout_constraintTop_toTopOf="parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;            tools:layout_editor_absoluteX="0dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;            />&ndash;&gt;-->
+
+
+<!--    &lt;!&ndash;    </androidx.constraintlayout.widget.ConstraintLayout>&ndash;&gt;-->
+
+<!--    &lt;!&ndash;    <androidx.constraintlayout.widget.ConstraintLayout&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:id="@+id/constraintLayoutFilter"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_height="50dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;        tools:ignore="MissingConstraints"&ndash;&gt;-->
+<!--    &lt;!&ndash;        >&ndash;&gt;-->
+
+<!--    &lt;!&ndash;        <Button&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:id="@+id/btnFilterCorzi"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_width="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:background="@drawable/esc_button"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:text="CORZI"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:textSize="12sp"&ndash;&gt;-->
+<!--    &lt;!&ndash;            app:layout_constraintLeft_toLeftOf="parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;            />&ndash;&gt;-->
+
+<!--    &lt;!&ndash;        <Button&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:id="@+id/btnFilterSuflat"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_width="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:background="@drawable/esc_button"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:text="SUFLAT"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:textSize="12sp"&ndash;&gt;-->
+<!--    &lt;!&ndash;            app:layout_constraintLeft_toRightOf="@+id/btnFilterCorzi"&ndash;&gt;-->
+
+<!--    &lt;!&ndash;            app:layout_constraintRight_toLeftOf="@+id/btnFilterClape" />&ndash;&gt;-->
+
+<!--    &lt;!&ndash;        <Button&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:id="@+id/btnFilterClape"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_width="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:background="@drawable/esc_button"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:text="CLAPE"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:textSize="12sp"&ndash;&gt;-->
+<!--    &lt;!&ndash;            app:layout_constraintLeft_toRightOf="@+id/btnFilterSuflat"&ndash;&gt;-->
+<!--    &lt;!&ndash;            app:layout_constraintRight_toLeftOf="@+id/btnFilterPercutie"&ndash;&gt;-->
+<!--    &lt;!&ndash;            />&ndash;&gt;-->
+
+<!--    &lt;!&ndash;        <Button&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:id="@+id/btnFilterPercutie"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_width="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:background="@drawable/esc_button"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:text="PERCUTIE"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:textSize="12sp"&ndash;&gt;-->
+<!--    &lt;!&ndash;            app:layout_constraintLeft_toRightOf="@+id/btnFilterClape"&ndash;&gt;-->
+<!--    &lt;!&ndash;            app:layout_constraintRight_toLeftOf="@+id/btnFilterEsc"&ndash;&gt;-->
+<!--    &lt;!&ndash;            />&ndash;&gt;-->
+
+<!--    &lt;!&ndash;        <Button&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:id="@+id/btnFilterEsc"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_width="40dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:background="@drawable/esc_button"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:text="X"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:tint="@color/white"&ndash;&gt;-->
+<!--    &lt;!&ndash;            android:textSize="12sp"&ndash;&gt;-->
+<!--    &lt;!&ndash;            app:layout_constraintRight_toRightOf="parent"&ndash;&gt;-->
+
+<!--    &lt;!&ndash;            />&ndash;&gt;-->
+
+
+<!--    &lt;!&ndash;    </androidx.constraintlayout.widget.ConstraintLayout>&ndash;&gt;-->
+
+
+<!--    &lt;!&ndash;    <ListView&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:id="@+id/productListView"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_width="match_parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_height="match_parent"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_marginTop="120dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:layout_marginBottom="56dp"&ndash;&gt;-->
+<!--    &lt;!&ndash;        android:divider="@color/white"&ndash;&gt;-->
+<!--    &lt;!&ndash;        >&ndash;&gt;-->
+<!--    &lt;!&ndash;    </ListView>&ndash;&gt;-->
+
+
+
+
+<!--    &lt;!&ndash;</androidx.constraintlayout.widget.ConstraintLayout>&ndash;&gt;-->
+

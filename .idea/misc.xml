@@ -6,11 +6,13 @@
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1735" />
         <entry key="app/src/main/res/drawable/background_admin.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/background_product.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/background_product_detailed.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bottom_selection_bar.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/button_background.xml" value="0.169" />
         <entry key="app/src/main/res/drawable/choose.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/edittext_backgroung.xml" value="0.1775" />
         <entry key="app/src/main/res/drawable/esc_button.xml" value="0.173" />
+        <entry key="app/src/main/res/drawable/grey_circular_border.xml" value="0.198" />
         <entry key="app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_history_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.207" />
@@ -31,15 +33,16 @@
         <entry key="app/src/main/res/drawable/shape_left_panel.xml" value="0.225" />
         <entry key="app/src/main/res/drawable/shape_register.xml" value="0.125" />
         <entry key="app/src/main/res/drawable/shape_right_panel.xml" value="0.207" />
+        <entry key="app/src/main/res/drawable/slide_in.xml" value="0.103" />
         <entry key="app/src/main/res/layout/activity_admin.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_client_charts.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_clients_chart.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_clients_chart.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_general_charts.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.2188365650969529" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2402317783332189" />
         <entry key="app/src/main/res/layout/activity_order.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_product.xml" value="0.140625" />
+        <entry key="app/src/main/res/layout/activity_product.xml" value="0.29281158447265626" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_shopping_cart.xml" value="0.19157608695652173" />
         <entry key="app/src/main/res/layout/client_list_item.xml" value="0.25" />
@@ -47,10 +50,13 @@
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.1503623188405797" />
         <entry key="app/src/main/res/layout/fragment_history.xml" value="0.21935483870967742" />
         <entry key="app/src/main/res/layout/fragment_info.xml" value="0.2782874617737003" />
+        <entry key="app/src/main/res/layout/fragment_product_recycler.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_products.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_shopping_cart.xml" value="0.25" />
         <entry key="app/src/main/res/layout/history_list_item.xml" value="0.22592592592592592" />
         <entry key="app/src/main/res/layout/layout_listitem.xml" value="0.14166666666666666" />
+        <entry key="app/src/main/res/layout/layout_listitem_client.xml" value="0.45" />
+        <entry key="app/src/main/res/layout/layout_listitem_products.xml" value="0.25" />
         <entry key="app/src/main/res/layout/lv_row_history.xml" value="0.1" />
         <entry key="app/src/main/res/layout/lv_row_products.xml" value="0.1" />
         <entry key="app/src/main/res/layout/lv_row_register.xml" value="0.1" />

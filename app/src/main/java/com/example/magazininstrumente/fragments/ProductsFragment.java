@@ -136,6 +136,7 @@ private Button btnFilterEsc;
                intent.putExtra("cantecProd",produse.get(position).getUrlCantec());
                intent.putExtra("cantitateProd",produse.get(position).getCantitate());
                startActivity(intent);
+               getActivity().overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
            }
        });
 

@@ -20,16 +20,10 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity
-            android:name=".activities.OrderActivity"
-            android:exported="false" />
-        <activity
             android:name=".activities.GeneralChartsActivity"
             android:exported="false" />
         <activity
             android:name=".activities.ClientChartsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.ClientsChartActivity"
             android:exported="false" />
         <activity
             android:name=".activities.AdminActivity"

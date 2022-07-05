@@ -12,13 +12,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.magazininstrumente.R;
-import com.example.magazininstrumente.model.Courier;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -73,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
 
                         //deschid pagina principala
                         if(email.equals("admin@gmail.com")){
-                            Intent intent  = new Intent(MainActivity.this, AdminActivity.class);
-                            MainActivity.this.startActivity(intent);
+                            Intent intent = new Intent(MainActivity.this, AdminActivity.class);
+                            startActivity(intent);
                         }else{
                             Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                             MainActivity.this.startActivity(intent);

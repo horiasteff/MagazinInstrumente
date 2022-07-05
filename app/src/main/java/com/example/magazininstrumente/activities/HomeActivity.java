@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 import com.example.magazininstrumente.fragments.HistoryFragment;
 import com.example.magazininstrumente.fragments.InfoFragment;
+import com.example.magazininstrumente.fragments.ProductFragmentRecycler;
 import com.example.magazininstrumente.fragments.ProductsFragment;
 import com.example.magazininstrumente.R;
 import com.example.magazininstrumente.fragments.ShoppingCartFragment;
@@ -27,6 +28,7 @@ public class HomeActivity extends AppCompatActivity {
     private InfoFragment infoFragment;
     private ShoppingCartFragment shoppingCartFragment;
     private HistoryFragment historyFragment;
+    private ProductFragmentRecycler productFragmentRecycler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +44,9 @@ public class HomeActivity extends AppCompatActivity {
         infoFragment = new InfoFragment();
         shoppingCartFragment= new ShoppingCartFragment();
         historyFragment = new HistoryFragment();
-        setFragment(productsFragment);
+        productFragmentRecycler = new ProductFragmentRecycler();
+       setFragment(productsFragment);
+        //setFragment(productFragmentRecycler);
 
         imgPersonalInfo.setOnClickListener(new View.OnClickListener() {
             @Override
