@@ -1,7 +1,6 @@
 package com.example.magazininstrumente.model;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 public class Order implements Serializable {

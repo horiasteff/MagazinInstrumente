@@ -30,7 +30,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-public class ProductAdapter  extends ArrayAdapter<Product> {
+public class ProductAdapter extends ArrayAdapter<Product> {
 
     private Context context;
     private LayoutInflater inflater;
@@ -76,7 +76,6 @@ public class ProductAdapter  extends ArrayAdapter<Product> {
                     imageView.setImageBitmap(bitmap);
                     progressBar.setVisibility(View.GONE);
                 }
-
 
             }).addOnFailureListener(new OnFailureListener() {
                 @Override

@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,8 +18,7 @@ import com.example.magazininstrumente.activities.ProductActivity;
 import java.util.ArrayList;
 
 
-public class RecyclerViewProductAdapter extends RecyclerView.Adapter<RecyclerViewProductAdapter.ViewHolder>{
-
+public class RecyclerViewProductAdapter extends RecyclerView.Adapter<RecyclerViewProductAdapter.ViewHolder> {
 
     private ArrayList<String> names;
     private ArrayList<String> imageUrls;
@@ -32,7 +30,7 @@ public class RecyclerViewProductAdapter extends RecyclerView.Adapter<RecyclerVie
 
     private Context mContext;
 
-    public RecyclerViewProductAdapter(Context context, ArrayList<String> names, ArrayList<String> imageUrls, ArrayList<String> categories,ArrayList<String> prices,ArrayList<String> descriptions,ArrayList<String> quantites,ArrayList<String> songUrls) {
+    public RecyclerViewProductAdapter(Context context, ArrayList<String> names, ArrayList<String> imageUrls, ArrayList<String> categories, ArrayList<String> prices, ArrayList<String> descriptions, ArrayList<String> quantites, ArrayList<String> songUrls) {
         this.names = names;
         this.imageUrls = imageUrls;
         this.categories = categories;
@@ -63,15 +61,14 @@ public class RecyclerViewProductAdapter extends RecyclerView.Adapter<RecyclerVie
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(mContext, ProductActivity.class);
                 intent.putExtra("imageProd", imageUrls.get(position));
                 intent.putExtra("denumireProd", names.get(position));
                 intent.putExtra("pretProd", prices.get(position));
                 intent.putExtra("categorieProd", categories.get(position));
                 intent.putExtra("descriereProd", descriptions.get(position));
-                intent.putExtra("cantecProd",songUrls.get(position));
-                intent.putExtra("cantitateProd",quantites.get(position));
+                intent.putExtra("cantecProd", songUrls.get(position));
+                intent.putExtra("cantitateProd", quantites.get(position));
                 mContext.startActivity(intent);
             }
         });
@@ -82,7 +79,7 @@ public class RecyclerViewProductAdapter extends RecyclerView.Adapter<RecyclerVie
         return imageUrls.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView price;
         ImageView image;

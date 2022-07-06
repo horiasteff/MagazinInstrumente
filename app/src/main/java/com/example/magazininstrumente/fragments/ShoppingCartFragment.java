@@ -1,7 +1,5 @@
 package com.example.magazininstrumente.fragments;
 
-import static com.example.magazininstrumente.FirebaseService.CLIENT_REFERENCE;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -25,8 +23,6 @@ import com.example.magazininstrumente.R;
 import com.example.magazininstrumente.adapters.ProductAdapter;
 import com.example.magazininstrumente.model.Client;
 import com.example.magazininstrumente.model.Product;
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -43,9 +39,9 @@ public class ShoppingCartFragment extends Fragment {
     private ListView shoppingCart;
     private List<Product> produse = new ArrayList<>();
     FirebaseService firebaseService = FirebaseService.getInstance();
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(CLIENT_REFERENCE);
-    DatabaseReference databaseReferenceCos = FirebaseDatabase.getInstance().getReference("cumparaturi");
-    DatabaseReference databaseReferenceProduse = FirebaseDatabase.getInstance().getReference("produse");
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(getString(R.string.CLIENTI_REFERENCE));
+    DatabaseReference databaseReferenceCos = FirebaseDatabase.getInstance().getReference(getString(R.string.CUMPARATURI_REFERENCE));
+    DatabaseReference databaseReferenceProduse = FirebaseDatabase.getInstance().getReference(getString(R.string.PRODUSE_REFERENCE));
     private TextView tvTotalPrice;
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private String idClient;
@@ -111,9 +107,8 @@ public class ShoppingCartFragment extends Fragment {
 
                                                         }
                                                     });
-
                                                 }
-                                            }).setNegativeButton("No", null).show();
+                                            }).setNegativeButton("Nu", null).show();
                                     return true;
                                 }
                             });
@@ -137,7 +132,6 @@ public class ShoppingCartFragment extends Fragment {
             }else{
                 Toast.makeText(getContext(), "Cosul este gol", Toast.LENGTH_SHORT).show();
             }
-
         }
     });
         return view;

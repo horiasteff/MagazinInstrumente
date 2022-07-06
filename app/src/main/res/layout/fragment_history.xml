@@ -7,7 +7,6 @@
     tools:context=".fragments.HistoryFragment"
     tools:ignore="MissingConstraints">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintAntet2"
         android:layout_width="match_parent"
@@ -24,17 +23,14 @@
             android:textSize="30sp"
             android:textStyle="bold" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     <ListView
         android:id="@+id/historyListView"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:divider="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/constraintAntet2"></ListView>
-
+        app:layout_constraintTop_toBottomOf="@+id/constraintAntet2" />
 
     <TextView
         android:id="@+id/tvRecomand"
@@ -47,7 +43,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/historyListView" />
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

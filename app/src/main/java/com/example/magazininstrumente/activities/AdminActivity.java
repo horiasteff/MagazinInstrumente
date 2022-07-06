@@ -10,16 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
 
-import com.example.magazininstrumente.Callback;
-import com.example.magazininstrumente.FirebaseService;
 import com.example.magazininstrumente.GridSpacingItemDecoration;
 import com.example.magazininstrumente.R;
-import com.example.magazininstrumente.adapters.ClientAdapter;
 import com.example.magazininstrumente.adapters.RecyclerViewClientsAdapter;
 import com.example.magazininstrumente.model.Client;
 import com.google.firebase.database.DataSnapshot;
@@ -34,7 +29,7 @@ import java.util.List;
 public class AdminActivity extends AppCompatActivity {
 
     private  List<Client> clienti = new ArrayList<>();
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(CLIENT_REFERENCE);
+    DatabaseReference databaseReference;
     private Button btnGeneralChart;
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mEmails = new ArrayList<>();
@@ -42,8 +37,9 @@ public class AdminActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_clients_chart);
+        setContentView(R.layout.activity_admin);
 
+        databaseReference = FirebaseDatabase.getInstance().getReference(getString(R.string.CLIENTI_REFERENCE));
         btnGeneralChart = findViewById(R.id.btnChartGeneral);
 
         btnGeneralChart.setOnClickListener(new View.OnClickListener() {

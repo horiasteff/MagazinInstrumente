@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/esc_button"
             android:drawableLeft="@drawable/ic_baseline_play_arrow"
-            android:text="Asculta"
+            android:text="@string/asculta"
             android:textSize="12sp"
             android:textStyle="bold" />
 
@@ -90,7 +90,7 @@
             android:id="@+id/textRON"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="RON"
+            android:text="@string/ron"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="20sp"
@@ -139,7 +139,6 @@
             android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@+id/denumireProd">
 
-
             <TextView
                 android:id="@+id/textCategorie"
                 android:layout_width="wrap_content"
@@ -176,7 +175,6 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintDenumire"
         tools:layout_editor_absoluteX="0dp">
 
-
         <TextView
             android:id="@+id/descriereProd"
             android:layout_width="match_parent"
@@ -196,7 +194,7 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:background="@drawable/esc_button"
-            android:text="Adauga in cos"
+            android:text="@string/adauga_in_cos"
             android:textSize="12sp"
             android:textStyle="bold"
             android:paddingLeft="20dp"
@@ -204,8 +202,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

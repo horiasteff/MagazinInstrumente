@@ -72,7 +72,7 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:paddingBottom="5dp"
-                android:text="Nume"
+                android:text="@string/NUME_CLIENT"
                 android:textColor="@color/black"
                 android:textSize="25dp"
                 android:textStyle="bold" />
@@ -133,7 +133,7 @@
             android:layout_marginRight="20dp"
             android:padding="15dp"
             android:paddingTop="20dp"
-            android:text="RON"
+            android:text="@string/ron"
             android:textColor="@color/green" />
 
 

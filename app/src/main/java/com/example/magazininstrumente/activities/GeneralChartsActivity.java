@@ -4,11 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,12 +30,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,7 +48,6 @@ public class GeneralChartsActivity extends AppCompatActivity {
     private BarChart barChart;
     private TextView tvNicioComanda;
     private ImageView imgSad;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,23 +74,22 @@ public class GeneralChartsActivity extends AppCompatActivity {
         barChart = findViewById(R.id.generalBarChart);
         tvNicioComanda = findViewById(R.id.nicioComandaGeneralText);
         imgSad = findViewById(R.id.imgSadGeneral);
-       
 
         databaseReferenceComenzi.addValueEventListener(new ValueEventListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot data : snapshot.getChildren()){
-                    for(DataSnapshot data2 : data.getChildren()){
+                for (DataSnapshot data : snapshot.getChildren()) {
+                    for (DataSnapshot data2 : data.getChildren()) {
                         Order order = data2.getValue(Order.class);
-                        if(order!=null){
+                        if (order != null) {
                             comenzi.add(order);
-                            if(comenzi.size() == 0){
+                            if (comenzi.size() == 0) {
                                 tvNicioComanda.setVisibility(View.VISIBLE);
                                 imgSad.setVisibility(View.VISIBLE);
                                 pieChart.setVisibility(View.GONE);
                                 barChart.setVisibility(View.GONE);
-                            }else{
+                            } else {
                                 tvNicioComanda.setVisibility(View.GONE);
                                 imgSad.setVisibility(View.GONE);
                                 pieChart.setVisibility(View.VISIBLE);
@@ -106,14 +99,14 @@ public class GeneralChartsActivity extends AppCompatActivity {
                     }
                 }
                 List<Product> produseTemp = new ArrayList<>();
-                for (Order o: comenzi) {
+                for (Order o : comenzi) {
                     produseTemp.addAll(o.getProduse());
                     LocalDate localDate = LocalDate.parse(o.getDataComanda(), DateTimeFormatter.ofPattern("dd-MM-yyyy"));
                     String luna = String.valueOf(localDate.getMonth().getValue());
                     int countComanda = comenziLunare.containsKey(luna) ? comenziLunare.get(luna) : 0;
                     comenziLunare.put(luna, countComanda + 1);
                 }
-                for (Product p: produseTemp) {
+                for (Product p : produseTemp) {
                     int count = categorii.containsKey(p.getCategorie()) ? categorii.get(p.getCategorie()) : 0;
                     categorii.put(p.getCategorie(), count + 1);
                 }
@@ -127,15 +120,15 @@ public class GeneralChartsActivity extends AppCompatActivity {
                 pieChart.getDescription().setEnabled(true);
 
                 ArrayList<PieEntry> entries = new ArrayList<>();
-                for (Map.Entry<String,Integer> entry : categorii.entrySet()){
-                    entries.add(new PieEntry(entry.getValue(),entry.getKey()));
+                for (Map.Entry<String, Integer> entry : categorii.entrySet()) {
+                    entries.add(new PieEntry(entry.getValue(), entry.getKey()));
                 }
 
                 ArrayList<Integer> colors = new ArrayList<>();
-                for(int color : ColorTemplate.MATERIAL_COLORS){
+                for (int color : ColorTemplate.MATERIAL_COLORS) {
                     colors.add(color);
                 }
-                for(int color: ColorTemplate.VORDIPLOM_COLORS){
+                for (int color : ColorTemplate.VORDIPLOM_COLORS) {
                     colors.add(color);
                 }
 
@@ -143,7 +136,7 @@ public class GeneralChartsActivity extends AppCompatActivity {
                 dataset.setColors(colors);
 
                 ArrayList<BarEntry> entriesComenzi = new ArrayList<>();
-                for (Map.Entry<String,Integer> entry : comenziLunare.entrySet()){
+                for (Map.Entry<String, Integer> entry : comenziLunare.entrySet()) {
                     entriesComenzi.add(new BarEntry(Float.parseFloat(entry.getKey()), entry.getValue()));
                 }
 
@@ -153,7 +146,7 @@ public class GeneralChartsActivity extends AppCompatActivity {
                 pieData.setValueTextSize(12f);
                 pieData.setValueTextColor(Color.BLACK);
 
-                BarDataSet barDataSet = new BarDataSet(entriesComenzi,"COMENZI");
+                BarDataSet barDataSet = new BarDataSet(entriesComenzi, "COMENZI");
                 barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
                 barDataSet.setValueTextColor(Color.BLACK);
                 barDataSet.setValueTextSize(16f);

@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.ClientChartsActivity"
-    android:background="#31673AB7"
-    >
+    android:background="#31673AB7">
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/specificPie"

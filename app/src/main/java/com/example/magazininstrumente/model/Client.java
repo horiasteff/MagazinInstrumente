@@ -1,9 +1,6 @@
 package com.example.magazininstrumente.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Client implements Serializable {
 

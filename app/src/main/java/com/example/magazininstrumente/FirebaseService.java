@@ -35,7 +35,6 @@ public class FirebaseService {
     private FirebaseAuth mAuth;
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-
     public FirebaseService(){
         databaseReference = FirebaseDatabase.getInstance().getReference(CLIENT_REFERENCE);
         databaseReferenceProducts = FirebaseDatabase.getInstance().getReference(PRODUCT_REFERENCE);
@@ -54,50 +53,6 @@ public class FirebaseService {
         return firebaseService;
     }
 
-    public void notificareEventListenerProduse(Callback<List<Product>> callback){
-        databaseReferenceProducts.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                List<Product> produseTotale = new ArrayList<>();
-                for(DataSnapshot data : snapshot.getChildren()){
-                    Product product = data.getValue(Product.class);
-                    if(product!=null){
-                        produseTotale.add(product);
-                    }
-                }
-                callback.rulareRezultatPeUI(produseTotale);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-    }
-
-    public void notificareEventListenerClienti(Callback<List<Client>> callback){
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                List<Client> clientList = new ArrayList<>();
-                for(DataSnapshot data : snapshot.getChildren()){
-                    Client client = data.getValue(Client.class);
-                    if(client!=null){
-                        clientList.add(client);
-                    }
-                }
-                callback.rulareRezultatPeUI(clientList);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-    }
-
     public void notificareEventListenerProduseCart(Callback<List<Product>> callback){
         List<Product> produseTotale = new ArrayList<>();
         List<Client> clientiTotali = new ArrayList<>();
@@ -111,7 +66,6 @@ public class FirebaseService {
                         clientiTotali.add(client);
                     }
                 }
-
             }
 
             @Override
@@ -169,100 +123,6 @@ public class FirebaseService {
         });
     }
 
-    public void stergereEventListenerProduseCart(Callback<List<Product>> callback,Product produsSabon){
-        List<Product> produseTotale = new ArrayList<>();
-        List<Client> clientiTotali = new ArrayList<>();
-        final String[] uid = {""};
-        List<Order> comenzi = new ArrayList<>();
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot data: snapshot.getChildren()){
-                    Client client = data.getValue(Client.class);
-                    if(client!=null){
-                        clientiTotali.add(client);
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.e("FirebaseService", "Clientul nu este disponibil");
-            }
-        });
-        databaseReferenceProducts.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot data : snapshot.getChildren()){
-                    Product product = data.getValue(Product.class);
-                    if(product!=null){
-                        produseTotale.add(product);
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        databaseReferenceShop.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                List<Product> products = new ArrayList<>();
-                for(Client c : clientiTotali){
-                    if(c.getEmail().equals(user.getEmail())){
-                        uid[0] = c.getId();
-                    }
-                }
-                for(DataSnapshot data : snapshot.getChildren()){
-                    if(data.getKey().equals(uid[0]))
-                        for(DataSnapshot data2 : data.getChildren()){
-                            Product product = data2.getValue(Product.class);
-                            if(product!=null){
-                                for(Product p : produseTotale) {
-                                    if (!p.equals(produsSabon)) {
-                                        if (p.getDenumire().equals(product.getDenumire())) {
-                                            product.setUrlImagine(p.getUrlImagine());
-                                        }
-                                        products.add(product);
-                                    }
-                                }
-                            }
-                        }
-                    callback.rulareRezultatPeUI(products);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-
-    public void notificareEventListenerProduseFiltered(Callback<List<Product>> callback, String s){
-        databaseReferenceProducts.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                List<Product> produse = new ArrayList<>();
-                for(DataSnapshot data : snapshot.getChildren()){
-                    Product product = data.getValue(Product.class);
-                    if(product!=null && product.getDenumire().contains(s.toLowerCase(Locale.ROOT))){
-                        produse.add(product);
-                    }
-                }
-                callback.rulareRezultatPeUI(produse);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-
     public void notificareEventListenerOrder(Callback<List<Order>> callback){
         List<Client> clientiTotali = new ArrayList<>();
         final String[] uid = {""};
@@ -311,24 +171,4 @@ public class FirebaseService {
         });
     }
 
-    public void notificareEventListenerProduseFilteredButton(Callback<List<Product>> callback, String category){
-        databaseReferenceProducts.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                List<Product> produse = new ArrayList<>();
-                for(DataSnapshot data : snapshot.getChildren()){
-                    Product product = data.getValue(Product.class);
-                    if(product!=null && product.getCategorie().equals(category)){
-                        produse.add(product);
-                    }
-                }
-                callback.rulareRezultatPeUI(produse);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
 }

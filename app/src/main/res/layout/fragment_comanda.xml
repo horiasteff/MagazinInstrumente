@@ -7,7 +7,6 @@
     tools:context=".fragments.OrderFragment"
     tools:ignore="MissingConstraints">
 
-
   <androidx.constraintlayout.widget.ConstraintLayout
       android:id="@+id/constraintAntet"
       android:layout_width="match_parent"
@@ -87,13 +86,12 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"/>
 
-
     <TextView
         android:id="@+id/costTotalFactura"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:text="1500"
+        android:text="@string/PRET"
         android:textColor="@color/green"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -146,14 +144,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/esc_button"
-        android:text="Plaseaza comanda"
+        android:text="@string/plaseaza_comanda"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="@+id/costTotalFactura"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"/>
 
   </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

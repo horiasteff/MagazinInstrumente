@@ -25,8 +25,6 @@
             android:layout_marginTop="20dp"
             android:textColor="@color/black"/>
 
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -47,9 +45,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toBottomOf="@+id/shoppingCartListView">
-
 
         <TextView
             android:id="@+id/tv_totalPrice"
@@ -62,27 +58,24 @@
             android:paddingRight="10dp"
             app:layout_constraintRight_toLeftOf="@+id/textRon"/>
 
-
         <TextView
             android:id="@+id/textRon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="RON"
+            android:text="@string/ron"
             android:textColor="@color/green"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintLeft_toRightOf="@+id/tv_totalPrice" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     <Button
         android:id="@+id/btnComanda"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:background="@drawable/esc_button"
-        android:text="Finalizeaza comanda"
+        android:text="@string/finalizeaza_comanda"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -72,6 +72,11 @@ public class HistoryFragment extends Fragment {
     private float total1, subtotal;
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
+    private ArrayList<String> mPrices = new ArrayList<>();
+    private ArrayList<String> mCategories = new ArrayList<>();
+    private ArrayList<String> mDescriptions = new ArrayList<>();
+    private ArrayList<String> mSongUrls = new ArrayList<>();
+    private ArrayList<String> mQuantites = new ArrayList<>();
     private ArrayList<Product> produseRecomand = new ArrayList<>();
     private Map<String, Integer> categorii = new HashMap<>();
     private String idClient;
@@ -93,7 +98,7 @@ public class HistoryFragment extends Fragment {
         FirebaseService firebaseService = FirebaseService.getInstance();
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        databaseReference = FirebaseDatabase.getInstance().getReference(CLIENT_REFERENCE);
+        databaseReference = FirebaseDatabase.getInstance().getReference(getString(R.string.CLIENTI_REFERENCE));
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.image_invoice);
         scaledBitmap = Bitmap.createScaledBitmap(bitmap, 1200, 518, false);
         databaseReferenceClienti = FirebaseDatabase.getInstance().getReference(getString(R.string.CLIENTI_REFERENCE));
@@ -128,7 +133,6 @@ public class HistoryFragment extends Fragment {
                     if (clientTemp != null) {
                         if (clientTemp.getEmail().equals(emailClient)) {
                             idClient = clientTemp.getId();
-
                         }
                     }
                 }
@@ -139,7 +143,6 @@ public class HistoryFragment extends Fragment {
 
             }
         });
-
 
         databaseReferenceComenzi.addValueEventListener(new ValueEventListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -182,12 +185,17 @@ public class HistoryFragment extends Fragment {
                         for (int i = 0; i < 5; i++) {
                             mImageUrls.add(produseRecomand.get(i).getUrlImagine());
                             mNames.add(produseRecomand.get(i).getDenumire());
+                            mPrices.add(produseRecomand.get(i).getPret());
+                            mCategories.add(produseRecomand.get(i).getCategorie());
+                            mDescriptions.add(produseRecomand.get(i).getDescriere());
+                            mSongUrls.add(produseRecomand.get(i).getUrlCantec());
+                            mQuantites.add(produseRecomand.get(i).getCantitate());
                         }
 
                         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
                         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
                         recyclerView.setLayoutManager(layoutManager);
-                        RecyclerViewAdapter adapter = new RecyclerViewAdapter(getContext(), mNames, mImageUrls);
+                        RecyclerViewAdapter adapter = new RecyclerViewAdapter(getContext(), mNames, mImageUrls, mPrices, mCategories, mDescriptions, mSongUrls, mQuantites);
                         recyclerView.setAdapter(adapter);
 
                     }
@@ -197,7 +205,6 @@ public class HistoryFragment extends Fragment {
 
                     }
                 });
-
 
             }
 
@@ -337,8 +344,14 @@ public class HistoryFragment extends Fragment {
         canvas.drawText(":", 900, 1050 + (counter * 100), myPaint);
 
         myPaint.setTextAlign(Paint.Align.RIGHT);
+
         float reducere = (float) (Float.parseFloat(comenzi.get(position).getCostTotalComanda()) * 0.1);
-        canvas.drawText(String.valueOf(reducere), pageWidth - 40, 1050 + (counter * 100), myPaint);
+
+        if (Float.parseFloat(comenzi.get(position).getCostTotalComanda()) > 5000) {
+            canvas.drawText(String.valueOf(reducere), pageWidth - 40, 1050 + (counter * 100), myPaint);
+        } else {
+            canvas.drawText(String.valueOf(0), pageWidth - 40, 1050 + (counter * 100), myPaint);
+        }
 
         myPaint.setTextAlign(Paint.Align.LEFT);
         myPaint.setColor(Color.rgb(247, 147, 30));
@@ -351,8 +364,12 @@ public class HistoryFragment extends Fragment {
         canvas.drawText("Total", 700, 1150 + (counter * 100), myPaint);
         myPaint.setTextAlign(Paint.Align.RIGHT);
         float costTotal = Float.parseFloat(comenzi.get(position).getCostTotalComanda()) - reducere;
-        canvas.drawText(String.valueOf(costTotal), pageWidth - 40, 1150 + (counter * 100), myPaint);
 
+        if (Float.parseFloat(comenzi.get(position).getCostTotalComanda()) > 5000) {
+            canvas.drawText(String.valueOf(costTotal), pageWidth - 40, 1150 + (counter * 100), myPaint);
+        } else {
+            canvas.drawText(String.valueOf(comenzi.get(position).getCostTotalComanda()), pageWidth - 40, 1150 + (counter * 100), myPaint);
+        }
 
         pdfDocument.finishPage(myPage1);
 

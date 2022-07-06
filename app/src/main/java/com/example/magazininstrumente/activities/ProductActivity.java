@@ -2,23 +2,12 @@ package com.example.magazininstrumente.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
-import android.annotation.SuppressLint;
-import android.app.FragmentManager;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
-import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.provider.MediaStore;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
@@ -30,7 +19,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.magazininstrumente.R;
-import com.example.magazininstrumente.fragments.ShoppingCartFragment;
 import com.example.magazininstrumente.model.Client;
 import com.example.magazininstrumente.model.Product;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -48,7 +36,6 @@ import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Iterator;
 
 public class ProductActivity extends AppCompatActivity {
     ImageView imageView;
@@ -74,17 +61,16 @@ public class ProductActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
     private AudioManager audioManager;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
 
-        storageReference = FirebaseStorage.getInstance().getReference("produse");
-        storageReferenceAudio = FirebaseStorage.getInstance().getReference("audio");
-        databaseReferenceProduse = FirebaseDatabase.getInstance().getReference("produse");
+        storageReference = FirebaseStorage.getInstance().getReference(getString(R.string.PRODUSE_REFERENCE));
+        storageReferenceAudio = FirebaseStorage.getInstance().getReference(getString(R.string.AUDIO_REFERENCE));
+        databaseReferenceProduse = FirebaseDatabase.getInstance().getReference(getString(R.string.PRODUSE_REFERENCE));
         databaseReferenceClienti = FirebaseDatabase.getInstance().getReference(getString(R.string.CLIENTI_REFERENCE));
-        databaseReferenceCos = FirebaseDatabase.getInstance().getReference("cumparaturi");
+        databaseReferenceCos = FirebaseDatabase.getInstance().getReference(getString(R.string.CUMPARATURI_REFERENCE));
 
         imageView = findViewById(R.id.choosePhoto);
         denumire = findViewById(R.id.denumireProd);
@@ -198,7 +184,6 @@ public class ProductActivity extends AppCompatActivity {
             }
         });
 
-
         try {
             mediaPlayer.setDataSource(getIntent().getExtras().getString("cantecProd"));
             mediaPlayer.prepare();
@@ -221,11 +206,7 @@ public class ProductActivity extends AppCompatActivity {
                     Drawable img = btnPlay.getContext().getResources().getDrawable( R.drawable.ic_baseline_play_arrow );
                     btnPlay.setCompoundDrawablesWithIntrinsicBounds( img, null, null, null);
                 }
-
             }
         });
-
     }
-
-
 }

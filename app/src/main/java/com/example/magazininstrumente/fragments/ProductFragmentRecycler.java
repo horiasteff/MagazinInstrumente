@@ -1,7 +1,6 @@
 package com.example.magazininstrumente.fragments;
 
 import android.annotation.SuppressLint;
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,7 +9,6 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +48,7 @@ public class ProductFragmentRecycler extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_product_recycler, container, false);
         tvCorzi = view.findViewById(R.id.tvFilterCorzi);
         tvClape = view.findViewById(R.id.tvFilterClape);
@@ -123,7 +121,6 @@ public class ProductFragmentRecycler extends Fragment {
                 });
             }
         });
-
 
         tvCorzi.setOnClickListener(new View.OnClickListener() {
             @Override

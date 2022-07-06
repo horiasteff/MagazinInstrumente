@@ -50,7 +50,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/llInfo"
         android:layout_width="match_parent"
@@ -67,7 +66,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user_imageview"
         app:layout_constraintVertical_bias="0.038">
-
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -122,7 +120,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-
             <ImageView
                 android:id="@+id/phone_imageview"
                 android:layout_width="wrap_content"
@@ -163,7 +160,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-
             <ImageView
                 android:id="@+id/address_imageview"
                 android:layout_width="wrap_content"
@@ -176,7 +172,6 @@
                 app:layout_constraintHorizontal_bias="0.126"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/email_imageview" />
-
 
             <TextView
                 android:id="@+id/clientAdresa"
@@ -203,7 +198,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
-
             <ImageView
                 android:id="@+id/buget_imageview"
                 android:layout_width="wrap_content"
@@ -216,7 +210,6 @@
                 app:layout_constraintHorizontal_bias="0.126"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/email_imageview" />
-
 
             <TextView
                 android:id="@+id/clientBuget"
@@ -232,7 +225,6 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
         </LinearLayout>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -265,7 +257,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -293,9 +284,7 @@
             app:layout_constraintRight_toRightOf="parent"
             android:visibility="invisible"/>
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

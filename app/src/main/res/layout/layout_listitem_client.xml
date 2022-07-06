@@ -39,7 +39,7 @@
                 android:autoSizeMinTextSize="8sp"
                 android:autoSizeTextType="uniform"
                 android:gravity="center"
-                android:text="Nume"
+                android:text="@string/NUME_CLIENT"
                 android:textStyle="bold"
                 android:textColor="#000"
                 android:textSize="37sp" />
@@ -57,7 +57,6 @@
                 android:autoSizeMinTextSize="8sp"
                 android:autoSizeTextType="uniform"
                 android:gravity="center"
-                android:text="Email"
                 android:textStyle="bold"
                 android:textColor="#000"
                 android:textSize="37sp"

@@ -29,6 +29,9 @@
     <string name="CLIENTI_REFERENCE">clienti</string>
     <string name="COMENZI_REFERENCE">comenzi</string>
     <string name="PRODUSE_REFERENCE">produse</string>
+    <string name="AUDIO_REFERENCE">audio</string>
+    <string name="CUMPARATURI_REFERENCE">cumparaturi</string>
+    <string name="CURIERI_REFERENCE">curieri</string>
     <string name="nu_ai_efectuat_nicio_comanda">NU AI EFECTUAT NICIO COMANDA</string>
     <string name="reseteaza_parola">Reseteaza parola</string>
     <string name="nu_exista_date_pentru_utilizatorul_acesta">Nu exista date pentru utilizatorul acesta</string>
@@ -47,5 +50,17 @@
     <string name="introdu_noul_buget">Introdu noul buget</string>
     <string name="ok">OK</string>
     <string name="PRET">Pret</string>
+    <string name="clape">Clape</string>
+    <string name="suflat">Suflat</string>
+    <string name="percuctie">Percuctie</string>
+    <string name="toate">Toate</string>
+    <string name="plaseaza_comanda">Plaseaza comanda</string>
+    <string name="ai_un_cont_autentifica_te">Ai un cont? Autentifică-te!</string>
+    <string name="asculta">Asculta</string>
+    <string name="adauga_in_cos">Adauga in cos</string>
+    <string name="nu_ai_un_cont_inregistreaza_te">Nu ai un cont? Inregistreaza-te!</string>
+    <string name="bun_venit_admin">BUN VENIT, ADMIN</string>
+    <string name="descopera_graficele_utilizatorilor">DESCOPERA GRAFICELE UTILIZATORILOR</string>
+    <string name="vezi_graficul_general">VEZI GRAFICUL GENERAL</string>
 
 </resources>

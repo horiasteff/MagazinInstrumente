@@ -2,17 +2,17 @@ package com.example.magazininstrumente.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.magazininstrumente.R;
+import com.example.magazininstrumente.activities.ProductActivity;
 
 import java.util.ArrayList;
 
@@ -21,14 +21,23 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
-
     private ArrayList<String> names;
-    private ArrayList<String> imageUrls ;
+    private ArrayList<String> imageUrls;
+    private ArrayList<String> prices;
+    private ArrayList<String> categories;
+    private ArrayList<String> descriptions;
+    private ArrayList<String> songUrls;
+    private ArrayList<String> quantites;
     private Context mContext;
 
-    public RecyclerViewAdapter(Context context, ArrayList<String> names, ArrayList<String> imageUrls) {
+    public RecyclerViewAdapter(Context context, ArrayList<String> names, ArrayList<String> imageUrls,ArrayList<String> prices,ArrayList<String> categories,ArrayList<String> descriptions,ArrayList<String> songUrls, ArrayList<String> quantites) {
         this.names = names;
         this.imageUrls = imageUrls;
+        this.prices = prices;
+        this.categories = categories;
+        this.descriptions = descriptions;
+        this.songUrls = songUrls;
+        this.quantites = quantites;
         mContext = context;
     }
 
@@ -51,7 +60,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext, names.get(position), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext, ProductActivity.class);
+                intent.putExtra("imageProd", imageUrls.get(position));
+                intent.putExtra("denumireProd", names.get(position));
+                intent.putExtra("pretProd", prices.get(position));
+                intent.putExtra("categorieProd", categories.get(position));
+                intent.putExtra("descriereProd", descriptions.get(position));
+                intent.putExtra("cantecProd",songUrls.get(position));
+                intent.putExtra("cantitateProd",quantites.get(position));
+                mContext.startActivity(intent);
+
             }
         });
     }

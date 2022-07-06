@@ -1,21 +1,15 @@
 package com.example.magazininstrumente.fragments;
 
-import static com.example.magazininstrumente.FirebaseService.CLIENT_REFERENCE;
-
-import android.app.AlertDialog;
-import android.app.DatePickerDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Switch;
@@ -38,7 +32,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -49,14 +42,11 @@ public class OrderFragment extends Fragment {
     private ListView shoppingCart;
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-    FirebaseService firebaseService = FirebaseService.getInstance();
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("clienti");
-    DatabaseReference databaseReferenceCos = FirebaseDatabase.getInstance().getReference("cumparaturi");
-    DatabaseReference databaseReferenceComanda = FirebaseDatabase.getInstance().getReference("comenzi");
-    DatabaseReference databaseReferenceCurier = FirebaseDatabase.getInstance().getReference("curieri");
-    ShoppingCartFragment shoppingCartFragment = new ShoppingCartFragment();
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(String.valueOf(R.string.CLIENTI_REFERENCE));
+    DatabaseReference databaseReferenceCos = FirebaseDatabase.getInstance().getReference(String.valueOf(R.string.CUMPARATURI_REFERENCE));
+    DatabaseReference databaseReferenceComanda = FirebaseDatabase.getInstance().getReference(String.valueOf(R.string.COMENZI_REFERENCE));
+    DatabaseReference databaseReferenceCurier = FirebaseDatabase.getInstance().getReference(String.valueOf(R.string.CURIERI_REFERENCE));
 
-    private DatePickerDialog datePickerDialog;
     private Random random = new Random();
     private EditText etNumeComanda;
     private EditText etPrenumeComanda;
@@ -65,8 +55,7 @@ public class OrderFragment extends Fragment {
     private EditText etTelefonComanda;
     private TextView tvCostTotal;
     private Button btnPlaseazaComanda;
-    private Button btnDatePicker;
-   // private Date currentTime;
+
     private String currentDate;
     private Switch switchPlata;
 
@@ -74,8 +63,7 @@ public class OrderFragment extends Fragment {
     private List<Product> produseComanda;
     private List<Courier> curieri;
     private Order order;
-    private TextView tvTotalPrice;
-    private String tipPlata;
+    private String tipPlata = "Cash";
     private Courier courier;
 
     private Client clientReferinta;
@@ -104,9 +92,9 @@ public class OrderFragment extends Fragment {
         databaseReferenceCurier.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot data : snapshot.getChildren()){
+                for (DataSnapshot data : snapshot.getChildren()) {
                     Courier courier = data.getValue(Courier.class);
-                    if(courier!=null){
+                    if (courier != null) {
                         curieri.add(courier);
                     }
                 }
@@ -121,28 +109,26 @@ public class OrderFragment extends Fragment {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot data : snapshot.getChildren()){
-                     clientReferinta = data.getValue(Client.class);
-                    if(clientReferinta.getEmail().equals(user.getEmail())){
+                for (DataSnapshot data : snapshot.getChildren()) {
+                    clientReferinta = data.getValue(Client.class);
+                    if (clientReferinta.getEmail().equals(user.getEmail())) {
                         idClient = clientReferinta.getId();
                         bugetReferinta = clientReferinta.getBuget();
                         databaseReferenceCos.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                for(DataSnapshot data : snapshot.getChildren()){
-                                    if(data.getKey().equals(idClient)){
-                                        for(DataSnapshot data2 : data.getChildren()){
+                                for (DataSnapshot data : snapshot.getChildren()) {
+                                    if (data.getKey().equals(idClient)) {
+                                        for (DataSnapshot data2 : data.getChildren()) {
                                             produseComanda.add(data2.getValue(Product.class));
                                         }
                                     }
                                 }
-
                                 int sum = 0;
-                                for(Product p : produseComanda){
-                                    sum+=Integer.parseInt(p.getPret());
+                                for (Product p : produseComanda) {
+                                    sum += Integer.parseInt(p.getPret());
                                 }
                                 tvCostTotal.setText(String.valueOf(sum));
-
                             }
 
                             @Override
@@ -154,10 +140,10 @@ public class OrderFragment extends Fragment {
                         switchPlata.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                             @Override
                             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                                if (isChecked){
+                                if (isChecked) {
                                     tipPlata = "Card";
 
-                                }else {
+                                } else {
                                     tipPlata = "Cash";
                                 }
 
@@ -168,27 +154,26 @@ public class OrderFragment extends Fragment {
                             @Override
                             public void onClick(View view) {
                                 courier = curieri.get(random.nextInt(4));
-                                    order = new Order(etNumeComanda.getText().toString(),etPrenumeComanda.getText().toString(),etEmailComanda.getText().toString(),etAdresaComanda.getText().toString(),etTelefonComanda.getText().toString(),tvCostTotal.getText().toString(), tipPlata, currentDate,produseComanda,courier);
-                                    String idComanda = databaseReferenceComanda.push().getKey();
-                                    if(tipPlata.equals("Card")){
-                                        if(Float.parseFloat(order.getCostTotalComanda()) < bugetReferinta){
-                                            float rez =  bugetReferinta - Float.parseFloat(order.getCostTotalComanda());
-                                            databaseReference.child(idClient).child("buget").setValue(rez);
-                                            databaseReferenceComanda.child(idClient).child(idComanda).setValue(order);
-                                            databaseReferenceCos.child(idClient).removeValue();
-                                            Toast.makeText(getContext(), "Comanda plasata cu succes!", Toast.LENGTH_LONG).show();
-                                        }else{
-                                            Toast.makeText(getContext(), "Fonduri insuficiente", Toast.LENGTH_LONG).show();
-                                        }
-                                    }else if (tipPlata.equals("Cash")){
+                                order = new Order(etNumeComanda.getText().toString(), etPrenumeComanda.getText().toString(), etEmailComanda.getText().toString(), etAdresaComanda.getText().toString(), etTelefonComanda.getText().toString(), tvCostTotal.getText().toString(), tipPlata, currentDate, produseComanda, courier);
+                                String idComanda = databaseReferenceComanda.push().getKey();
+                                if (tipPlata.equals("Card")) {
+                                    if (Float.parseFloat(order.getCostTotalComanda()) < bugetReferinta) {
+                                        float rez = bugetReferinta - Float.parseFloat(order.getCostTotalComanda());
+                                        databaseReference.child(idClient).child("buget").setValue(rez);
                                         databaseReferenceComanda.child(idClient).child(idComanda).setValue(order);
                                         databaseReferenceCos.child(idClient).removeValue();
                                         Toast.makeText(getContext(), "Comanda plasata cu succes!", Toast.LENGTH_LONG).show();
+                                    } else {
+                                        Toast.makeText(getContext(), "Fonduri insuficiente", Toast.LENGTH_LONG).show();
                                     }
+                                } else if (tipPlata.equals("Cash")) {
+                                    databaseReferenceComanda.child(idClient).child(idComanda).setValue(order);
+                                    databaseReferenceCos.child(idClient).removeValue();
+                                    Toast.makeText(getContext(), "Comanda plasata cu succes!", Toast.LENGTH_LONG).show();
+                                }
                             }
                         });
                     }
-//
                 }
             }
 

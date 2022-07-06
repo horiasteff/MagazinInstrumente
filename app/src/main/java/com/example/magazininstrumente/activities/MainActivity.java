@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText etEmail;
     private EditText etPassword;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
                 login();
             }
         });
-
     }
 
     private void login() {
@@ -67,14 +65,13 @@ public class MainActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
-
+                        Intent intent;
                         if(email.equals("admin@gmail.com")){
-                            Intent intent = new Intent(MainActivity.this, AdminActivity.class);
-                            startActivity(intent);
+                            intent = new Intent(MainActivity.this, AdminActivity.class);
                         }else{
-                            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                            MainActivity.this.startActivity(intent);
+                            intent = new Intent(MainActivity.this, HomeActivity.class);
                         }
+                        startActivity(intent);
                     }else{
                         Toast.makeText(getApplicationContext(), "Login failed", Toast.LENGTH_LONG).show();
                         etPassword.setText(null);

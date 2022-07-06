@@ -6,7 +6,6 @@
     android:orientation="vertical"
     android:background="@color/white">
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="130dp"
@@ -34,7 +33,6 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="3dp"
                 android:layout_marginBottom="25dp" />
-
 
         </RelativeLayout>
 
@@ -69,7 +67,7 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:paddingBottom="5dp"
-                android:text="Nume comanda"
+                android:text="@string/NUME_CLIENT"
                 android:textColor="@color/black"
                 android:textSize="25dp"
                 android:textStyle="bold" />
@@ -79,8 +77,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ADRESA"/>
-
-
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -105,9 +101,6 @@
 
             </LinearLayout>
 
-
-
-
         </LinearLayout>
 
         <TextView
@@ -119,9 +112,8 @@
             android:layout_marginRight="20dp"
             android:padding="15dp"
             android:paddingTop="20dp"
-            android:text="RON"
+            android:text="@string/ron"
             android:textColor="@color/green" />
-
 
         <TextView
             android:id="@+id/orderPrice"
