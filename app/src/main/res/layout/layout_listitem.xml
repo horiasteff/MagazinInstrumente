@@ -19,7 +19,6 @@
             android:layout_height="match_parent"
             android:background="@drawable/background_product">
 
-
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="90dp"
                 android:layout_height="90dp"

@@ -132,26 +132,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-"
-
-
-<!--    <Button-->
-<!--        android:id="@+id/btnChartGeneral"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="@drawable/esc_button"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/clientsListView"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        android:text="@string/grafic_general"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--    <ListView-->
-<!--        android:id="@+id/clientsListView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_marginTop="120dp"-->
-<!--        >-->
-<!--    </ListView>-->
-
 </androidx.constraintlayout.widget.ConstraintLayout>
