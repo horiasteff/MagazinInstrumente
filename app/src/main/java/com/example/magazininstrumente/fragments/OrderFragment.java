@@ -85,7 +85,7 @@ public class OrderFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_comanda, container, false);
         View view2 = inflater.inflate(R.layout.fragment_shopping_cart, container, false);
         shoppingCart = view2.findViewById(R.id.shoppingCartListView);
@@ -100,9 +100,6 @@ public class OrderFragment extends Fragment {
         currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
         produseComanda = new ArrayList<>();
         curieri = new ArrayList<>();
-
-        //firebaseService.notificareEventListenerProduseCart(modificareDateCallback());
-
 
         databaseReferenceCurier.addValueEventListener(new ValueEventListener() {
             @Override
@@ -188,12 +185,6 @@ public class OrderFragment extends Fragment {
                                         databaseReferenceCos.child(idClient).removeValue();
                                         Toast.makeText(getContext(), "Comanda plasata cu succes!", Toast.LENGTH_LONG).show();
                                     }
-
-
-                                //shoppingCartFragment.notificareListViewProductAdapter();
-//                                produseComanda.clear();
-//                                ProductAdapter adapter = new ProductAdapter(shoppingCart.getContext(), R.layout.product_list_item, produseComanda,getLayoutInflater());
-//                                shoppingCart.setAdapter(adapter);
                             }
                         });
                     }

@@ -75,11 +75,6 @@ public class GeneralChartsActivity extends AppCompatActivity {
         comenziLunare.put("5", 0);
         comenziLunare.put("6", 0);
         comenziLunare.put("7", 0);
-//        comenziLunare.put("8", 0);
-//        comenziLunare.put("9", 0);
-//        comenziLunare.put("10", 0);
-//        comenziLunare.put("11", 0);
-//        comenziLunare.put("12", 0);
 
         pieChart = findViewById(R.id.generalPie);
         barChart = findViewById(R.id.generalBarChart);
@@ -171,14 +166,6 @@ public class GeneralChartsActivity extends AppCompatActivity {
                 pieChart.setData(pieData);
                 pieChart.animateY(2000);
                 pieChart.invalidate();
-
-//                for (Map.Entry<String,Integer> entry : categorii.entrySet())
-//                   Log.e("mapul",String.valueOf("Key = " + entry.getKey() +
-//                            ", Value = " + entry.getValue()));
-
-
-
-
             }
 
             @Override
@@ -186,11 +173,5 @@ public class GeneralChartsActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
     }
-
-
 }

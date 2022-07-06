@@ -9,10 +9,13 @@
         <entry key="app/src/main/res/drawable/background_product_detailed.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/bottom_selection_bar.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/button_background.xml" value="0.169" />
+        <entry key="app/src/main/res/drawable/card_foregroung.xml" value="0.107" />
         <entry key="app/src/main/res/drawable/choose.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/edittext_backgroung.xml" value="0.1775" />
         <entry key="app/src/main/res/drawable/esc_button.xml" value="0.173" />
         <entry key="app/src/main/res/drawable/grey_circular_border.xml" value="0.198" />
+        <entry key="app/src/main/res/drawable/ic_baseline_attach_money_24.xml" value="0.106" />
+        <entry key="app/src/main/res/drawable/ic_baseline_check_24.xml" value="0.106" />
         <entry key="app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_history_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.207" />

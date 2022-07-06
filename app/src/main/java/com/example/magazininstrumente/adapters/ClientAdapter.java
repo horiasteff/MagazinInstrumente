@@ -51,16 +51,11 @@ public class ClientAdapter extends ArrayAdapter<Client> {
         Client client = clienti.get(position);
         if(client!= null){
             adaugareNume(view, client.getNume());
-            //adaugarePrenume(view, client.getPrenume());
             adaugareEmail(view, client.getEmail());
-            //adaugareParola(view, client.getParola());
-            //adaugareTelefon(view, client.getTelefon());
-            //adaugareAdresa(view, client.getAdresa());
             client.setBuget(0);
         }
         return view;
     }
-
 
     private void adaugareNume(View view, String nume){
         TextView textView = view.findViewById(R.id.clientName);
@@ -73,18 +68,6 @@ public class ClientAdapter extends ArrayAdapter<Client> {
     private void adaugareEmail(View view, String email){
         TextView textView = view.findViewById(R.id.clientEmailChart);
         populareContinut(textView,email);
-    }
-    private void adaugareParola(View view, String parola){
-        TextView textView = view.findViewById(R.id.tv_row_parola);
-        populareContinut(textView,parola);
-    }
-    private void adaugareTelefon(View view, String telefon){
-        TextView textView = view.findViewById(R.id.tv_row_telefon);
-        populareContinut(textView,telefon);
-    }
-    private void adaugareAdresa(View view, String adresa){
-        TextView textView = view.findViewById(R.id.tv_row_adresa);
-        populareContinut(textView,adresa);
     }
 
      @SuppressLint("SetTextI18n")

@@ -45,7 +45,6 @@ public class InfoFragment extends Fragment {
     private FirebaseAuth auth;
     private static final String CLIENT_REFERENCE = "clienti";
     private List<Client> clienti;
-    private List<Client> clienti2;
     private TextView tvNume;
     private TextView tvEmail;
     private TextView tvTelefon;
@@ -65,9 +64,6 @@ public class InfoFragment extends Fragment {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-
-
-
         databaseReference = FirebaseDatabase.getInstance().getReference(CLIENT_REFERENCE);
         tvNume = view.findViewById(R.id.clientNume);
         tvEmail = view.findViewById(R.id.clientEmail);
@@ -80,8 +76,6 @@ public class InfoFragment extends Fragment {
         btnResetBuget = view.findViewById(R.id.btnReteazaBuget);
         btnOkBuget = view.findViewById(R.id.btnOkBuget);
         auth = FirebaseAuth.getInstance();
-
-
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @SuppressLint("SetTextI18n")

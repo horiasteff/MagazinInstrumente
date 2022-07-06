@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -195,8 +194,6 @@ public class ClientChartsActivity extends AppCompatActivity {
                     pieChart.animateY(2000);
                     pieChart.invalidate();
                 }
-
-
             }
 
             @Override

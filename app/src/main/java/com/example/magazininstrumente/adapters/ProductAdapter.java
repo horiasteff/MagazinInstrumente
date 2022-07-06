@@ -32,13 +32,10 @@ import java.util.List;
 
 public class ProductAdapter  extends ArrayAdapter<Product> {
 
-
     private Context context;
     private LayoutInflater inflater;
     private int resource;
     private List<Product> products;
-
-
 
     public ProductAdapter(@NonNull Context context, int resource, List<Product> products, LayoutInflater inflater) {
         super(context, resource, products);
@@ -88,12 +85,9 @@ public class ProductAdapter  extends ArrayAdapter<Product> {
                 }
             });
 
-
-
         } catch (IOException exception) {
             exception.printStackTrace();
         }
-
     }
 
 
@@ -120,11 +114,8 @@ public class ProductAdapter  extends ArrayAdapter<Product> {
     private void populareContinut(TextView textView, String valoare){
         if(valoare!=null && !valoare.isEmpty()){
             textView.setText(valoare+ " ");
-
         }else{
-            textView.setText("-");
+            textView.setText(R.string.none);
         }
     }
-
-
 }

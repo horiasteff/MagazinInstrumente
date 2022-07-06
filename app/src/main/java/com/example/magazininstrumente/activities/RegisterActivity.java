@@ -29,7 +29,6 @@ import java.util.List;
 public class RegisterActivity extends AppCompatActivity {
     private static final String CLIENT_REFERENCE = "clienti";
     private Button btnSave;
-    //private ListView lvClienti;
 
     private EditText etNume;
     private EditText etPrenume;
@@ -56,7 +55,6 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         btnSave = findViewById(R.id.btnSalvareClient);
-
         etNume = findViewById(R.id.etNume);
         etPrenume = findViewById(R.id.etPrenume);
         etEmail = findViewById(R.id.etEmail);
@@ -66,12 +64,9 @@ public class RegisterActivity extends AppCompatActivity {
         tvLogin = findViewById(R.id.tvLogin);
         tvLogin2 = findViewById(R.id.tvLogin2);
 
-        //lvClienti = findViewById(R.id.main_lv_clienti);
-        //adaugareListViewClientAdapter();
         btnSave.setOnClickListener(salvareClient());
 
         firebaseService = FirebaseService.getInstance();
-        //firebaseServiceClienti.notificareEventListener(modificareDateCallBack());
         databaseReference =  FirebaseDatabase.getInstance().getReference(CLIENT_REFERENCE);
 
         tvLogin.setOnClickListener(clickLogin());
@@ -95,7 +90,6 @@ public class RegisterActivity extends AppCompatActivity {
                 if(rezultat != null){
                     clienti.clear();
                     clienti.addAll(rezultat);
-                    //notificareListViewClientAdapter();
                     curatareFields();
                 }
             }
@@ -155,7 +149,6 @@ public class RegisterActivity extends AppCompatActivity {
                                     }}
                             });
                         }
-
                     }
                 }
             }
@@ -181,17 +174,4 @@ public class RegisterActivity extends AppCompatActivity {
         client.setAdresa(etAdresa.getText().toString());
         return client;
     }
-
-//    private void notificareListViewClientAdapter(){
-//        ClientAdapter adapter = (ClientAdapter) lvClienti.getAdapter();
-//        adapter.notifyDataSetChanged();
-//    }
-//    private void adaugareListViewClientAdapter() {
-//        ClientAdapter adapter = new ClientAdapter(getApplicationContext(),
-//                R.layout.lv_row_register, clienti, getLayoutInflater());
-//        lvClienti.setAdapter(adapter);
-//    }
-
-
-
 }

@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import com.example.magazininstrumente.fragments.HistoryFragment;
 import com.example.magazininstrumente.fragments.InfoFragment;
 import com.example.magazininstrumente.fragments.ProductFragmentRecycler;
-import com.example.magazininstrumente.fragments.ProductsFragment;
 import com.example.magazininstrumente.R;
 import com.example.magazininstrumente.fragments.ShoppingCartFragment;
 
@@ -23,8 +22,6 @@ public class HomeActivity extends AppCompatActivity {
     private ImageView imgShoppingCart;
     private ImageView imgHistory;
     private Button btnComanda;
-
-    private ProductsFragment productsFragment;
     private InfoFragment infoFragment;
     private ShoppingCartFragment shoppingCartFragment;
     private HistoryFragment historyFragment;
@@ -40,13 +37,11 @@ public class HomeActivity extends AppCompatActivity {
         imgHistory = findViewById(R.id.imgHistory);
         btnComanda = findViewById(R.id.btnComanda);
 
-        productsFragment = new ProductsFragment();
         infoFragment = new InfoFragment();
         shoppingCartFragment= new ShoppingCartFragment();
         historyFragment = new HistoryFragment();
         productFragmentRecycler = new ProductFragmentRecycler();
-       setFragment(productsFragment);
-        //setFragment(productFragmentRecycler);
+        setFragment(productFragmentRecycler);
 
         imgPersonalInfo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +52,7 @@ public class HomeActivity extends AppCompatActivity {
         imgHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setFragment(productsFragment);
+                setFragment(productFragmentRecycler);
             }
         });
         imgShoppingCart.setOnClickListener(new View.OnClickListener() {

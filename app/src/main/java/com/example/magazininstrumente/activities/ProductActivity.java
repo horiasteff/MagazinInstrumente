@@ -80,7 +80,6 @@ public class ProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
 
-
         storageReference = FirebaseStorage.getInstance().getReference("produse");
         storageReferenceAudio = FirebaseStorage.getInstance().getReference("audio");
         databaseReferenceProduse = FirebaseDatabase.getInstance().getReference("produse");
@@ -131,10 +130,6 @@ public class ProductActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        //StorageReference storageReference2 = FirebaseStorage.getInstance().getReferenceFromUrl(getIntent().getExtras().getString("cantecProd"));
-
-
-
         databaseReferenceClienti.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -153,7 +148,6 @@ public class ProductActivity extends AppCompatActivity {
 
             }
         });
-
 
         btnCos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -183,7 +177,6 @@ public class ProductActivity extends AppCompatActivity {
             }
         });
         btnCos.setMovementMethod(new ScrollingMovementMethod());
-
 
         btnPlus.setOnClickListener(new View.OnClickListener() {
             @Override

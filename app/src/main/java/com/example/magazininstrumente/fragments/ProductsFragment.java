@@ -54,8 +54,6 @@ private Button btnFilterEsc;
         View view = inflater.inflate(R.layout.fragment_products, container, false);
         View view2= inflater.inflate(R.layout.product_list_item, container, false);
         TextView tv = view.findViewById(R.id.productsFrame);
-
-        //Button btnAdd = view2.findViewById(R.id.btnAdd);
         searchView = view.findViewById(R.id.searchViewList);
         btnFilterCorzi = view.findViewById(R.id.btnFilterCorzi);
         btnFilterClape = view.findViewById(R.id.btnFilterClape);

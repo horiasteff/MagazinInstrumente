@@ -92,8 +92,6 @@ public class HistoryFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_history, container, false);
         FirebaseService firebaseService = FirebaseService.getInstance();
 
-        //firebaseService.notificareEventListenerOrder(modificareDateCallback());
-
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference(CLIENT_REFERENCE);
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.image_invoice);

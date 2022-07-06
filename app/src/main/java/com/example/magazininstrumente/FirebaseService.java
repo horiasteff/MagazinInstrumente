@@ -98,7 +98,6 @@ public class FirebaseService {
 
     }
 
-
     public void notificareEventListenerProduseCart(Callback<List<Product>> callback){
         List<Product> produseTotale = new ArrayList<>();
         List<Client> clientiTotali = new ArrayList<>();
@@ -170,7 +169,6 @@ public class FirebaseService {
         });
     }
 
-
     public void stergereEventListenerProduseCart(Callback<List<Product>> callback,Product produsSabon){
         List<Product> produseTotale = new ArrayList<>();
         List<Client> clientiTotali = new ArrayList<>();
@@ -209,8 +207,6 @@ public class FirebaseService {
             }
         });
 
-
-
         databaseReferenceShop.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -246,7 +242,6 @@ public class FirebaseService {
         });
     }
 
-
     public void notificareEventListenerProduseFiltered(Callback<List<Product>> callback, String s){
         databaseReferenceProducts.addValueEventListener(new ValueEventListener() {
             @Override
@@ -254,7 +249,7 @@ public class FirebaseService {
                 List<Product> produse = new ArrayList<>();
                 for(DataSnapshot data : snapshot.getChildren()){
                     Product product = data.getValue(Product.class);
-                    if(product!=null && product.getDenumire().toLowerCase(Locale.ROOT).contains(s.toLowerCase(Locale.ROOT))){
+                    if(product!=null && product.getDenumire().contains(s.toLowerCase(Locale.ROOT))){
                         produse.add(product);
                     }
                 }
@@ -306,9 +301,7 @@ public class FirebaseService {
                         }
                     }
                 }
-
                 callback.rulareRezultatPeUI(comenzi);
-
             }
 
             @Override
@@ -317,7 +310,6 @@ public class FirebaseService {
             }
         });
     }
-
 
     public void notificareEventListenerProduseFilteredButton(Callback<List<Product>> callback, String category){
         databaseReferenceProducts.addValueEventListener(new ValueEventListener() {

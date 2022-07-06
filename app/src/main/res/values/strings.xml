@@ -46,5 +46,6 @@
     <string name="seteaza_buget">Reseteaza buget</string>
     <string name="introdu_noul_buget">Introdu noul buget</string>
     <string name="ok">OK</string>
+    <string name="PRET">Pret</string>
 
 </resources>

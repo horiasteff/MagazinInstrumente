@@ -34,7 +34,6 @@ import java.util.List;
 public class AdminActivity extends AppCompatActivity {
 
     private  List<Client> clienti = new ArrayList<>();
-    FirebaseService firebaseService = FirebaseService.getInstance();
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(CLIENT_REFERENCE);
     private Button btnGeneralChart;
     private ArrayList<String> mNames = new ArrayList<>();

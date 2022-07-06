@@ -68,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
 
-                        //deschid pagina principala
                         if(email.equals("admin@gmail.com")){
                             Intent intent = new Intent(MainActivity.this, AdminActivity.class);
                             startActivity(intent);

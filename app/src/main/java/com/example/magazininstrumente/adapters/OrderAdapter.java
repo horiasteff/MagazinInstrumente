@@ -40,8 +40,6 @@ public class OrderAdapter extends ArrayAdapter<Order> {
         Order order = comenzi.get(position);
         if(order!=null){
             adaugareNumeComanda(view, order.getNumeComanda());
-            //adaugarePrenumeComanda(view, order.getPrenumeComanda());
-            //adaugareEmailComanda(view, order.getEmailComanda());
             adaugareAdresaComanda(view, order.getAdresaComanda());
             adaugareNumarProduse(view, order.getProduse());
             adaugareCostComanda(view, order.getCostTotalComanda());
@@ -61,21 +59,9 @@ public class OrderAdapter extends ArrayAdapter<Order> {
         TextView textView = view.findViewById(R.id.orderName);
         populareContinut(textView,nume);
     }
-    private void adaugarePrenumeComanda(View view, String prenume){
-        TextView textView = view.findViewById(R.id.tv_row_prenume_comanda);
-        populareContinut(textView,prenume);
-    }
-    private void adaugareEmailComanda(View view, String email){
-        TextView textView = view.findViewById(R.id.tv_row_email_comanda);
-        populareContinut(textView,email);
-    }
     private void adaugareAdresaComanda(View view, String adresa){
         TextView textView = view.findViewById(R.id.orderAdress);
         populareContinut(textView,adresa);
-    }
-    private void adaugareTelefonComanda(View view, String telefon){
-        TextView textView = view.findViewById(R.id.tv_row_telefon_comanda);
-        populareContinut(textView,telefon);
     }
     private void adaugareCostComanda(View view, String price){
         TextView textView = view.findViewById(R.id.orderPrice);
@@ -87,7 +73,7 @@ public class OrderAdapter extends ArrayAdapter<Order> {
             textView.setText(valoare+ " ");
 
         }else{
-            textView.setText("-");
+            textView.setText(R.string.none);
         }
     }
 
