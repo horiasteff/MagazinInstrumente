@@ -76,5 +76,4 @@ public class OrderAdapter extends ArrayAdapter<Order> {
             textView.setText(R.string.none);
         }
     }
-
 }

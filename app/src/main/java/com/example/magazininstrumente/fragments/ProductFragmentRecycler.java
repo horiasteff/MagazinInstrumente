@@ -58,7 +58,7 @@ public class ProductFragmentRecycler extends Fragment {
         btnAll = view.findViewById(R.id.btnAll);
         databaseReferenceProduse = FirebaseDatabase.getInstance().getReference(getString(R.string.PRODUSE_REFERENCE));
 
-        LinearLayoutManager layoutManager = new GridLayoutManager(getContext(), 2,LinearLayoutManager.VERTICAL, false);
+        LinearLayoutManager layoutManager = new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL, false);
         RecyclerView recyclerView = view.findViewById(R.id.recyclerViewProducts);
         recyclerView.setLayoutManager(layoutManager);
         final RecyclerViewProductAdapter[] adapter = new RecyclerViewProductAdapter[1];
@@ -67,9 +67,9 @@ public class ProductFragmentRecycler extends Fragment {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot data : snapshot.getChildren()){
+                for (DataSnapshot data : snapshot.getChildren()) {
                     Product product = data.getValue(Product.class);
-                    if(product!=null){
+                    if (product != null) {
                         mNames.add(product.getDenumire());
                         mImageUrls.add(product.getUrlImagine());
                         mCategories.add(product.getCategorie());
@@ -80,7 +80,7 @@ public class ProductFragmentRecycler extends Fragment {
                     }
                 }
 
-                adapter[0] = new RecyclerViewProductAdapter(getContext(), mNames, mImageUrls, mCategories,mPrices,mDescriptions,mQuantities,mSongUrls);
+                adapter[0] = new RecyclerViewProductAdapter(getContext(), mNames, mImageUrls, mCategories, mPrices, mDescriptions, mQuantities, mSongUrls);
                 recyclerView.setAdapter(adapter[0]);
 
             }
@@ -94,14 +94,14 @@ public class ProductFragmentRecycler extends Fragment {
         btnAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cleanArrays(mNames,mImageUrls,mCategories,mQuantities,mDescriptions,mSongUrls,mPrices);
+                cleanArrays(mNames, mImageUrls, mCategories, mQuantities, mDescriptions, mSongUrls, mPrices);
 
                 databaseReferenceProduse.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for(DataSnapshot data : snapshot.getChildren()){
+                        for (DataSnapshot data : snapshot.getChildren()) {
                             Product product = data.getValue(Product.class);
-                            if(product!=null){
+                            if (product != null) {
                                 mNames.add(product.getDenumire());
                                 mImageUrls.add(product.getUrlImagine());
                                 mCategories.add(product.getCategorie());
@@ -125,14 +125,14 @@ public class ProductFragmentRecycler extends Fragment {
         tvCorzi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cleanArrays(mNames,mImageUrls,mCategories,mQuantities,mDescriptions,mSongUrls,mPrices);
+                cleanArrays(mNames, mImageUrls, mCategories, mQuantities, mDescriptions, mSongUrls, mPrices);
 
                 databaseReferenceProduse.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for(DataSnapshot data : snapshot.getChildren()){
+                        for (DataSnapshot data : snapshot.getChildren()) {
                             Product product = data.getValue(Product.class);
-                            if(product.getCategorie().equals("Corzi")){
+                            if (product.getCategorie().equals("Corzi")) {
                                 mNames.add(product.getDenumire());
                                 mImageUrls.add(product.getUrlImagine());
                                 mCategories.add(product.getCategorie());
@@ -156,14 +156,14 @@ public class ProductFragmentRecycler extends Fragment {
         tvClape.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cleanArrays(mNames,mImageUrls,mCategories,mQuantities,mDescriptions,mSongUrls,mPrices);
+                cleanArrays(mNames, mImageUrls, mCategories, mQuantities, mDescriptions, mSongUrls, mPrices);
 
                 databaseReferenceProduse.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for(DataSnapshot data : snapshot.getChildren()){
+                        for (DataSnapshot data : snapshot.getChildren()) {
                             Product product = data.getValue(Product.class);
-                            if(product.getCategorie().equals("Clape")){
+                            if (product.getCategorie().equals("Clape")) {
                                 mNames.add(product.getDenumire());
                                 mImageUrls.add(product.getUrlImagine());
                                 mCategories.add(product.getCategorie());
@@ -187,14 +187,14 @@ public class ProductFragmentRecycler extends Fragment {
         tvSuflat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cleanArrays(mNames,mImageUrls,mCategories,mQuantities,mDescriptions,mSongUrls,mPrices);
+                cleanArrays(mNames, mImageUrls, mCategories, mQuantities, mDescriptions, mSongUrls, mPrices);
 
                 databaseReferenceProduse.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for(DataSnapshot data : snapshot.getChildren()){
+                        for (DataSnapshot data : snapshot.getChildren()) {
                             Product product = data.getValue(Product.class);
-                            if(product.getCategorie().equals("Suflat")){
+                            if (product.getCategorie().equals("Suflat")) {
                                 mNames.add(product.getDenumire());
                                 mImageUrls.add(product.getUrlImagine());
                                 mCategories.add(product.getCategorie());
@@ -219,14 +219,14 @@ public class ProductFragmentRecycler extends Fragment {
             @Override
             public void onClick(View view) {
 
-                cleanArrays(mNames,mImageUrls,mCategories,mQuantities,mDescriptions,mSongUrls,mPrices);
+                cleanArrays(mNames, mImageUrls, mCategories, mQuantities, mDescriptions, mSongUrls, mPrices);
 
                 databaseReferenceProduse.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for(DataSnapshot data : snapshot.getChildren()){
+                        for (DataSnapshot data : snapshot.getChildren()) {
                             Product product = data.getValue(Product.class);
-                            if(product.getCategorie().equals("Percutie")){
+                            if (product.getCategorie().equals("Percutie")) {
                                 mNames.add(product.getDenumire());
                                 mImageUrls.add(product.getUrlImagine());
                                 mCategories.add(product.getCategorie());
@@ -256,13 +256,13 @@ public class ProductFragmentRecycler extends Fragment {
             @Override
             public boolean onQueryTextChange(String s) {
 
-                cleanArrays(mNames,mImageUrls,mCategories,mQuantities,mDescriptions,mSongUrls,mPrices);
+                cleanArrays(mNames, mImageUrls, mCategories, mQuantities, mDescriptions, mSongUrls, mPrices);
                 databaseReferenceProduse.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for(DataSnapshot data : snapshot.getChildren()){
+                        for (DataSnapshot data : snapshot.getChildren()) {
                             Product product = data.getValue(Product.class);
-                            if(product.getDenumire().toLowerCase(Locale.ROOT).contains(s.toLowerCase(Locale.ROOT))){
+                            if (product.getDenumire().toLowerCase(Locale.ROOT).contains(s.toLowerCase(Locale.ROOT))) {
                                 mNames.add(product.getDenumire());
                                 mImageUrls.add(product.getUrlImagine());
                                 mCategories.add(product.getCategorie());
@@ -283,11 +283,10 @@ public class ProductFragmentRecycler extends Fragment {
                 return false;
             }
         });
-
-        return  view;
+        return view;
     }
 
-    private void cleanArrays(ArrayList<String> names,ArrayList<String> images,ArrayList<String> categories,ArrayList<String> quantites,ArrayList<String> descriptions,ArrayList<String> songs,ArrayList<String> prices ){
+    private void cleanArrays(ArrayList<String> names, ArrayList<String> images, ArrayList<String> categories, ArrayList<String> quantites, ArrayList<String> descriptions, ArrayList<String> songs, ArrayList<String> prices) {
         names.clear();
         images.clear();
         categories.clear();

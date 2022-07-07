@@ -122,7 +122,6 @@ public class RegisterActivity extends AppCompatActivity {
                                         databaseReference.child(client.getId()).setValue(client);
                                         curatareFields();
                                         Toast.makeText(RegisterActivity.this, "Register succeeded", Toast.LENGTH_LONG).show();
-
                                     } else {
                                         Toast.makeText(RegisterActivity.this, "Register failed", Toast.LENGTH_LONG).show();
                                     }

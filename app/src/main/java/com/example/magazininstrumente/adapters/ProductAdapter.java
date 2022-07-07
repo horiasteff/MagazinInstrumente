@@ -89,7 +89,6 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         }
     }
 
-
     private void adaugareCategorie(View view, String categorie) {
         TextView textView = view.findViewById(R.id.productCategory);
         populareContinut(textView,categorie);

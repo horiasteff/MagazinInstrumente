@@ -84,7 +84,6 @@ public class ClientChartsActivity extends AppCompatActivity {
         tvNicioComanda = findViewById(R.id.nicioComandaSpecificText);
         imgSad = findViewById(R.id.imgSadSpecific);
 
-
         databaseReferenceClienti.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -93,7 +92,6 @@ public class ClientChartsActivity extends AppCompatActivity {
                     if (clientTemp != null) {
                         if (clientTemp.getEmail().equals(emailClient)){
                             idClient = clientTemp.getId();
-
                         }
                     }
                 }
@@ -129,7 +127,6 @@ public class ClientChartsActivity extends AppCompatActivity {
                             }
                         }
                     }
-
                 }
                 List<Product> produseTemp = new ArrayList<>();
                 for (Order o: comenzi) {
@@ -201,8 +198,5 @@ public class ClientChartsActivity extends AppCompatActivity {
 
             }
         });
-
-
-
     }
 }

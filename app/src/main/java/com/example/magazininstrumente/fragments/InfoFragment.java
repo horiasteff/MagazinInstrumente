@@ -99,7 +99,6 @@ public class InfoFragment extends Fragment {
                 auth.sendPasswordResetEmail(user.getEmail()).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-
                         if (task.isSuccessful()) {
                             Toast.makeText(getActivity(), "Verifica emailul pentru a reseta parola", Toast.LENGTH_SHORT).show();
                         } else {

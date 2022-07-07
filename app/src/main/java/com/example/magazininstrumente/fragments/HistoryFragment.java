@@ -22,7 +22,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Environment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -156,7 +155,6 @@ public class HistoryFragment extends Fragment {
                             }
                         }
                     }
-
                 }
                 List<Product> produseTemp = new ArrayList<>();
                 for (Order o : comenzi) {
@@ -227,7 +225,6 @@ public class HistoryFragment extends Fragment {
         adapter.notifyDataSetChanged();
     }
 
-
     private Callback<List<Order>> modificareDateCallback() {
         return new Callback<List<Order>>() {
             @Override
@@ -268,10 +265,8 @@ public class HistoryFragment extends Fragment {
         titlePaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
         titlePaint.setTextSize(70);
 
-
         myPaint.setColor(Color.rgb(0, 113, 188));
         myPaint.setTextSize(30f);
-
 
         myPaint.setTextAlign(Paint.Align.RIGHT);
         canvas.drawText("Telefon: 0724111222", 1160, 40, myPaint);
@@ -287,12 +282,10 @@ public class HistoryFragment extends Fragment {
         canvas.drawText("Nume client: " + orders.get(position).getNumeComanda(), 20, 590, myPaint);
         canvas.drawText("Telefon: " + orders.get(position).getTelefonComanda(), 20, 640, myPaint);
 
-
         myPaint.setTextAlign(Paint.Align.RIGHT);
         canvas.drawText("Factura nr. " + rand.nextInt(100000), pageWidth - 20, 590, myPaint);
         canvas.drawText("Data: " + orders.get(position).getDataComanda(), pageWidth - 20, 640, myPaint);
         canvas.drawText("Curier: " + orders.get(position).getCourier().getNumeCurier(), pageWidth - 20, 690, myPaint);
-
 
         myPaint.setStyle(Paint.Style.STROKE);
         myPaint.setStrokeWidth(2);
@@ -331,7 +324,7 @@ public class HistoryFragment extends Fragment {
 
         myPaint.setTextAlign(Paint.Align.LEFT);
 
-        canvas.drawLine(680, 1200, pageWidth - 20, 1200, myPaint);
+        canvas.drawLine(680, 850 + (counter * 100), pageWidth - 20,  850 + (counter * 100), myPaint);
         canvas.drawText("Subtotal", 700, 950 + (counter * 100), myPaint);
         canvas.drawText(":", 900, 950 + (counter * 100), myPaint);
         myPaint.setTextAlign(Paint.Align.RIGHT);

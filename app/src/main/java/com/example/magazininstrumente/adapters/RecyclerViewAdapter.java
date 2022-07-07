@@ -69,7 +69,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 intent.putExtra("cantecProd",songUrls.get(position));
                 intent.putExtra("cantitateProd",quantites.get(position));
                 mContext.startActivity(intent);
-
             }
         });
     }

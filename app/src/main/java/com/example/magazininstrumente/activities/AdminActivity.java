@@ -81,5 +81,4 @@ public class AdminActivity extends AppCompatActivity {
             }
         });
     }
-
 }
