@@ -39,9 +39,9 @@ public class ShoppingCartFragment extends Fragment {
     private ListView shoppingCart;
     private List<Product> produse = new ArrayList<>();
     FirebaseService firebaseService = FirebaseService.getInstance();
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(getString(R.string.CLIENTI_REFERENCE));
-    DatabaseReference databaseReferenceCos = FirebaseDatabase.getInstance().getReference(getString(R.string.CUMPARATURI_REFERENCE));
-    DatabaseReference databaseReferenceProduse = FirebaseDatabase.getInstance().getReference(getString(R.string.PRODUSE_REFERENCE));
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("clienti");
+    DatabaseReference databaseReferenceCos = FirebaseDatabase.getInstance().getReference("cumparaturi");
+    DatabaseReference databaseReferenceProduse = FirebaseDatabase.getInstance().getReference("produse");
     private TextView tvTotalPrice;
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private String idClient;

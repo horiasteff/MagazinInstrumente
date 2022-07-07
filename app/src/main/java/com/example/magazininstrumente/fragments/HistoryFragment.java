@@ -1,6 +1,5 @@
 package com.example.magazininstrumente.fragments;
 
-import static com.example.magazininstrumente.FirebaseService.CLIENT_REFERENCE;
 import static com.example.magazininstrumente.FirebaseService.HISTORY_REFERENCE;
 
 import android.Manifest;
@@ -315,7 +314,6 @@ public class HistoryFragment extends Fragment {
         counter = 0;
         int nr = 1;
         for (Product product : comenzi.get(position).getProduse()) {
-            Log.e("produs", product.toString());
             myPaint.setTextAlign(Paint.Align.LEFT);
             canvas.drawText(String.valueOf(nr), 40, 950 + (counter * 100), myPaint);
             canvas.drawText(product.getDenumire(), 200, 950 + (counter * 100), myPaint);

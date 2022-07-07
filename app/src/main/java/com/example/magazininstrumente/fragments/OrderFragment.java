@@ -1,5 +1,6 @@
 package com.example.magazininstrumente.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,8 +17,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.magazininstrumente.FirebaseService;
 import com.example.magazininstrumente.R;
+import com.example.magazininstrumente.activities.HomeActivity;
 import com.example.magazininstrumente.model.Client;
 import com.example.magazininstrumente.model.Courier;
 import com.example.magazininstrumente.model.Order;
@@ -37,15 +38,14 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
-
 public class OrderFragment extends Fragment {
     private ListView shoppingCart;
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(String.valueOf(R.string.CLIENTI_REFERENCE));
-    DatabaseReference databaseReferenceCos = FirebaseDatabase.getInstance().getReference(String.valueOf(R.string.CUMPARATURI_REFERENCE));
-    DatabaseReference databaseReferenceComanda = FirebaseDatabase.getInstance().getReference(String.valueOf(R.string.COMENZI_REFERENCE));
-    DatabaseReference databaseReferenceCurier = FirebaseDatabase.getInstance().getReference(String.valueOf(R.string.CURIERI_REFERENCE));
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("clienti");
+    DatabaseReference databaseReferenceCos = FirebaseDatabase.getInstance().getReference("cumparaturi");
+    DatabaseReference databaseReferenceComanda = FirebaseDatabase.getInstance().getReference("comenzi");
+    DatabaseReference databaseReferenceCurier = FirebaseDatabase.getInstance().getReference("curieri");
 
     private Random random = new Random();
     private EditText etNumeComanda;
@@ -68,7 +68,6 @@ public class OrderFragment extends Fragment {
 
     private Client clientReferinta;
     private float bugetReferinta;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -142,34 +141,50 @@ public class OrderFragment extends Fragment {
                             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                                 if (isChecked) {
                                     tipPlata = "Card";
-
                                 } else {
                                     tipPlata = "Cash";
                                 }
-
                             }
                         });
 
                         btnPlaseazaComanda.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                courier = curieri.get(random.nextInt(4));
-                                order = new Order(etNumeComanda.getText().toString(), etPrenumeComanda.getText().toString(), etEmailComanda.getText().toString(), etAdresaComanda.getText().toString(), etTelefonComanda.getText().toString(), tvCostTotal.getText().toString(), tipPlata, currentDate, produseComanda, courier);
-                                String idComanda = databaseReferenceComanda.push().getKey();
-                                if (tipPlata.equals("Card")) {
-                                    if (Float.parseFloat(order.getCostTotalComanda()) < bugetReferinta) {
-                                        float rez = bugetReferinta - Float.parseFloat(order.getCostTotalComanda());
-                                        databaseReference.child(idClient).child("buget").setValue(rez);
-                                        databaseReferenceComanda.child(idClient).child(idComanda).setValue(order);
-                                        databaseReferenceCos.child(idClient).removeValue();
-                                        Toast.makeText(getContext(), "Comanda plasata cu succes!", Toast.LENGTH_LONG).show();
-                                    } else {
-                                        Toast.makeText(getContext(), "Fonduri insuficiente", Toast.LENGTH_LONG).show();
+                                if(esteValid()){
+                                    courier = curieri.get(random.nextInt(4));
+                                    order = adaugareOrderDinView(tipPlata,currentDate,produseComanda,courier);
+                                    if(order.getNumeComanda().isEmpty()){
+                                        etNumeComanda.setError("Nu ai completat numele");
+                                    } else if(order.getPrenumeComanda().isEmpty()){
+                                        etPrenumeComanda.setError("Nu ai completat prenumele");
+                                    }else if(order.getEmailComanda().isEmpty()){
+                                        etEmailComanda.setError("Nu ai completat emailul");
+                                    }else if (order.getAdresaComanda().isEmpty()){
+                                        etAdresaComanda.setError("Nu ai completat adresa de livrare");
+                                    } else if (order.getTelefonComanda().isEmpty()){
+                                        etTelefonComanda.setError("Nu ai completat numarul de telefon");
+                                    }else{
+                                        String idComanda = databaseReferenceComanda.push().getKey();
+                                        if (tipPlata.equals("Card")) {
+                                            if (Float.parseFloat(order.getCostTotalComanda()) < bugetReferinta) {
+                                                float rez = bugetReferinta - Float.parseFloat(order.getCostTotalComanda());
+                                                databaseReference.child(idClient).child("buget").setValue(rez);
+                                                databaseReferenceComanda.child(idClient).child(idComanda).setValue(order);
+                                                databaseReferenceCos.child(idClient).removeValue();
+                                                Toast.makeText(getContext(), "Comanda plasata cu succes!", Toast.LENGTH_LONG).show();
+                                                Intent intent = new Intent(getActivity(), HomeActivity.class);
+                                                startActivity(intent);
+                                            } else {
+                                                Toast.makeText(getContext(), "Fonduri insuficiente", Toast.LENGTH_LONG).show();
+                                            }
+                                        } else if (tipPlata.equals("Cash")) {
+                                            databaseReferenceComanda.child(idClient).child(idComanda).setValue(order);
+                                            databaseReferenceCos.child(idClient).removeValue();
+                                            Toast.makeText(getContext(), "Comanda plasata cu succes!", Toast.LENGTH_LONG).show();
+                                            Intent intent = new Intent(getActivity(), HomeActivity.class);
+                                            startActivity(intent);
+                                        }
                                     }
-                                } else if (tipPlata.equals("Cash")) {
-                                    databaseReferenceComanda.child(idClient).child(idComanda).setValue(order);
-                                    databaseReferenceCos.child(idClient).removeValue();
-                                    Toast.makeText(getContext(), "Comanda plasata cu succes!", Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
@@ -182,13 +197,30 @@ public class OrderFragment extends Fragment {
 
             }
         });
-
-        btnPlaseazaComanda.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
         return view;
+    }
+
+    private boolean esteValid() {
+        if (etNumeComanda.getText() == null || etPrenumeComanda.getText() == null || etEmailComanda.getText() == null ||
+                etAdresaComanda.getText() == null || etEmailComanda.getText() == null || etTelefonComanda.getText() == null) {
+            return false;
+        }
+        return true;
+    }
+
+    private Order adaugareOrderDinView(String tipPlataTemp, String currentDateTemp, List<Product> productsTemp, Courier courierTemp) {
+        Order order = new Order();
+        order.setNumeComanda(etNumeComanda.getText().toString());
+        order.setPrenumeComanda(etPrenumeComanda.getText().toString());
+        order.setEmailComanda(etEmailComanda.getText().toString());
+        order.setEmailComanda(etEmailComanda.getText().toString());
+        order.setAdresaComanda(etAdresaComanda.getText().toString());
+        order.setTelefonComanda(etTelefonComanda.getText().toString());
+        order.setCostTotalComanda(tvCostTotal.getText().toString());
+        order.setTipPlata(tipPlataTemp);
+        order.setDataComanda(currentDateTemp);
+        order.setProduse(productsTemp);
+        order.setCourier(courierTemp);
+        return order;
     }
 }
